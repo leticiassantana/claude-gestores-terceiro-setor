@@ -1208,7 +1208,8 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       <div class="canvas-form" id="canvasForm"></div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-        <button class="btn-cta" onclick="copyCanvas(this)">Copiar meu canvas</button>
+        <button class="btn-cta" onclick="scrollToId('sendBox')">Enviar meu canvas ↓</button>
+        <button class="btn-nav" onclick="copyCanvas(this)">Copiar</button>
         <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
       </div>
 
@@ -1232,8 +1233,8 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
         </ol>
       </div>
 
-      <div class="send-box" id="sendBox" hidden style="margin:0 0 24px">
-        <h3 style="margin-bottom:6px">Entregar a tarefa</h3>
+      <div class="send-box" id="sendBox" style="margin:0 0 24px">
+        <h3 style="margin-bottom:6px">Entregar a tarefa e o IA Canvas</h3>
         <p style="font-size:14px;margin-bottom:16px">Seu IA Canvas (preenchido acima) vai junto. Dá para reenviar se mudar algo: vale a entrega mais recente.</p>
         <div class="send-grid">
           <label>Nome *<input id="sNome" type="text" maxlength="120" autocomplete="name" /></label>
@@ -1437,6 +1438,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       instrucoes: document.getElementById('sInstr').value.trim(),
     };
     CANVAS_KEYS.forEach((k, i) => payload[k] = document.querySelector(`textarea[data-i="${i}"]`).value.trim());
+    if (!LINKS.respostas) { msg.textContent = 'O envio abre em instantes. Tente de novo daqui a pouco.'; return; }
     btn.disabled = true; msg.textContent = 'Enviando…';
     enviar(payload)
       .then(() => { msg.textContent = 'Tarefa entregue ✓ Obrigada! Se mudar algo, é só enviar de novo.'; })
@@ -1458,7 +1460,6 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     });
     renderCanvas();
     initScales();
-    if (LINKS.respostas) document.getElementById('sendBox').hidden = false;
     const hash = location.hash.slice(1);
     if (SECTIONS.includes(hash)) goTo(hash);
   });
