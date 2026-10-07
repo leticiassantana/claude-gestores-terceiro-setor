@@ -1138,52 +1138,7 @@
       <p style="max-width:680px;font-size:14px;margin-top:8px"><strong>Onde ficam as suas instruções:</strong> no Claude, clique nas suas iniciais (canto inferior esquerdo) › Configurações › <strong>Instruções para o Claude</strong> (em inglês, <em>Instructions for Claude</em>). Ali perto, em <strong>Memória</strong>, você vê o que o Claude já guardou sobre você.</p>
 
       <div class="prompt-wrap">
-        <div class="prompt-label">1 · Me entreviste para criar minhas instruções<button class="btn-copy" onclick="copyPrompt(this,'p-entrevista')">Copiar</button></div>
-        <div class="prompt-body" id="p-entrevista">Quero escrever minhas "Instruções para o Claude", o texto que você vai considerar em todas as nossas conversas.
-
-Me entreviste para montar esse texto. Faça uma pergunta por vez, no máximo 8 perguntas, cobrindo:
-1. Quem eu sou e qual é o meu cargo
-2. Onde trabalho: a organização, o que ela faz, para quem e onde
-3. O que faço no dia a dia e minhas principais responsabilidades
-4. Como gosto de receber respostas (tamanho, tom, formato)
-5. O que você nunca deve fazer comigo
-
-No final, escreva as instruções em primeira pessoa, com até 200 palavras, prontas para eu colar em Configurações. Não invente nada que eu não tenha dito.</div>
-      </div>
-
-      <div class="prompt-wrap">
-        <div class="prompt-label">2 · Modelo de instruções para preencher<button class="btn-copy" onclick="copyPrompt(this,'p-instrucoes')">Copiar</button></div>
-        <div class="prompt-body" id="p-instrucoes">QUEM SOU: Sou [cargo] na [nome da organização].
-
-ONDE TRABALHO: A [organização] é uma organização da sociedade civil que [o que faz], para [quem], em [onde].
-
-MEU DIA A DIA: Cuido de [3 principais responsabilidades]. Uso o Claude principalmente para [tarefas].
-
-COMO PREFIRO AS RESPOSTAS:
-- Português do Brasil, linguagem direta e sem jargão.
-- Comece pela resposta; explique depois, se eu pedir.
-- Quando faltar informação, me pergunte antes de supor.
-
-O QUE NUNCA FAZER:
-- Não invente dados, números ou fontes.
-- Não [algo que te incomoda nas respostas de IA].</div>
-      </div>
-
-      <div class="prompt-wrap">
-        <div class="prompt-label">3 · Pedido redondo (o contexto da vez)<button class="btn-copy" onclick="copyPrompt(this,'p-pedido')">Copiar</button></div>
-        <div class="prompt-body" id="p-pedido">CONTEXTO: [o que está acontecendo, para quem, por que importa].
-
-TAREFA: Preciso que você [ação concreta: escreva, organize, compare, resuma, planeje].
-
-RESTRIÇÕES: [tom, tamanho, prazo, o que considerar]. NÃO [o que você não quer].
-
-FORMATO: Entregue como [lista, tabela, e-mail, roteiro, um parágrafo].
-
-Se faltar alguma informação importante, me faça até 3 perguntas antes de responder.</div>
-      </div>
-
-      <div class="prompt-wrap">
-        <div class="prompt-label">4 · Ajuda para preencher o IA Canvas<button class="btn-copy" onclick="copyPrompt(this,'p-canvas')">Copiar</button></div>
+        <div class="prompt-label">1 · Ajuda para preencher o IA Canvas<button class="btn-copy" onclick="copyPrompt(this,'p-canvas')">Copiar</button></div>
         <div class="prompt-body" id="p-canvas">Você vai me ajudar a preencher um IA Canvas, um quadro de 10 blocos para pensar uma solução com IA antes de construí-la (criado pela Proteus Academy, inspirado nos passos iniciais do CRISP-DM). Atue como uma consultora experiente em projetos de IA para organizações da sociedade civil.
 
 O PROBLEMA QUE QUERO TRABALHAR:
@@ -1223,6 +1178,51 @@ QUANDO EU DISSER "PRONTO":
 1. Entregue o canvas completo, um bloco por vez, com o título em maiúsculas (exatamente como "1. PROBLEMA") e o conteúdo em até 4 linhas cada, pronto para eu copiar.
 2. Aponte os 2 blocos mais frágeis e o que falta neles.
 3. Diga o que é fato e o que ainda é suposição no meu canvas.</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">2 · Me entreviste para criar minhas instruções<button class="btn-copy" onclick="copyPrompt(this,'p-entrevista')">Copiar</button></div>
+        <div class="prompt-body" id="p-entrevista">Quero escrever minhas "Instruções para o Claude", o texto que você vai considerar em todas as nossas conversas.
+
+Me entreviste para montar esse texto. Faça uma pergunta por vez, no máximo 8 perguntas, cobrindo:
+1. Quem eu sou e qual é o meu cargo
+2. Onde trabalho: a organização, o que ela faz, para quem e onde
+3. O que faço no dia a dia e minhas principais responsabilidades
+4. Como gosto de receber respostas (tamanho, tom, formato)
+5. O que você nunca deve fazer comigo
+
+No final, escreva as instruções em primeira pessoa, com até 200 palavras, prontas para eu colar em Configurações. Não invente nada que eu não tenha dito.</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">3 · Modelo de instruções para preencher<button class="btn-copy" onclick="copyPrompt(this,'p-instrucoes')">Copiar</button></div>
+        <div class="prompt-body" id="p-instrucoes">QUEM SOU: Sou [cargo] na [nome da organização].
+
+ONDE TRABALHO: A [organização] é uma organização da sociedade civil que [o que faz], para [quem], em [onde].
+
+MEU DIA A DIA: Cuido de [3 principais responsabilidades]. Uso o Claude principalmente para [tarefas].
+
+COMO PREFIRO AS RESPOSTAS:
+- Português do Brasil, linguagem direta e sem jargão.
+- Comece pela resposta; explique depois, se eu pedir.
+- Quando faltar informação, me pergunte antes de supor.
+
+O QUE NUNCA FAZER:
+- Não invente dados, números ou fontes.
+- Não [algo que te incomoda nas respostas de IA].</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">4 · Pedido redondo (o contexto da vez)<button class="btn-copy" onclick="copyPrompt(this,'p-pedido')">Copiar</button></div>
+        <div class="prompt-body" id="p-pedido">CONTEXTO: [o que está acontecendo, para quem, por que importa].
+
+TAREFA: Preciso que você [ação concreta: escreva, organize, compare, resuma, planeje].
+
+RESTRIÇÕES: [tom, tamanho, prazo, o que considerar]. NÃO [o que você não quer].
+
+FORMATO: Entregue como [lista, tabela, e-mail, roteiro, um parágrafo].
+
+Se faltar alguma informação importante, me faça até 3 perguntas antes de responder.</div>
       </div>
     </div>
   </div>
@@ -1269,7 +1269,7 @@ QUANDO EU DISSER "PRONTO":
         <ol class="task-list">
           <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> Essencial a partir da Aula 2.</span></li>
           <li><span class="task-num">2</span><span><strong>Termine e envie o IA Canvas</strong> com o gargalo que você iniciou ou trabalhou hoje (<a href="#canvasForm" onclick="return scrollToId('canvasForm')" style="color:var(--verde-claro)">ferramenta acima</a>).</span></li>
-          <li><span class="task-num">3</span><span><strong>Termine suas Instruções para o Claude:</strong> quem você é, onde trabalha, como quer as respostas (utilitários 1 e 2).</span></li>
+          <li><span class="task-num">3</span><span><strong>Termine suas Instruções para o Claude:</strong> quem você é, onde trabalha, como quer as respostas (utilitários 2 e 3).</span></li>
           <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório de impacto, projeto aprovado. Sem dados sensíveis.</span></li>
           <li><span class="task-num">5</span><span><strong>Baixe a versão desktop do Claude.</strong> O link está nos <a href="#links-uteis" onclick="return scrollToId('links-uteis')" style="color:var(--verde-claro)">links úteis</a>, aqui embaixo.</span></li>
         </ol>
