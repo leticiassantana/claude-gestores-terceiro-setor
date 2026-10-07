@@ -982,6 +982,10 @@
     .send-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:12px; margin-bottom:14px; }
     .send-grid label { display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(245,245,240,0.75); }
     .send-grid input { background:rgba(0,0,0,0.25); border:1px solid rgba(90,158,99,0.3); border-radius:8px; color:var(--off-white); font-family:'Inter',sans-serif; font-size:14px; padding:10px; }
+    .send-grid select, .send-field textarea { background:rgba(0,0,0,0.25); border:1px solid rgba(90,158,99,0.3); border-radius:8px; color:var(--off-white); font-family:'Inter',sans-serif; font-size:14px; padding:10px; }
+    .send-grid select option { color:#1A1A1A; }
+    .send-field { display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(245,245,240,0.75); margin-bottom:14px; }
+    .send-field textarea { resize:vertical; }
     .send-grid input:focus { outline:none; border-color:var(--verde-acento); }
     .isca { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
     .send-consent { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:rgba(245,245,240,0.75); margin-bottom:16px; cursor:pointer; }
@@ -1184,7 +1188,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     <div class="container">
       <p class="eyebrow">Ferramenta</p>
       <h3 style="font-size:28px;margin-bottom:8px">Meu IA Canvas</h3>
-      <p style="max-width:680px">Preencha com o gargalo que você trabalhou na aula. O que você escreve fica salvo só neste navegador. No final, copie tudo e leve para a Aula 2. <em>IA Canvas © Proteus Academy.</em></p>
+      <p style="max-width:680px">Preencha com o gargalo que você trabalhou na aula. O que você escreve fica salvo só neste navegador. Ele vai junto quando você entregar a tarefa, lá embaixo. <em>IA Canvas © Proteus Academy.</em></p>
 
       <div class="canvas-form" id="canvasForm"></div>
 
@@ -1193,20 +1197,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
         <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
       </div>
 
-      <div class="send-box" id="sendBox" hidden>
-        <h3 style="margin-bottom:6px">Enviar para a Letícia</h3>
-        <p style="font-size:14px;margin-bottom:16px">Seu canvas ajuda a adaptar as próximas aulas ao que a turma precisa. Envie quando terminar (dá para reenviar depois, se mudar algo).</p>
-        <div class="send-grid">
-          <label>Nome *<input id="sNome" type="text" maxlength="120" autocomplete="name" /></label>
-          <label>Organização<input id="sOrg" type="text" maxlength="200" autocomplete="organization" /></label>
-          <label>E-mail (opcional)<input id="sEmail" type="email" maxlength="200" autocomplete="email" /></label>
-          <input id="sIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
-        </div>
-        <label class="send-consent"><input id="sConsent" type="checkbox" />
-          <span>Autorizo o uso destas respostas pela facilitadora para adaptar as aulas e dar devolutiva à turma. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
-        <button class="btn-cta" id="sBtn" onclick="sendCanvas()">Enviar meu canvas</button>
-        <p id="sMsg" class="send-msg" role="status"></p>
-      </div>
+
     </div>
   </div>
 
@@ -1223,6 +1214,38 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
           <li><span class="task-num">3</span><span><strong>Preencha o seu IA Canvas</strong> com o gargalo que você trabalhou hoje.</span></li>
           <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório, projeto aprovado, metodologia. Sem dados pessoais.</span></li>
         </ol>
+      </div>
+
+      <div class="send-box" id="sendBox" hidden style="margin:0 0 24px">
+        <h3 style="margin-bottom:6px">Entregar a tarefa</h3>
+        <p style="font-size:14px;margin-bottom:16px">Seu IA Canvas (preenchido acima) vai junto. Dá para reenviar se mudar algo: vale a entrega mais recente.</p>
+        <div class="send-grid">
+          <label>Nome *<input id="sNome" type="text" maxlength="120" autocomplete="name" /></label>
+          <label>Organização<input id="sOrg" type="text" maxlength="200" autocomplete="organization" /></label>
+          <label>E-mail (opcional)<input id="sEmail" type="email" maxlength="200" autocomplete="email" /></label>
+          <label>Plano pago
+            <select id="sPlano">
+              <option value="">Selecione</option>
+              <option>Já tenho</option>
+              <option>Vou assinar até a Aula 2</option>
+              <option>Verificando a OSC no Claude for Nonprofits</option>
+              <option>Não consigo ter</option>
+            </select></label>
+          <label>Documentos da organização
+            <select id="sDocs">
+              <option value="">Selecione</option>
+              <option>Separei 3 ou mais</option>
+              <option>Separei alguns</option>
+              <option>Ainda não</option>
+            </select></label>
+          <input id="sIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
+        </div>
+        <label class="send-field">Cole aqui as suas Instruções para o Claude (opcional)
+          <textarea id="sInstr" rows="4" maxlength="5000"></textarea></label>
+        <label class="send-consent"><input id="sConsent" type="checkbox" />
+          <span>Autorizo o uso destas respostas pela facilitadora para adaptar as aulas e dar devolutiva à turma. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
+        <button class="btn-cta" id="sBtn" onclick="sendTarefa()">Entregar minha tarefa</button>
+        <p id="sMsg" class="send-msg" role="status"></p>
       </div>
 
       <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2)">
@@ -1251,7 +1274,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
     slides: 'https://docs.google.com/presentation/d/1s8IW4TLk6KoRJw-glJJwyTOd0uZQIeJP/edit?usp=sharing',
     pulso:  '',
-    canvasEnvio: '',  // URL /exec do Apps Script (curso-8h/aula-1/03-canvas-envios.md)
+    tarefaEnvio: '',  // URL /exec do Apps Script (curso-8h/aula-1/03-tarefas-entregas.md)
   };
 
   const SECTIONS = ['inicio','aula1'];
@@ -1317,7 +1340,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
 
   const CANVAS_KEYS = ['problema','indicadores','semIa','comIa','paraQuem','dados','ferramentas','etica','privacidade','riscos'];
 
-  function sendCanvas() {
+  function sendTarefa() {
     const msg = document.getElementById('sMsg'), btn = document.getElementById('sBtn');
     const nome = document.getElementById('sNome').value.trim();
     if (!nome) { msg.textContent = 'Preencha o seu nome.'; return; }
@@ -1325,14 +1348,15 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     const payload = {
       nome, organizacao: document.getElementById('sOrg').value.trim(),
       email: document.getElementById('sEmail').value.trim(),
-      consentimento: true, site_url: document.getElementById('sIsca').value,
+      aula: 1, consentimento: true, site_url: document.getElementById('sIsca').value,
+      planoPago: document.getElementById('sPlano').value, documentos: document.getElementById('sDocs').value,
+      instrucoes: document.getElementById('sInstr').value.trim(),
     };
     CANVAS_KEYS.forEach((k, i) => payload[k] = document.querySelector(`textarea[data-i="${i}"]`).value.trim());
-    if (CANVAS_KEYS.every(k => !payload[k])) { msg.textContent = 'Seu canvas está em branco.'; return; }
     btn.disabled = true; msg.textContent = 'Enviando…';
-    fetch(LINKS.canvasEnvio, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
-      .then(() => { msg.textContent = 'Enviado ✓ Obrigada! Se mudar algo, é só enviar de novo.'; })
-      .catch(() => { msg.textContent = 'Não consegui enviar. Use "Copiar meu canvas" e mande pelo chat.'; })
+    fetch(LINKS.tarefaEnvio, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      .then(() => { msg.textContent = 'Tarefa entregue ✓ Obrigada! Se mudar algo, é só enviar de novo.'; })
+      .catch(() => { msg.textContent = 'Não consegui enviar. Tente de novo em instantes.'; })
       .finally(() => { btn.disabled = false; });
   }
 
@@ -1349,7 +1373,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       else { a.classList.add('soon'); a.removeAttribute('target'); a.addEventListener('click', e => e.preventDefault()); }
     });
     renderCanvas();
-    if (LINKS.canvasEnvio) document.getElementById('sendBox').hidden = false;
+    if (LINKS.tarefaEnvio) document.getElementById('sendBox').hidden = false;
     const hash = location.hash.slice(1);
     if (SECTIONS.includes(hash)) goTo(hash);
   });
