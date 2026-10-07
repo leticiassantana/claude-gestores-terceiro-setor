@@ -1247,7 +1247,6 @@ QUANDO EU DISSER "PRONTO":
         <div class="send-grid">
           <label>Nome *<input id="sNome" type="text" maxlength="120" autocomplete="name" /></label>
           <label>Organização<input id="sOrg" type="text" maxlength="200" autocomplete="organization" /></label>
-          <label>E-mail<input id="sEmail" type="email" maxlength="200" autocomplete="email" /></label>
           <input id="sIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
         </div>
         <label class="send-consent"><input id="sConsent" type="checkbox" />
@@ -1444,7 +1443,6 @@ QUANDO EU DISSER "PRONTO":
     if (!document.getElementById('sConsent').checked) { msg.textContent = 'Marque a autorização para enviar.'; return; }
     const payload = {
       nome, organizacao: document.getElementById('sOrg').value.trim(),
-      email: document.getElementById('sEmail').value.trim(),
       tipo: 'tarefa', aula: 1, consentimento: true, site_url: document.getElementById('sIsca').value,
     };
     CANVAS_KEYS.forEach((k, i) => payload[k] = document.querySelector(`textarea[data-i="${i}"]`).value.trim());
