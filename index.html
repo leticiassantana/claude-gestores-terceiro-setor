@@ -992,6 +992,15 @@
     .send-consent input { margin-top:3px; accent-color:var(--verde-acento); }
     .send-msg { margin-top:12px; font-size:14px; color:var(--verde-claro); min-height:1em; }
     .btn-cta:disabled { opacity:.6; cursor:default; }
+    .sat-box { display:flex; flex-direction:column; gap:18px; }
+    .sat-q { display:flex; flex-direction:column; gap:8px; color:var(--texto-escuro); font-weight:600; font-size:15px; }
+    .sat-q textarea, .sat-q input { font-weight:400; background:#fff; border:1px solid #CFD6CC; border-radius:8px; padding:10px; font-family:'Inter',sans-serif; font-size:14px; color:var(--texto-escuro); resize:vertical; }
+    .sat-q textarea:focus, .sat-q input:focus { outline:none; border-color:var(--verde-acento); }
+    .scale { display:flex; gap:8px; flex-wrap:wrap; }
+    .scale button { min-width:48px; padding:10px 14px; border-radius:8px; border:1px solid #CFD6CC; background:#fff; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:var(--texto-escuro); cursor:pointer; }
+    .scale button.on { background:var(--verde-fundo); border-color:var(--verde-fundo); color:#fff; }
+    .send-consent.dark { color:var(--texto-medio); margin-bottom:0; }
+    .send-msg.dark { color:var(--verde-profundo); }
     nav button.nav-soon, .mobile-nav button.nav-soon { opacity:.35; cursor:default; }
   </style>
 </head>
@@ -1114,7 +1123,8 @@
       <div class="link-list" style="margin:0">
         <a class="link-item" data-link="forms" target="_blank"><span>📝</span><span><strong>Diagnóstico da turma</strong><small>5 minutos, no começo da aula</small></span></a>
         <a class="link-item" data-link="slides" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 1</strong><small>Para acompanhar e rever</small></span></a>
-        <a class="link-item" data-link="pulso" target="_blank"><span>💬</span><span><strong>Pulso de fim de aula</strong><small>1 minuto, antes de sair</small></span></a>
+        <a class="link-item" href="#tarefa" onclick="return scrollToId('tarefa')"><span>✅</span><span><strong>Tarefas da Aula 1</strong><small>O que fazer até a Aula 2 · role para baixo ↓</small></span></a>
+        <a class="link-item" href="#satisfacao" onclick="return scrollToId('satisfacao')"><span>⭐</span><span><strong>Avalie a Aula 1</strong><small>1 minuto, antes de sair · role para baixo ↓</small></span></a>
       </div>
     </div>
   </div>
@@ -1202,17 +1212,17 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
   </div>
 
   <!-- Tarefa -->
-  <div class="section-dark" style="border-top:1px solid rgba(90,158,99,0.15)">
+  <div class="section-dark" id="tarefa" style="border-top:1px solid rgba(90,158,99,0.15)">
     <div class="container-sm">
       <p class="eyebrow">Para a próxima semana</p>
       <h3 style="font-size:28px;margin-bottom:20px">Tarefa até a Aula 2</h3>
 
       <div class="task-box" style="margin-bottom:24px">
         <ol class="task-list">
-          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> A partir da Aula 2, é essencial.</span></li>
-          <li><span class="task-num">2</span><span><strong>Finalize suas Instruções para o Claude</strong> (utilitários 1 e 2).</span></li>
-          <li><span class="task-num">3</span><span><strong>Preencha o seu IA Canvas</strong> com o gargalo que você trabalhou hoje.</span></li>
-          <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório, projeto aprovado, metodologia. Sem dados pessoais.</span></li>
+          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> Essencial a partir da Aula 2. <a href="https://claude.com/download" target="_blank" style="color:var(--verde-claro)">Baixe a versão desktop</a>.</span></li>
+          <li><span class="task-num">2</span><span><strong>Termine e envie o IA Canvas</strong> com o gargalo que você iniciou ou trabalhou hoje (<a href="#canvasForm" onclick="return scrollToId('canvasForm')" style="color:var(--verde-claro)">ferramenta acima</a>).</span></li>
+          <li><span class="task-num">3</span><span><strong>Termine suas Instruções para o Claude:</strong> quem você é, onde trabalha, como quer as respostas (utilitários 1 e 2).</span></li>
+          <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório de impacto, projeto aprovado. Sem dados sensíveis.</span></li>
         </ol>
       </div>
 
@@ -1251,11 +1261,45 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2)">
         <h3 style="color:var(--off-white)">Links úteis</h3>
         <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/download" target="_blank" style="color:var(--verde-claro)">Baixar o Claude para computador</a> (Windows e Mac)</span></li>
           <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/solutions/nonprofits" target="_blank" style="color:var(--verde-claro)">Claude for Nonprofits</a>: plano Team a US$ 8 por pessoa/mês, mínimo de 2 pessoas. <a href="https://validate.poweredbypercent.com/anthropic" target="_blank" style="color:var(--verde-claro)">Verificar minha OSC</a></span></li>
           <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/pricing" target="_blank" style="color:var(--verde-claro)">Planos individuais (Claude Pro)</a></span></li>
           <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://academy.claude.com/" target="_blank" style="color:var(--verde-claro)">AI Fluency for Nonprofits</a>: curso gratuito da Anthropic com a GivingTuesday</span></li>
         </ol>
         <p style="font-size:12px;color:rgba(245,245,240,0.5);margin-top:12px">Condições conferidas em 07/out/2026. Podem mudar: confirme na página oficial.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Satisfação -->
+  <div class="section-light" id="satisfacao">
+    <div class="container-sm">
+      <p class="eyebrow" style="color:var(--texto-medio)">1 minuto, antes de sair</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Como foi a Aula 1?</h3>
+      <p style="margin-bottom:20px">Suas respostas mudam a próxima aula. Pode responder sem se identificar.</p>
+
+      <div class="sat-box" id="satBox">
+        <div class="sat-q">
+          <span>De 1 a 5, como você avalia a aula? *</span>
+          <div class="scale" data-name="nota"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+        </div>
+        <div class="sat-q">
+          <span>De 1 a 5, quanto o que vimos é útil no seu trabalho? *</span>
+          <div class="scale" data-name="utilidade"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+        </div>
+        <div class="sat-q">
+          <span>O ritmo da aula foi: *</span>
+          <div class="scale" data-name="ritmo"><button>Devagar</button><button>Adequado</button><button>Rápido demais</button></div>
+        </div>
+        <label class="sat-q"><span>O que você vai usar de verdade?</span><textarea id="satUsar" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Onde você travou ou ficou com dúvida?</span><textarea id="satTravou" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Uma sugestão para a próxima aula</span><textarea id="satSugestao" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Nome (opcional)</span><input id="satNome" type="text" maxlength="120" autocomplete="name" /></label>
+        <input id="satIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
+        <label class="send-consent dark"><input id="satConsent" type="checkbox" />
+          <span>Autorizo o uso destas respostas pela facilitadora para melhorar as aulas. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
+        <button class="btn-cta" id="satBtn" onclick="sendSatisfacao()">Enviar avaliação</button>
+        <p id="satMsg" class="send-msg dark" role="status"></p>
       </div>
     </div>
   </div>
@@ -1273,8 +1317,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
   const LINKS = {
     forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
     slides: 'https://docs.google.com/presentation/d/1s8IW4TLk6KoRJw-glJJwyTOd0uZQIeJP/edit?usp=sharing',
-    pulso:  '',
-    tarefaEnvio: '',  // URL /exec do Apps Script (curso-8h/aula-1/03-tarefas-entregas.md)
+    respostas: '',  // URL /exec do Apps Script: tarefas e satisfação (curso-8h/aula-1/03-tarefas-entregas.md)
   };
 
   const SECTIONS = ['inicio','aula1'];
@@ -1340,6 +1383,41 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
 
   const CANVAS_KEYS = ['problema','indicadores','semIa','comIa','paraQuem','dados','ferramentas','etica','privacidade','riscos'];
 
+  function scrollToId(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return false;
+  }
+
+  function enviar(payload) {
+    return fetch(LINKS.respostas, { method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
+  }
+
+  const satEscolha = {};
+  function initScales() {
+    document.querySelectorAll('.scale').forEach(sc => sc.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+      sc.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      satEscolha[sc.dataset.name] = b.textContent;
+    })));
+  }
+
+  function sendSatisfacao() {
+    const msg = document.getElementById('satMsg'), btn = document.getElementById('satBtn');
+    if (!satEscolha.nota || !satEscolha.utilidade || !satEscolha.ritmo) { msg.textContent = 'Responda as três primeiras perguntas.'; return; }
+    if (!document.getElementById('satConsent').checked) { msg.textContent = 'Marque a autorização para enviar.'; return; }
+    if (!LINKS.respostas) { msg.textContent = 'O envio abre em instantes. Tente de novo daqui a pouco.'; return; }
+    const payload = { tipo: 'satisfacao', aula: 1, consentimento: true, site_url: document.getElementById('satIsca').value,
+      nota: satEscolha.nota, utilidade: satEscolha.utilidade, ritmo: satEscolha.ritmo,
+      usar: document.getElementById('satUsar').value.trim(), travou: document.getElementById('satTravou').value.trim(),
+      sugestao: document.getElementById('satSugestao').value.trim(), nome: document.getElementById('satNome').value.trim() };
+    btn.disabled = true; msg.textContent = 'Enviando…';
+    enviar(payload)
+      .then(() => { msg.textContent = 'Avaliação enviada ✓ Obrigada!'; })
+      .catch(() => { msg.textContent = 'Não consegui enviar. Tente de novo em instantes.'; })
+      .finally(() => { btn.disabled = false; });
+  }
+
   function sendTarefa() {
     const msg = document.getElementById('sMsg'), btn = document.getElementById('sBtn');
     const nome = document.getElementById('sNome').value.trim();
@@ -1348,13 +1426,13 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     const payload = {
       nome, organizacao: document.getElementById('sOrg').value.trim(),
       email: document.getElementById('sEmail').value.trim(),
-      aula: 1, consentimento: true, site_url: document.getElementById('sIsca').value,
+      tipo: 'tarefa', aula: 1, consentimento: true, site_url: document.getElementById('sIsca').value,
       planoPago: document.getElementById('sPlano').value, documentos: document.getElementById('sDocs').value,
       instrucoes: document.getElementById('sInstr').value.trim(),
     };
     CANVAS_KEYS.forEach((k, i) => payload[k] = document.querySelector(`textarea[data-i="${i}"]`).value.trim());
     btn.disabled = true; msg.textContent = 'Enviando…';
-    fetch(LINKS.tarefaEnvio, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+    enviar(payload)
       .then(() => { msg.textContent = 'Tarefa entregue ✓ Obrigada! Se mudar algo, é só enviar de novo.'; })
       .catch(() => { msg.textContent = 'Não consegui enviar. Tente de novo em instantes.'; })
       .finally(() => { btn.disabled = false; });
@@ -1373,7 +1451,8 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       else { a.classList.add('soon'); a.removeAttribute('target'); a.addEventListener('click', e => e.preventDefault()); }
     });
     renderCanvas();
-    if (LINKS.tarefaEnvio) document.getElementById('sendBox').hidden = false;
+    initScales();
+    if (LINKS.respostas) document.getElementById('sendBox').hidden = false;
     const hash = location.hash.slice(1);
     if (SECTIONS.includes(hash)) goTo(hash);
   });
