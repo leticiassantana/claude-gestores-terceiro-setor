@@ -978,10 +978,7 @@
     <nav id="mainNav">
       <button onclick="goTo('inicio')" class="active">Início</button>
       <button onclick="goTo('roteiro')">Roteiro</button>
-      <button onclick="goTo('abertura')">Abertura</button>
-      <button onclick="goTo('parte1')">Parte 1</button>
-      <button onclick="goTo('parte2')">Parte 2</button>
-      <button onclick="goTo('parte3')">Parte 3</button>
+      <button onclick="goTo('aula1')">Aula 1</button>
       <button onclick="goTo('canvas')">IA Canvas</button>
       <button onclick="goTo('encerramento')">Tarefa</button>
     </nav>
@@ -994,10 +991,7 @@
 <div class="mobile-nav" id="mobileNav">
   <button onclick="goTo('inicio');toggleMenu()">Início</button>
   <button onclick="goTo('roteiro');toggleMenu()">Roteiro</button>
-  <button onclick="goTo('abertura');toggleMenu()">Abertura</button>
-  <button onclick="goTo('parte1');toggleMenu()">Parte 1</button>
-  <button onclick="goTo('parte2');toggleMenu()">Parte 2</button>
-  <button onclick="goTo('parte3');toggleMenu()">Parte 3</button>
+  <button onclick="goTo('aula1');toggleMenu()">Aula 1</button>
   <button onclick="goTo('canvas');toggleMenu()">IA Canvas</button>
   <button onclick="goTo('encerramento');toggleMenu()">Tarefa</button>
 </div>
@@ -1137,16 +1131,16 @@
 
   <div class="section-dark"><div class="nav-footer">
     <button class="btn-nav" onclick="goTo('inicio')">← Início</button>
-    <button class="btn-nav" onclick="goTo('abertura')">Abertura →</button>
+    <button class="btn-nav" onclick="goTo('aula1')">Aula 1 →</button>
   </div></div>
 </section>
 
 
-<!-- ══════════ ABERTURA ══════════ -->
-<section id="abertura" class="section-dark">
+<!-- ══════════ AULA 1 ══════════ -->
+<section id="aula1" class="section-dark">
   <div class="section-dark">
     <div class="container">
-      <p class="eyebrow">Abertura · Combinado</p>
+      <p class="eyebrow">Aula 1 · Abertura</p>
       <h2>Eu não sei tudo, mas eu sei alguma coisa.</h2>
       <p style="max-width:660px">Este é um espaço de troca de saberes: todo mundo ensina, todo mundo aprende. Use o chat da aula para compartilhar exemplos, dúvidas e descobertas.</p>
 
@@ -1183,18 +1177,9 @@
     </div>
   </div>
 
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('roteiro')">← Roteiro</button>
-    <button class="btn-nav" onclick="goTo('parte1')">Parte 1 →</button>
-  </div></div>
-</section>
-
-
-<!-- ══════════ PARTE 1 ══════════ -->
-<section id="parte1">
   <div class="section-dark">
     <div class="container">
-      <p class="eyebrow">Parte 1 · Por que intenção</p>
+      <p class="eyebrow">Aula 1 · Por que intenção</p>
       <h2>O Framework 4D</h2>
       <p style="max-width:660px">A própria Anthropic organiza a fluência em IA em quatro competências. Não vamos estudar o framework como matéria: ao longo do curso, vamos nomear o D que está em jogo em cada prática.</p>
 
@@ -1236,18 +1221,9 @@
     </div>
   </div>
 
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('abertura')">← Abertura</button>
-    <button class="btn-nav" onclick="goTo('parte2')">Parte 2 →</button>
-  </div></div>
-</section>
-
-
-<!-- ══════════ PARTE 2 ══════════ -->
-<section id="parte2">
   <div class="section-dark">
     <div class="container">
-      <p class="eyebrow">Parte 2 · Até onde a escada vai</p>
+      <p class="eyebrow">Aula 1 · Até onde a escada vai</p>
       <h2>Chat, Cowork e Code</h2>
       <p style="max-width:660px">Não é uma hierarquia: são formas diferentes de trabalhar com o Claude. Chat e Cowork estão no mesmo aplicativo, com um interruptor. Code é a aba onde você constrói ferramentas, sem precisar saber programar.</p>
 
@@ -1273,18 +1249,9 @@
     </div>
   </div>
 
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('parte1')">← Parte 1</button>
-    <button class="btn-nav" onclick="goTo('parte3')">Parte 3 →</button>
-  </div></div>
-</section>
-
-
-<!-- ══════════ PARTE 3 ══════════ -->
-<section id="parte3">
   <div class="section-dark">
     <div class="container">
-      <p class="eyebrow">Parte 3 · Mão na massa</p>
+      <p class="eyebrow">Aula 1 · Mão na massa</p>
       <h2>Como o Claude funciona, em 3 ideias</h2>
       <div class="cards-grid cols-3" style="margin-top:24px">
         <div class="card"><span class="card-icon">1</span><h3>Ele prevê a continuação mais provável</h3><p>Sem contexto, entrega o genérico. Às vezes inventa, com toda a confiança.</p></div>
@@ -1348,7 +1315,7 @@ Antes de responder, se faltar alguma informação importante, me faça até 3 pe
   </div>
 
   <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('parte2')">← Parte 2</button>
+    <button class="btn-nav" onclick="goTo('roteiro')">← Roteiro</button>
     <button class="btn-nav" onclick="goTo('canvas')">IA Canvas →</button>
   </div></div>
 </section>
@@ -1381,7 +1348,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
   </div>
 
   <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('parte3')">← Parte 3</button>
+    <button class="btn-nav" onclick="goTo('aula1')">← Aula 1</button>
     <button class="btn-nav" onclick="goTo('encerramento')">Tarefa →</button>
   </div></div>
 </section>
@@ -1397,7 +1364,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       <div class="task-box" style="margin-bottom:24px">
         <ol class="task-list">
           <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> A partir da Aula 2, é essencial. Veja as opções abaixo.</span></li>
-          <li><span class="task-num">2</span><span><strong>Escreva suas Instruções para o Claude</strong> com o <a href="#" onclick="goTo('parte3');return false" style="color:var(--verde-claro)">modelo da Parte 3</a>.</span></li>
+          <li><span class="task-num">2</span><span><strong>Escreva suas Instruções para o Claude</strong> com o <a href="#" onclick="goTo('aula1');return false" style="color:var(--verde-claro)">modelo da Aula 1</a>.</span></li>
           <li><span class="task-num">3</span><span><strong>Preencha um IA Canvas</strong> com o gargalo que você trabalhou hoje (<a href="#" onclick="goTo('canvas');return false" style="color:var(--verde-claro)">ferramenta aqui</a>).</span></li>
           <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório, projeto aprovado, metodologia. Sem dados pessoais.</span></li>
         </ol>
@@ -1449,7 +1416,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     pulso:  '',
   };
 
-  const SECTIONS = ['inicio','roteiro','abertura','parte1','parte2','parte3','canvas','encerramento'];
+  const SECTIONS = ['inicio','roteiro','aula1','canvas','encerramento'];
 
   function goTo(id) {
     SECTIONS.forEach(s => document.getElementById(s).classList.remove('active'));
