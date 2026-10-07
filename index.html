@@ -1001,10 +1001,6 @@
     .scale button.on { background:var(--verde-fundo); border-color:var(--verde-fundo); color:#fff; }
     .send-consent.dark { color:var(--texto-medio); margin-bottom:0; }
     .send-msg.dark { color:var(--verde-profundo); }
-    .dl-card { display:flex; align-items:center; gap:14px; padding:16px 20px; margin:8px 0 24px; border-radius:12px; text-decoration:none; background:var(--verde-fundo); color:var(--off-white); }
-    .dl-card > span:nth-child(2) { display:flex; flex-direction:column; line-height:1.4; flex:1; }
-    .dl-card small { color:rgba(245,245,240,0.6); font-size:12px; }
-    .dl-go { color:var(--verde-acento); font-weight:700; white-space:nowrap; }
     nav button.nav-soon, .mobile-nav button.nav-soon { opacity:.35; cursor:default; }
   </style>
 </head>
@@ -1138,7 +1134,6 @@
     <div class="container">
       <p class="eyebrow" style="color:var(--texto-medio)">Utilitários</p>
       <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Prompts prontos para usar</h3>
-      <a class="dl-card" href="https://claude.com/download" target="_blank"><span>💻</span><span><strong>Baixe o Claude para computador</strong><small>Windows e Mac · claude.com/download</small></span><span class="dl-go">Baixar ↗</span></a>
       <p style="max-width:680px">Clique em <strong>Copiar</strong>, cole no Claude e troque o que estiver entre [colchetes].</p>
       <p style="max-width:680px;font-size:14px;margin-top:8px"><strong>Onde ficam as suas instruções:</strong> no Claude, clique nas suas iniciais (canto inferior esquerdo) › Configurações › <strong>Instruções para o Claude</strong> (em inglês, <em>Instructions for Claude</em>). Ali perto, em <strong>Memória</strong>, você vê o que o Claude já guardou sobre você.</p>
 
@@ -1225,11 +1220,11 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
 
       <div class="task-box" style="margin-bottom:24px">
         <ol class="task-list">
-          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> Essencial a partir da Aula 2. <a href="https://claude.com/download" target="_blank" style="color:var(--verde-claro)">Baixe a versão desktop</a>.</span></li>
+          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> Essencial a partir da Aula 2.</span></li>
           <li><span class="task-num">2</span><span><strong>Termine e envie o IA Canvas</strong> com o gargalo que você iniciou ou trabalhou hoje (<a href="#canvasForm" onclick="return scrollToId('canvasForm')" style="color:var(--verde-claro)">ferramenta acima</a>).</span></li>
           <li><span class="task-num">3</span><span><strong>Termine suas Instruções para o Claude:</strong> quem você é, onde trabalha, como quer as respostas (utilitários 1 e 2).</span></li>
           <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório de impacto, projeto aprovado. Sem dados sensíveis.</span></li>
-          <li><span class="task-num">5</span><span><strong>Baixe a versão desktop do Claude.</strong> O link está nos <a href="#utilitarios" onclick="return scrollToId('utilitarios')" style="color:var(--verde-claro)">utilitários</a> e aqui: <a href="https://claude.com/download" target="_blank" style="color:var(--verde-claro)">claude.com/download</a>.</span></li>
+          <li><span class="task-num">5</span><span><strong>Baixe a versão desktop do Claude.</strong> O link está nos <a href="#links-uteis" onclick="return scrollToId('links-uteis')" style="color:var(--verde-claro)">links úteis</a>, aqui embaixo.</span></li>
         </ol>
       </div>
 
@@ -1265,7 +1260,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
         <p id="sMsg" class="send-msg" role="status"></p>
       </div>
 
-      <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2)">
+      <div class="task-box" id="links-uteis" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2)">
         <h3 style="color:var(--off-white)">Links úteis</h3>
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/download" target="_blank" style="color:var(--verde-claro)">Baixar o Claude para computador</a> (Windows e Mac)</span></li>
