@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude para Gestores do Terceiro Setor</title>
+  <meta name="description" content="Material de apoio do curso Claude para gestores do terceiro setor (Rede Filantropia), por Letícia Santana." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --verde-fundo:    #0D1F10;
+      --verde-profundo: #1A3D1F;
+      --verde-acento:   #27AF60;
+      --verde-claro:    #5A9E63;
+      --off-white:      #F5F5F0;
+      --branco:         #FFFFFF;
+      --texto-escuro:   #1A1A1A;
+      --texto-medio:    #444444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--verde-fundo);
+      color: var(--off-white);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 31, 16, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(90, 158, 99, 0.2);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--verde-claro);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      gap: 2px;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: rgba(245, 245, 240, 0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    nav button:hover { color: var(--off-white); background: rgba(39, 175, 96, 0.1); }
+    nav button.active { color: var(--verde-acento); background: rgba(39, 175, 96, 0.12); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: var(--verde-fundo);
+      border-bottom: 1px solid rgba(90,158,99,0.2);
+      padding: 12px 0;
+      z-index: 99;
+    }
+
+    .mobile-nav.open { display: block; }
+
+    .mobile-nav button {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(245,245,240,0.7);
+      text-align: left;
+      padding: 12px 24px;
+      cursor: pointer;
+    }
+
+    .mobile-nav button.active { color: var(--verde-acento); }
+
+    /* ── MAIN ── */
+    main { padding-top: 60px; }
+
+    section { display: none; }
+    section.active { display: block; }
+
+    /* ── SECTION TYPES ── */
+    .section-dark  { background: var(--verde-fundo); }
+    .section-deep  { background: var(--verde-profundo); }
+    .section-light { background: var(--off-white); color: var(--texto-escuro); }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .container-sm {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 16px;
+    }
+
+    /* ── HEADLINES ── */
+    h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(245, 245, 240, 0.8);
+      margin-bottom: 16px;
+    }
+
+    .section-light p { color: var(--texto-medio); }
+
+    /* ── HERO ── */
+    .hero .container-sm {
+      padding-top: 100px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+
+    .hero h1 { color: var(--off-white); }
+
+    .hero .subtitle {
+      font-size: 18px;
+      color: rgba(245, 245, 240, 0.7);
+      margin-bottom: 48px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── CARDS ── */
+    .cards-grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 640px) { .cards-grid.cols-3 { grid-template-columns: 1fr; } }
+    .cards-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .card {
+      background: var(--verde-profundo);
+      border: 1px solid rgba(90, 158, 99, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .section-light .card {
+      background: var(--branco);
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .section-light .card h3 { color: var(--texto-escuro); }
+    .section-light .card p  { color: var(--texto-medio); }
+
+    .card-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .card h3 { color: var(--off-white); }
+    .card p  { color: rgba(245,245,240,0.7); margin-bottom: 0; font-size: 14px; }
+
+    /* ── CTA BUTTON ── */
+    .btn-cta {
+      display: inline-block;
+      background: var(--verde-acento);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-cta:hover { background: #22a056; transform: translateY(-1px); }
+
+    /* ── SOBRE A FACILITADORA ── */
+    .facilitadora-section {
+      background: var(--verde-profundo);
+      padding: 72px 24px;
+    }
+
+    .facilitadora-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .facilitadora-photo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .facilitadora-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid rgba(39,175,96,0.4);
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: var(--verde-fundo);
+      border: 3px solid rgba(39,175,96,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--verde-acento);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid rgba(90,158,99,0.35);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(245,245,240,0.75);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-link:hover { border-color: var(--verde-acento); color: var(--off-white); }
+
+    .facilitadora-bio h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      margin-bottom: 6px;
+    }
+
+    .facilitadora-bio .role {
+      font-size: 13px;
+      color: var(--verde-claro);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .facilitadora-bio p {
+      font-size: 15px;
+      color: rgba(245,245,240,0.75);
+      margin-bottom: 24px;
+    }
+
+    .products-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 12px;
+    }
+
+    .product-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .product-card {
+      display: block;
+      padding: 14px 18px;
+      background: rgba(13,31,16,0.5);
+      border: 1px solid rgba(39,175,96,0.25);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--verde-acento);
+      background: rgba(39,175,96,0.08);
+    }
+
+    .product-card .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--off-white);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .product-card .product-desc {
+      font-size: 12px;
+      color: rgba(245,245,240,0.5);
+      margin: 0;
+    }
+
+    .product-arrow {
+      float: right;
+      color: var(--verde-acento);
+      font-size: 16px;
+    }
+
+    /* ── QUOTE BLOCK ── */
+    .quote-block {
+      background: var(--verde-profundo);
+      border-left: 4px solid var(--verde-acento);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+      margin: 32px 0;
+    }
+
+    .section-light .quote-block {
+      background: rgba(39, 175, 96, 0.06);
+      border-left-color: var(--verde-acento);
+    }
+
+    .quote-block p {
+      font-size: 18px;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--off-white);
+      margin: 0;
+    }
+
+    .section-light .quote-block p { color: var(--texto-escuro); }
+
+    /* ── PROMPT BOX ── */
+    .prompt-wrap {
+      background: var(--verde-profundo);
+      border: 1px solid rgba(90,158,99,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 24px 0;
+    }
+
+    .prompt-label {
+      background: rgba(39,175,96,0.12);
+      padding: 10px 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      border-bottom: 1px solid rgba(90,158,99,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prompt-body {
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: rgba(245,245,240,0.9);
+      white-space: pre-wrap;
+    }
+
+    .btn-copy {
+      background: var(--verde-acento);
+      color: #fff;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-copy:hover { background: #22a056; }
+    .btn-copy.copied { background: var(--verde-claro); }
+
+    /* ── REFLECTION BUTTONS ── */
+    .reflection-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .btn-option {
+      background: var(--verde-profundo);
+      border: 1px solid rgba(90,158,99,0.25);
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(245,245,240,0.8);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-option:hover { border-color: var(--verde-acento); color: var(--off-white); }
+    .btn-option.selected { background: rgba(39,175,96,0.15); border-color: var(--verde-acento); color: var(--off-white); }
+
+    /* ── CHECKLIST ── */
+    .checklist { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--branco);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .check-item:hover { border-color: var(--verde-acento); }
+    .check-item.checked { border-color: var(--verde-acento); background: rgba(39,175,96,0.04); }
+
+    .check-box {
+      width: 22px; height: 22px;
+      border: 2px solid rgba(0,0,0,0.2);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+      transition: all 0.2s;
+    }
+
+    .check-item.checked .check-box { background: var(--verde-acento); border-color: var(--verde-acento); }
+    .check-box svg { display: none; }
+    .check-item.checked .check-box svg { display: block; }
+
+    .check-text strong { font-size: 14px; color: var(--texto-escuro); display: block; margin-bottom: 2px; }
+    .check-text span { font-size: 13px; color: var(--texto-medio); }
+
+    .counter {
+      background: var(--verde-acento);
+      color: #fff;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 20px; margin: 24px 0; }
+
+    .step { display: flex; gap: 20px; align-items: flex-start; }
+
+    .step-num {
+      width: 36px; height: 36px;
+      background: var(--verde-acento);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 { color: var(--off-white); margin-bottom: 4px; }
+    .step-content p  { margin: 0; font-size: 14px; }
+    .section-light .step-content h3 { color: var(--texto-escuro); }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; margin: 24px 0; border-radius: 10px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+    th {
+      background: var(--verde-profundo);
+      color: var(--off-white);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      color: var(--texto-medio);
+      background: var(--branco);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    /* ── SKILL BLOCK ── */
+    .skill-block {
+      border: 1px solid rgba(90,158,99,0.25);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+
+    .skill-block.highlight { border-color: var(--verde-acento); }
+
+    .skill-header {
+      background: var(--verde-profundo);
+      padding: 20px 24px;
+    }
+
+    .skill-block.highlight .skill-header { background: var(--verde-profundo); }
+
+    .skill-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde-acento);
+      background: rgba(39,175,96,0.15);
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .skill-tag.important { background: var(--verde-acento); color: #fff; }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(39,175,96,0.15);
+      border: 1px solid rgba(39,175,96,0.35);
+      border-radius: 7px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--verde-acento);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .btn-download:hover {
+      background: rgba(39,175,96,0.25);
+      border-color: var(--verde-acento);
+    }
+
+    .skill-entrega {
+      padding: 24px;
+      border-top: 1px solid rgba(90,158,99,0.2);
+    }
+
+    .skill-entrega-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--verde-claro);
+      margin-bottom: 14px;
+    }
+
+    .skill-entrega ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .skill-entrega li {
+      font-size: 14px;
+      color: var(--texto-medio);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .skill-entrega li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--verde-acento);
+      font-size: 12px;
+    }
+
+    /* ── COMPARISON ── */
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+
+    .compare-card { border-radius: 10px; padding: 24px; }
+    .compare-card.before { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); }
+    .compare-card.after  { background: rgba(39,175,96,0.1);    border: 1px solid rgba(39,175,96,0.3); }
+
+    .compare-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .compare-card.before .compare-label { color: rgba(245,245,240,0.4); }
+    .compare-card.after .compare-label  { color: var(--verde-acento); }
+    .compare-card p { font-size: 14px; margin: 0; }
+    .compare-card.before p { color: rgba(245,245,240,0.6); }
+    .compare-card.after p  { color: var(--off-white); }
+
+    /* ── TASK BOX ── */
+    .task-box {
+      background: rgba(39,175,96,0.1);
+      border: 1px solid rgba(39,175,96,0.35);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+
+    .task-box h3 { color: var(--verde-acento); margin-bottom: 16px; }
+
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .task-list li { display: flex; gap: 12px; font-size: 14px; color: rgba(245,245,240,0.85); align-items: flex-start; }
+
+    .task-num {
+      width: 24px; height: 24px;
+      background: var(--verde-acento);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #fff;
+      flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* ── INSIGHT ── */
+    .insight { background: var(--verde-profundo); text-align: center; padding: 80px 24px; }
+
+    .insight blockquote {
+      max-width: 640px;
+      margin: 0 auto 24px;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--off-white);
+      border: none;
+      padding: 0;
+    }
+
+    .insight p { color: rgba(245,245,240,0.65); max-width: 540px; margin: 0 auto; }
+
+    /* ── NAV FOOTER ── */
+    .nav-footer {
+      border-top: 1px solid rgba(90,158,99,0.15);
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .btn-nav {
+      background: none;
+      border: 1px solid rgba(90,158,99,0.3);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav:hover { border-color: var(--verde-acento); color: var(--verde-acento); }
+    .btn-nav:disabled { opacity: 0.3; cursor: default; }
+    .btn-nav:disabled:hover { border-color: rgba(90,158,99,0.3); color: var(--off-white); }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: rgba(90,158,99,0.15); margin: 40px 0; }
+
+    /* ── FILE TREE ── */
+    .file-tree {
+      background: #0a1a0d;
+      border: 1px solid rgba(90,158,99,0.2);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: rgba(245,245,240,0.8);
+      line-height: 2;
+      margin: 24px 0;
+    }
+
+    .file-tree .comment { color: var(--verde-claro); }
+
+    /* ── ROTEIRO ── */
+    .roteiro-hero {
+      background: var(--verde-fundo);
+      padding: 80px 24px 40px;
+      text-align: center;
+    }
+
+    .roteiro-hero h1 { font-size: clamp(28px, 4vw, 44px); color: var(--off-white); }
+    .roteiro-hero p  { color: rgba(245,245,240,0.6); max-width: 500px; margin: 0 auto; }
+
+    .roteiro-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .roteiro-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .roteiro-item:not(:last-child) .roteiro-line { border-left: 2px dashed rgba(90,158,99,0.25); }
+
+    .roteiro-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .roteiro-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--verde-profundo);
+      border: 2px solid rgba(90,158,99,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--verde-claro);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .roteiro-item.destaque .roteiro-dot {
+      background: var(--verde-acento);
+      border-color: var(--verde-acento);
+      color: #fff;
+    }
+
+    .roteiro-line {
+      flex: 1;
+      width: 2px;
+      margin-top: 4px;
+      min-height: 40px;
+    }
+
+    .roteiro-content {
+      padding: 0 0 40px 20px;
+    }
+
+    .roteiro-time {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--verde-claro);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .roteiro-content h3 {
+      color: var(--off-white);
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .roteiro-content p {
+      font-size: 14px;
+      color: rgba(245,245,240,0.6);
+      margin: 0;
+    }
+
+    .roteiro-item.destaque .roteiro-content h3 { color: var(--verde-acento); }
+
+    .roteiro-bullets {
+      list-style: none;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .roteiro-bullets li {
+      font-size: 14px;
+      color: rgba(245,245,240,0.6);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .roteiro-bullets li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--verde-claro);
+      font-weight: 700;
+    }
+
+    .roteiro-bullets li strong { color: rgba(245,245,240,0.85); font-weight: 600; }
+
+    .roteiro-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .roteiro-tag.live    { background: rgba(39,175,96,0.2);  color: var(--verde-acento); }
+    .roteiro-tag.pratica { background: rgba(90,158,99,0.15); color: var(--verde-claro);  }
+    .roteiro-tag.pausa   { background: rgba(255,255,255,0.06); color: rgba(245,245,240,0.4); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      .facilitadora-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+      }
+
+      .facilitadora-photo-wrap { margin: 0 auto; }
+      .product-cards { text-align: left; }
+    }
+
+    @media (max-width: 640px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .cards-grid.cols-3 { grid-template-columns: 1fr; }
+      .container { padding: 48px 16px; }
+      .container-sm { padding: 48px 16px; }
+      .facilitadora-section { padding: 48px 16px; }
+    }
+
+    /* ── ADIÇÕES: curso 8h ── */
+    .link-list { display:flex; flex-direction:column; gap:10px; max-width:520px; margin:0 auto; text-align:left; }
+    .link-item { display:flex; gap:14px; align-items:center; padding:14px 18px; border-radius:10px; text-decoration:none;
+      background:rgba(255,255,255,0.04); border:1px solid rgba(90,158,99,0.3); color:var(--off-white); transition:border-color .2s; }
+    .link-item:hover { border-color:var(--verde-acento); }
+    .link-item > span:last-child { display:flex; flex-direction:column; line-height:1.4; }
+    .link-item small { color:rgba(245,245,240,0.55); font-size:12px; }
+    .soon { opacity:.45; cursor:default; pointer-events:auto; }
+    .soon:hover { border-color:rgba(90,158,99,0.3); }
+    .link-item.soon small::after { content:" · em breve"; }
+    a.btn-cta { display:inline-block; text-decoration:none; }
+    a.btn-cta.soon::after { content:" (em breve)"; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .stat { background:#fff; border:1px solid #DDE3DA; border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:8px; }
+    .stat strong { font-size:56px; line-height:1; color:var(--verde-claro); font-weight:800; }
+    .stat span { color:var(--texto-escuro); font-size:15px; }
+    .stat-dark { background:var(--verde-fundo); border-color:var(--verde-fundo); }
+    .stat-dark span { color:var(--off-white); }
+    .canvas-mini { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:24px 0; }
+    .canvas-mini span { background:#fff; border:1px solid #DDE3DA; border-radius:8px; padding:12px 14px; font-weight:600; font-size:14px; color:var(--texto-escuro); }
+    .canvas-mini span.hl { background:var(--verde-claro); border-color:var(--verde-claro); color:#fff; }
+    .compare { display:grid; grid-template-columns:1fr 2fr; gap:16px; margin-top:24px; }
+    .compare-col { border-radius:12px; padding:22px; }
+    .compare-col small { display:block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:10px; }
+    .compare-col p { font-style:italic; margin:0; }
+    .compare-col.weak { background:var(--verde-fundo); color:var(--off-white); }
+    .compare-col.weak small { color:var(--verde-claro); }
+    .compare-col.weak p { color:var(--off-white); }
+    .compare-col.strong { background:#fff; border:1px solid #DDE3DA; }
+    .compare-col.strong small { color:var(--texto-medio); }
+    .canvas-form { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:28px 0; }
+    .canvas-field { display:flex; flex-direction:column; gap:6px; background:var(--verde-profundo); border:1px solid rgba(90,158,99,0.25); border-radius:12px; padding:16px; }
+    .canvas-field.hl { border-color:var(--verde-claro); }
+    .canvas-num { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--verde-claro); }
+    .canvas-field small { color:rgba(245,245,240,0.6); font-size:13px; line-height:1.5; }
+    .canvas-field textarea { margin-top:6px; width:100%; background:rgba(0,0,0,0.25); border:1px solid rgba(90,158,99,0.3); border-radius:8px;
+      color:var(--off-white); font-family:'Inter',sans-serif; font-size:14px; padding:10px; resize:vertical; }
+    .canvas-field textarea:focus { outline:none; border-color:var(--verde-acento); }
+    @media (max-width:700px) { .compare { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="header-inner">
+    <span class="logo">Claude · Gestores do Terceiro Setor</span>
+    <nav id="mainNav">
+      <button onclick="goTo('inicio')" class="active">Início</button>
+      <button onclick="goTo('roteiro')">Roteiro</button>
+      <button onclick="goTo('abertura')">Abertura</button>
+      <button onclick="goTo('parte1')">Parte 1</button>
+      <button onclick="goTo('parte2')">Parte 2</button>
+      <button onclick="goTo('parte3')">Parte 3</button>
+      <button onclick="goTo('canvas')">IA Canvas</button>
+      <button onclick="goTo('encerramento')">Tarefa</button>
+    </nav>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button onclick="goTo('inicio');toggleMenu()">Início</button>
+  <button onclick="goTo('roteiro');toggleMenu()">Roteiro</button>
+  <button onclick="goTo('abertura');toggleMenu()">Abertura</button>
+  <button onclick="goTo('parte1');toggleMenu()">Parte 1</button>
+  <button onclick="goTo('parte2');toggleMenu()">Parte 2</button>
+  <button onclick="goTo('parte3');toggleMenu()">Parte 3</button>
+  <button onclick="goTo('canvas');toggleMenu()">IA Canvas</button>
+  <button onclick="goTo('encerramento');toggleMenu()">Tarefa</button>
+</div>
+
+<main>
+
+<!-- ══════════ INÍCIO ══════════ -->
+<section id="inicio" class="active section-dark">
+  <div class="hero">
+    <div class="container-sm">
+      <p class="eyebrow">Material de apoio · Rede Filantropia · Curso de 8h</p>
+      <h1>Claude para gestores do terceiro setor</h1>
+      <p class="subtitle">Quatro encontros para sair do uso improvisado e construir, com a sua própria organização, uma IA que trabalha com você.</p>
+
+      <div class="cards-grid cols-3" style="margin-bottom:40px">
+        <div class="card">
+          <span class="card-icon">🔁</span>
+          <h3>Relembre</h3>
+          <p>Conceitos, dados e demonstrações de cada aula.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">📋</span>
+          <h3>Execute</h3>
+          <p>Prompts prontos para copiar e passos para seguir no seu Claude.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔗</span>
+          <h3>Acesse</h3>
+          <p>Formulários, slides e links da aula, tudo em um lugar só.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:16px">Links da aula de hoje</h3>
+      <div class="link-list">
+        <a class="link-item" data-link="forms" target="_blank"><span>📝</span><span><strong>Diagnóstico da turma</strong><small>5 minutos, no começo da aula</small></span></a>
+        <a class="link-item" data-link="slides" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 1</strong><small>Disponíveis depois da aula</small></span></a>
+        <a class="link-item" data-link="pulso" target="_blank"><span>💬</span><span><strong>Pulso de fim de aula</strong><small>1 minuto, antes de sair</small></span></a>
+      </div>
+
+      <button class="btn-cta" style="margin-top:32px" onclick="goTo('roteiro')">Ver o roteiro da Aula 1 →</button>
+    </div>
+  </div>
+
+  <div class="facilitadora-section">
+    <div class="facilitadora-inner">
+      <div class="facilitadora-photo-wrap">
+        <img src="foto-leticia.jpg" alt="Letícia Santana" class="facilitadora-photo"
+             onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex'" />
+        <div class="photo-placeholder" id="photoFallback" style="display:none">LS</div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/leticiamaisimpacto" target="_blank" class="social-link">Instagram</a>
+        </div>
+      </div>
+      <div class="facilitadora-bio">
+        <p class="eyebrow" style="margin-bottom:8px">Sobre a facilitadora</p>
+        <h2>Letícia Santana</h2>
+        <span class="role">IA aplicada ao terceiro setor</span>
+        <p>Experiência na interseção entre estratégia, operações, aprendizagem, tecnologia e inovação no terceiro setor. Atua há anos no ecossistema social e educacional, com passagem por ONGs, movimentos sociais, educação pública e edtechs.</p>
+        <p>É Gerente de Desenvolvimento Institucional na Programadores do Amanhã (PdA), organização que qualifica e empodera a juventude negra e indígena para carreiras em tecnologia.</p>
+        <p class="products-title">Conheça também</p>
+        <div class="product-cards">
+          <a href="https://claude-projetos-sociais.vercel.app/" target="_blank" class="product-card">
+            <span class="product-arrow">↗</span><span class="product-name">Claude para Elaboração de Projetos Sociais</span>
+          </a>
+          <a href="https://leticiassantana.github.io/timesautogerenciaveis/" target="_blank" class="product-card">
+            <span class="product-arrow">↗</span><span class="product-name">Transforme Equipes em Times Autogerenciáveis</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ ROTEIRO ══════════ -->
+<section id="roteiro" class="section-dark">
+  <div class="roteiro-hero">
+    <p class="eyebrow">A jornada · 4 semanas</p>
+    <h1>Da curiosidade à intenção</h1>
+    <p style="margin-top:12px">Aula 1 de 4 · usar IA sabendo o problema que você quer resolver</p>
+  </div>
+
+  <div class="roteiro-grid">
+    <div class="roteiro-item destaque">
+      <div class="roteiro-left"><div class="roteiro-dot">1</div><div class="roteiro-line"></div></div>
+      <div class="roteiro-content">
+        <div class="roteiro-tag live">Aula 1 · Hoje</div>
+        <h3>Da curiosidade à intenção</h3>
+        <ul class="roteiro-bullets">
+          <li>Diagnóstico da turma: suas dores e o seu sonho para a IA</li>
+          <li>Metacognição, o Framework 4D e o que os dados dizem sobre IA no setor</li>
+          <li>Até onde a escada vai: Chat, Cowork e Code (demonstração na Programadores do Amanhã)</li>
+          <li>IA Canvas: pensar o todo antes de automatizar</li>
+          <li>Como o Claude funciona e a anatomia de um bom pedido (mão na massa)</li>
+          <li>Retrato da turma, ao vivo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="roteiro-item">
+      <div class="roteiro-left"><div class="roteiro-dot">2</div><div class="roteiro-line"></div></div>
+      <div class="roteiro-content">
+        <div class="roteiro-tag pratica">Aula 2 · Em breve</div>
+        <h3>Uma IA que conhece a sua organização</h3>
+        <ul class="roteiro-bullets"><li>Project com os documentos reais da sua OSC, instruções mínimas e o teste "quem somos nós?"</li></ul>
+      </div>
+    </div>
+    <div class="roteiro-item">
+      <div class="roteiro-left"><div class="roteiro-dot">3</div><div class="roteiro-line"></div></div>
+      <div class="roteiro-content">
+        <div class="roteiro-tag pratica">Aula 3 · Em breve</div>
+        <h3>Do processo repetitivo ao método próprio</h3>
+        <ul class="roteiro-bullets"><li>Skills prontas e a sua própria skill, tarefas programadas e rotinas</li></ul>
+      </div>
+    </div>
+    <div class="roteiro-item">
+      <div class="roteiro-left"><div class="roteiro-dot" style="background:rgba(39,175,96,0.1);border-color:rgba(39,175,96,0.3);color:var(--verde-claro)">4</div></div>
+      <div class="roteiro-content">
+        <div class="roteiro-tag pratica">Aula 4 · Em breve</div>
+        <h3>Construir e publicar uma solução, com governança</h3>
+        <ul class="roteiro-bullets"><li>Do Claude Code à web: sua aplicação publicada, e uma política mínima de uso de IA na sua OSC</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px">O que você leva no final do curso</h3>
+      <div class="cards-grid cols-3" style="margin-top:20px;margin-bottom:0">
+        <div class="card"><span class="card-icon">🧭</span><h3>Claude configurado</h3><p>Instruções sobre quem você é e como trabalha.</p></div>
+        <div class="card"><span class="card-icon">🗂️</span><h3>Project da sua organização</h3><p>Com documentos reais e memória institucional.</p></div>
+        <div class="card"><span class="card-icon">🧩</span><h3>Artefatos e skills</h3><p>Prontas e uma criada por você.</p></div>
+        <div class="card"><span class="card-icon">⏱️</span><h3>Uma rotina</h3><p>Uma tarefa que roda sozinha, com supervisão.</p></div>
+        <div class="card"><span class="card-icon">🌐</span><h3>Uma aplicação publicada</h3><p>Do seu sonho para a web.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('inicio')">← Início</button>
+    <button class="btn-nav" onclick="goTo('abertura')">Abertura →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ ABERTURA ══════════ -->
+<section id="abertura" class="section-dark">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Abertura · Combinado</p>
+      <h2>Eu não sei tudo, mas eu sei alguma coisa.</h2>
+      <p style="max-width:660px">Este é um espaço de troca de saberes: todo mundo ensina, todo mundo aprende. Use o chat da aula para compartilhar exemplos, dúvidas e descobertas.</p>
+
+      <div class="divider"></div>
+
+      <h3 style="color:var(--off-white);margin-bottom:8px">Antes de tudo: queremos te ouvir</h3>
+      <p style="margin-bottom:20px;max-width:660px">São 5 minutos. Suas respostas mudam as próximas aulas. Tem uma pergunta especial: <strong>céu sendo o limite, o que você gostaria que a sua IA fizesse por você?</strong> Sonhe alto. Ela pode virar a aplicação que você publica na Aula 4.</p>
+      <a class="btn-cta" data-link="forms" target="_blank">Responder o diagnóstico →</a>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px">O que importa quando a barreira técnica cai por terra?</h3>
+      <p style="max-width:660px">Até pouco tempo, construir uma ferramenta exigia saber programar. Hoje, a barreira técnica caiu. O que sobra, e passa a valer mais, é a capacidade de entender o problema certo.</p>
+
+      <div class="cards-grid cols-3" style="margin-top:28px;margin-bottom:0">
+        <div class="card">
+          <span class="card-icon">🧠</span>
+          <h3>Metacognição</h3>
+          <p>Capacidade de pensar sobre o próprio pensamento: interpretar, questionar, sustentar julgamentos e discordar da máquina quando necessário. <em>(Reflexão de Michel Alcoforado)</em></p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎯</span>
+          <h3>Intenção</h3>
+          <p>Saber o que você quer resolver antes de abrir a ferramenta. É o que separa uso improvisado de capacidade real.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔍</span>
+          <h3>Discernimento</h3>
+          <p>Perceber quando a resposta parece certa, mas não está. Não cresce sozinho com o uso: precisa ser exercitado de propósito.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('roteiro')">← Roteiro</button>
+    <button class="btn-nav" onclick="goTo('parte1')">Parte 1 →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ PARTE 1 ══════════ -->
+<section id="parte1">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Parte 1 · Por que intenção</p>
+      <h2>O Framework 4D</h2>
+      <p style="max-width:660px">A própria Anthropic organiza a fluência em IA em quatro competências. Não vamos estudar o framework como matéria: ao longo do curso, vamos nomear o D que está em jogo em cada prática.</p>
+
+      <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px">
+        <div class="card"><span class="card-icon">D</span><h3>Delegação</h3><p>O que é trabalho de humano e o que é trabalho de IA.</p></div>
+        <div class="card"><span class="card-icon">D</span><h3>Descrição</h3><p>Comunicar bem o que você quer.</p></div>
+        <div class="card"><span class="card-icon">D</span><h3>Discernimento</h3><p>Avaliar criticamente o que volta.</p></div>
+        <div class="card"><span class="card-icon">D</span><h3>Diligência</h3><p>Transparência e responsabilidade pelo uso.</p></div>
+      </div>
+      <p style="font-size:14px">Quer se aprofundar? Curso gratuito <a href="https://academy.claude.com/" target="_blank" style="color:var(--verde-claro)">AI Fluency for Nonprofits</a>, da Anthropic com a GivingTuesday.</p>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">O que os dados dizem</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:20px;font-size:28px">Adoção não é impacto</h3>
+      <div class="stats-grid">
+        <div class="stat"><strong>92%</strong><span>das organizações sem fins lucrativos já usam alguma IA</span></div>
+        <div class="stat"><strong>81%</strong><span>usam de forma individual e improvisada, sem processo documentado</span></div>
+        <div class="stat stat-dark"><strong>7%</strong><span>relatam melhorias importantes com o uso de IA</span></div>
+      </div>
+      <p style="margin-top:20px"><strong>No Brasil:</strong> cerca de 40% de 532 OSCs analisadas têm baixo ou nenhum nível de formalização no uso de IA.</p>
+      <p style="font-size:12px;color:var(--texto-medio);margin-top:8px">Fontes: Virtuous + Fundraising.AI, <a href="https://virtuous.org/blog/2026-nonprofit-ai-adoption-report" target="_blank">2026 Nonprofit AI Adoption Report</a> (346 organizações) · <a href="https://www.idis.org.br/en/tag/ia-3/" target="_blank">IDIS, programa IA.3</a> (amostra não representativa).</p>
+    </div>
+  </div>
+
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Uma história</p>
+      <h2>Tecnologia sem entender o problema</h2>
+      <p style="max-width:660px"><strong>PlayPump</strong>, África Subsaariana, anos 2000: um carrossel infantil que bombeava água. US$ 16,4 milhões levantados, meta de 4 mil bombas e 10 milhões de pessoas. A meta não foi atingida, por três razões:</p>
+      <div class="cards-grid cols-3" style="margin-top:24px;margin-bottom:24px">
+        <div class="card"><h3>Mecânica</h3><p>Crianças precisariam brincar mais de 24 horas por dia. Na prática, mulheres acabaram empurrando o carrossel.</p></div>
+        <div class="card"><h3>Consulta</h3><p>"Ninguém nos consultou."</p></div>
+        <div class="card"><h3>Gênero</h3><p>Acabou com o espaço de convívio das mulheres na bomba d'água.</p></div>
+      </div>
+      <div class="quote-block">Não foi falha de engenharia. Foi não entender o problema real.</div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('abertura')">← Abertura</button>
+    <button class="btn-nav" onclick="goTo('parte2')">Parte 2 →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ PARTE 2 ══════════ -->
+<section id="parte2">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Parte 2 · Até onde a escada vai</p>
+      <h2>Chat, Cowork e Code</h2>
+      <p style="max-width:660px">Não é uma hierarquia: são formas diferentes de trabalhar com o Claude. Chat e Cowork estão no mesmo aplicativo, com um interruptor. Code é a aba onde você constrói ferramentas, sem precisar saber programar.</p>
+
+      <div class="steps" style="margin-top:28px">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Chat</h3><p>Você conduz, mensagem a mensagem. É onde começamos hoje.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Cowork</h3><p>Você delega um objetivo e acompanha. É onde moram as tarefas programadas (Aula 3).</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Code</h3><p>Você constrói ferramentas e aplicações. Na Aula 4, você publica a sua na web.</p></div></div>
+      </div>
+      <p style="margin-top:16px">Na aula, vimos um exemplo construído na Programadores do Amanhã: dados de diversas fontes reunidos em um painel único de acompanhamento.</p>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">Saindo do computador e voltando pro papel</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">IA Canvas: pensar o todo antes de automatizar</h3>
+      <p style="max-width:680px">Um quadro de 10 blocos para pensar uma solução com IA antes de construí-la. Começa pelo problema, não pela ferramenta. Criado pela <strong>Proteus Academy</strong>, como adaptação visual dos passos iniciais do CRISP-DM, o processo padrão de projetos de dados.</p>
+      <div class="canvas-mini">
+        <span class="hl">01 Problema</span><span>02 Indicadores</span><span>03 Sem IA</span><span>04 Com IA</span><span>05 Para quem</span>
+        <span>06 Dados</span><span>07 Ferramentas</span><span>08 Ética</span><span>09 Privacidade</span><span>10 Riscos críticos</span>
+      </div>
+      <button class="btn-cta" onclick="goTo('canvas')">Preencher o meu IA Canvas →</button>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('parte1')">← Parte 1</button>
+    <button class="btn-nav" onclick="goTo('parte3')">Parte 3 →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ PARTE 3 ══════════ -->
+<section id="parte3">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Parte 3 · Mão na massa</p>
+      <h2>Como o Claude funciona, em 3 ideias</h2>
+      <div class="cards-grid cols-3" style="margin-top:24px">
+        <div class="card"><span class="card-icon">1</span><h3>Ele prevê a continuação mais provável</h3><p>Sem contexto, entrega o genérico. Às vezes inventa, com toda a confiança.</p></div>
+        <div class="card"><span class="card-icon">2</span><h3>Ele não conhece a sua organização</h3><p>Sabe o que está na internet e o que você entrega a ele. O resto ele completa.</p></div>
+        <div class="card"><span class="card-icon">3</span><h3>A memória dele é um resumo</h3><p>Ele guarda um resumo das conversas (Configurações › Memória), não o contexto preciso do seu trabalho. É isso que vamos configurar.</p></div>
+      </div>
+      <div class="quote-block">Por isso o jeito de pedir muda o resultado.</div>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">Descrição, em ação</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Anatomia de um bom pedido</h3>
+      <p><strong>Contexto</strong> + <strong>Tarefa</strong> + <strong>Restrições</strong> + <strong>Formato</strong>. E diga o que você <em>não</em> quer.</p>
+      <div class="compare">
+        <div class="compare-col weak"><small>Pedido fraco</small><p>"Escreva um e-mail para os voluntários."</p></div>
+        <div class="compare-col strong"><small>Pedido redondo</small><p>"Coordeno uma OSC de educação com 30 voluntários. Escreva um e-mail convidando para a formação de sábado, das 9h às 12h. Tom acolhedor, até 120 palavras, sem jargão. Inclua assunto e peça confirmação até quinta. Não prometa certificado."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark">
+    <div class="container">
+      <h2>Seu gargalo, seu pedido</h2>
+      <p style="max-width:660px">Funciona no plano gratuito. Faça com o gargalo que você colocou no diagnóstico.</p>
+
+      <div class="steps" style="margin-top:24px">
+        <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Conte quem você é</h3><p>No Claude: clique nas suas iniciais (canto inferior esquerdo) › Configurações › <strong>Instruções para o Claude</strong> (em inglês: <em>Instructions for Claude</em>). Use o modelo abaixo.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Peça do jeito fraco</h3><p>Escreva um pedido rápido, do jeito que você faria normalmente, sobre o seu gargalo.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Peça do jeito redondo</h3><p>Reescreva usando o modelo de pedido abaixo.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-content"><h3>Compare</h3><p>O que mudou? <strong>O que o Claude completou que você não disse?</strong></p></div></div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">Modelo · Instruções para o Claude<button class="btn-copy" onclick="copyPrompt(this,'p-instrucoes')">Copiar</button></div>
+        <div class="prompt-body" id="p-instrucoes">Sou [cargo] na [nome da organização], uma organização da sociedade civil que [o que faz, para quem, onde].
+
+No meu dia a dia, cuido de [3 principais responsabilidades].
+
+Como prefiro receber respostas:
+- Português do Brasil, linguagem direta e sem jargão.
+- Comece pela resposta; explique depois, se eu pedir.
+- Quando não tiver certeza ou faltar informação, diga e me pergunte antes de inventar.
+- Aponte riscos e alternativas quando discordar do que eu pedi.</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">Modelo · Pedido redondo<button class="btn-copy" onclick="copyPrompt(this,'p-pedido')">Copiar</button></div>
+        <div class="prompt-body" id="p-pedido">CONTEXTO: Sou [cargo] na [organização]. A situação é: [o que está acontecendo, para quem, por quê importa].
+
+TAREFA: Preciso que você [ação concreta: escreva, organize, compare, resuma, planeje].
+
+RESTRIÇÕES: [tom, tamanho, prazo, o que considerar]. NÃO [o que você não quer].
+
+FORMATO: Entregue como [lista, tabela, e-mail, roteiro, um parágrafo].
+
+Antes de responder, se faltar alguma informação importante, me faça até 3 perguntas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('parte2')">← Parte 2</button>
+    <button class="btn-nav" onclick="goTo('canvas')">IA Canvas →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ IA CANVAS (ferramenta) ══════════ -->
+<section id="canvas">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Ferramenta · Tarefa da semana</p>
+      <h2>Meu IA Canvas</h2>
+      <p style="max-width:680px">Preencha com o gargalo que você trabalhou na aula. O que você escreve fica salvo só neste navegador. No final, copie tudo e leve para a Aula 2. IA Canvas © Proteus Academy.</p>
+
+      <div class="canvas-form" id="canvasForm"></div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn-cta" onclick="copyCanvas(this)">Copiar meu canvas</button>
+        <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
+      </div>
+
+      <div class="prompt-wrap" style="margin-top:32px">
+        <div class="prompt-label">Travou? Peça ajuda ao Claude para preencher<button class="btn-copy" onclick="copyPrompt(this,'p-canvas')">Copiar</button></div>
+        <div class="prompt-body" id="p-canvas">Quero preencher um IA Canvas sobre um problema da minha organização. O canvas tem 10 blocos: Problema, Indicadores, Sem IA, Com IA, Para quem, Dados, Ferramentas, Ética, Privacidade e Riscos críticos.
+
+O problema é: [descreva o seu gargalo em 2 ou 3 frases].
+
+Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não preencha nada por mim sem perguntar. Quando eu disser "pronto", monte o canvas completo em uma tabela e aponte os 2 blocos mais frágeis.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('parte3')">← Parte 3</button>
+    <button class="btn-nav" onclick="goTo('encerramento')">Tarefa →</button>
+  </div></div>
+</section>
+
+
+<!-- ══════════ ENCERRAMENTO / TAREFA ══════════ -->
+<section id="encerramento">
+  <div class="section-dark">
+    <div class="container-sm">
+      <p class="eyebrow">Para a próxima semana</p>
+      <h2>Sua tarefa até a Aula 2</h2>
+
+      <div class="task-box" style="margin-bottom:24px">
+        <ol class="task-list">
+          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> A partir da Aula 2, é essencial. Veja as opções abaixo.</span></li>
+          <li><span class="task-num">2</span><span><strong>Escreva suas Instruções para o Claude</strong> com o <a href="#" onclick="goTo('parte3');return false" style="color:var(--verde-claro)">modelo da Parte 3</a>.</span></li>
+          <li><span class="task-num">3</span><span><strong>Preencha um IA Canvas</strong> com o gargalo que você trabalhou hoje (<a href="#" onclick="goTo('canvas');return false" style="color:var(--verde-claro)">ferramenta aqui</a>).</span></li>
+          <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório, projeto aprovado, metodologia. Sem dados pessoais.</span></li>
+        </ol>
+      </div>
+
+      <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2);margin-bottom:24px">
+        <h3 style="color:var(--off-white)">Plano pago: como garantir</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">✦</span><span><strong>Só para você:</strong> Claude Pro, assinatura individual. Valores atuais em <a href="https://claude.com/pricing" target="_blank" style="color:var(--verde-claro)">claude.com/pricing</a>.</span></li>
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">✦</span><span><strong>Para a sua organização:</strong> Claude for Nonprofits, plano Team a US$ 8 por pessoa/mês, com mínimo de 2 pessoas. A verificação da OSC é feita pela Goodstack em poucos minutos. <a href="https://claude.com/solutions/nonprofits" target="_blank" style="color:var(--verde-claro)">Ver o programa</a> · <a href="https://validate.poweredbypercent.com/anthropic" target="_blank" style="color:var(--verde-claro)">Verificar minha OSC</a></span></li>
+        </ol>
+        <p style="font-size:12px;color:rgba(245,245,240,0.5);margin-top:12px">Condições conferidas em 07/out/2026. Podem mudar: confirme na página oficial.</p>
+      </div>
+
+      <div class="task-box" style="margin-bottom:24px">
+        <h3>O que não subir no Claude</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">×</span><span>Dados pessoais de quem a sua organização atende: nome, CPF, endereço, saúde</span></li>
+          <li><span class="task-num">×</span><span>Qualquer dado de crianças e adolescentes</span></li>
+          <li><span class="task-num">×</span><span>Informações financeiras e bancárias sensíveis</span></li>
+          <li><span class="task-num">×</span><span>Documentos confidenciais de parceiros e financiadores</span></li>
+        </ol>
+        <p style="margin-top:12px;font-size:14px"><strong>Na dúvida, anonimize:</strong> troque nomes por códigos antes de enviar.</p>
+      </div>
+
+      <h3 style="margin:32px 0 16px">Antes de sair: 1 minuto</h3>
+      <a class="btn-cta" data-link="pulso" target="_blank">Responder o pulso da aula →</a>
+    </div>
+  </div>
+
+  <div class="insight">
+    <blockquote>"A velocidade que a IA dá para construir aumenta, e não diminui, a importância de perguntar: estamos resolvendo o problema certo?"</blockquote>
+    <p>Na Aula 2, o seu gargalo e os documentos da sua organização viram o ponto de partida.</p>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('canvas')">← IA Canvas</button>
+    <button class="btn-nav" disabled>Até a Aula 2</button>
+  </div></div>
+</section>
+
+</main>
+
+<script>
+  // ── LINKS DA AULA: preencha aqui (vazio = botão aparece como "em breve") ──
+  const LINKS = {
+    forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
+    slides: '',
+    pulso:  '',
+  };
+
+  const SECTIONS = ['inicio','roteiro','abertura','parte1','parte2','parte3','canvas','encerramento'];
+
+  function goTo(id) {
+    SECTIONS.forEach(s => document.getElementById(s).classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const idx = SECTIONS.indexOf(id);
+    document.querySelectorAll('#mainNav button').forEach((b, i) => b.classList.toggle('active', i === idx));
+    document.querySelectorAll('.mobile-nav button').forEach((b, i) => b.classList.toggle('active', i === idx));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', '#' + id);
+  }
+
+  function toggleMenu() { document.getElementById('mobileNav').classList.toggle('open'); }
+
+  function flash(btn, label) {
+    const old = btn.textContent;
+    btn.textContent = label;
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 2000);
+  }
+
+  function copyPrompt(btn, id) {
+    navigator.clipboard.writeText(document.getElementById(id).textContent.trim()).then(() => flash(btn, 'Copiado ✓'));
+  }
+
+  // ── IA Canvas ──
+  const CANVAS = [
+    ['Problema', 'O que é, onde e quando este problema acontece? Por que é relevante?'],
+    ['Indicadores', 'Que indicador precisa se mover para sabermos que estamos no caminho certo?'],
+    ['Sem IA', 'Qual é o processo atual? Dá para resolver ou testar sem IA?'],
+    ['Com IA', 'Qual seria a solução com IA? Por que ela é melhor?'],
+    ['Para quem', 'Quem é atingido pela solução, dentro e fora da organização? Para quem isso gera valor?'],
+    ['Dados', 'Que dados são necessários? Quais você usaria se fizesse à mão?'],
+    ['Ferramentas', 'Já existem ferramentas prontas que resolvem isso, sem precisar construir?'],
+    ['Ética', 'A solução pode prejudicar alguém ou reforçar preconceitos e desigualdades?'],
+    ['Privacidade', 'Usa dados pessoais ou sensíveis que exigem cuidado com a LGPD?'],
+    ['Riscos críticos', 'O que de pior pode acontecer? Vazamento, risco de imagem, decisão errada?'],
+  ];
+  const store = {
+    get(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+
+  function renderCanvas() {
+    const form = document.getElementById('canvasForm');
+    form.innerHTML = CANVAS.map(([name, hint], i) => `
+      <label class="canvas-field${i === 0 ? ' hl' : ''}">
+        <span class="canvas-num">${String(i + 1).padStart(2, '0')} · ${name}</span>
+        <small>${hint}</small>
+        <textarea rows="3" data-i="${i}">${store.get('canvas-' + i).replace(/</g, '&lt;')}</textarea>
+      </label>`).join('');
+    form.querySelectorAll('textarea').forEach(t => t.addEventListener('input', () => store.set('canvas-' + t.dataset.i, t.value)));
+  }
+
+  function copyCanvas(btn) {
+    const text = 'MEU IA CANVAS\n\n' + CANVAS.map(([name], i) =>
+      `${i + 1}. ${name.toUpperCase()}\n${document.querySelector(`textarea[data-i="${i}"]`).value.trim() || '(em branco)'}`).join('\n\n');
+    navigator.clipboard.writeText(text).then(() => flash(btn, 'Copiado ✓'));
+  }
+
+  function clearCanvas() {
+    if (!confirm('Apagar o que você escreveu no canvas?')) return;
+    CANVAS.forEach((_, i) => store.set('canvas-' + i, ''));
+    renderCanvas();
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-link]').forEach(a => {
+      const url = LINKS[a.dataset.link];
+      if (url) { a.href = url; }
+      else { a.classList.add('soon'); a.removeAttribute('target'); a.addEventListener('click', e => e.preventDefault()); }
+    });
+    renderCanvas();
+    const hash = location.hash.slice(1);
+    if (SECTIONS.includes(hash)) goTo(hash);
+  });
+</script>
+
+</body>
+</html>
