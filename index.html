@@ -958,7 +958,7 @@
     .compare-col.weak p { color:var(--off-white); }
     .compare-col.strong { background:#fff; border:1px solid #DDE3DA; }
     .compare-col.strong small { color:var(--texto-medio); }
-    .canvas-form { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:28px 0; }
+    .canvas-form { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:14px; margin:28px 0; }
     .canvas-field { display:flex; flex-direction:column; gap:6px; background:var(--verde-profundo); border:1px solid rgba(90,158,99,0.25); border-radius:12px; padding:16px; }
     .canvas-field.hl { border-color:var(--verde-claro); }
     .canvas-num { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--verde-claro); }
@@ -967,6 +967,18 @@
       color:var(--off-white); font-family:'Inter',sans-serif; font-size:14px; padding:10px; resize:vertical; }
     .canvas-field textarea:focus { outline:none; border-color:var(--verde-acento); }
     @media (max-width:700px) { .compare { grid-template-columns:1fr; } }
+    .aulas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:14px; }
+    .aula-card { text-align:left; font-family:'Inter',sans-serif; display:flex; flex-direction:column; gap:6px; padding:20px; border-radius:12px;
+      background:#fff; border:1px solid #DDE3DA; color:var(--texto-medio); font-size:14px; line-height:1.5; }
+    .aula-card strong { color:var(--texto-escuro); font-size:17px; }
+    button.aula-card { background:var(--verde-fundo); border-color:var(--verde-fundo); color:rgba(245,245,240,0.75); cursor:pointer; transition:transform .2s; }
+    button.aula-card strong { color:var(--off-white); }
+    button.aula-card:hover { transform:translateY(-2px); }
+    .aula-card.off { opacity:.6; }
+    .aula-num { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--verde-claro); }
+    .aula-go { margin-top:auto; padding-top:8px; color:var(--verde-acento); font-weight:600; }
+    @media (max-width:480px) { .logo { overflow:hidden; text-overflow:ellipsis; min-width:0; font-size:11px; } .header-inner { gap:12px; } }
+    nav button.nav-soon, .mobile-nav button.nav-soon { opacity:.35; cursor:default; }
   </style>
 </head>
 <body>
@@ -977,10 +989,10 @@
     <span class="logo">Claude · Gestores do Terceiro Setor</span>
     <nav id="mainNav">
       <button onclick="goTo('inicio')" class="active">Início</button>
-      <button onclick="goTo('roteiro')">Roteiro</button>
       <button onclick="goTo('aula1')">Aula 1</button>
-      <button onclick="goTo('canvas')">IA Canvas</button>
-      <button onclick="goTo('encerramento')">Tarefa</button>
+      <button class="nav-soon" disabled title="Em breve">Aula 2</button>
+      <button class="nav-soon" disabled title="Em breve">Aula 3</button>
+      <button class="nav-soon" disabled title="Em breve">Aula 4</button>
     </nav>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -990,10 +1002,10 @@
 
 <div class="mobile-nav" id="mobileNav">
   <button onclick="goTo('inicio');toggleMenu()">Início</button>
-  <button onclick="goTo('roteiro');toggleMenu()">Roteiro</button>
   <button onclick="goTo('aula1');toggleMenu()">Aula 1</button>
-  <button onclick="goTo('canvas');toggleMenu()">IA Canvas</button>
-  <button onclick="goTo('encerramento');toggleMenu()">Tarefa</button>
+  <button class="nav-soon" disabled>Aula 2 · em breve</button>
+  <button class="nav-soon" disabled>Aula 3 · em breve</button>
+  <button class="nav-soon" disabled>Aula 4 · em breve</button>
 </div>
 
 <main>
@@ -1006,32 +1018,42 @@
       <h1>Claude para gestores do terceiro setor</h1>
       <p class="subtitle">Quatro encontros para sair do uso improvisado e construir, com a sua própria organização, uma IA que trabalha com você.</p>
 
-      <div class="cards-grid cols-3" style="margin-bottom:40px">
-        <div class="card">
-          <span class="card-icon">🔁</span>
-          <h3>Relembre</h3>
-          <p>Conceitos, dados e demonstrações de cada aula.</p>
+      <div class="cards-grid cols-3" style="margin-bottom:8px">
+        <div class="card"><span class="card-icon">🔗</span><h3>Links</h3><p>Formulários e slides de cada aula.</p></div>
+        <div class="card"><span class="card-icon">🧰</span><h3>Utilitários</h3><p>Prompts e ferramentas prontos para usar no seu Claude.</p></div>
+        <div class="card"><span class="card-icon">✅</span><h3>Tarefas</h3><p>O que fazer entre uma aula e outra.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-light">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">A jornada · 4 semanas</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:20px;font-size:28px">Uma aula por semana</h3>
+      <div class="aulas-grid">
+        <button class="aula-card" onclick="goTo('aula1')">
+          <span class="aula-num">Aula 1 · disponível</span>
+          <strong>Da curiosidade à intenção</strong>
+          <span>Usar IA sabendo o problema que você quer resolver</span>
+          <span class="aula-go">Abrir materiais →</span>
+        </button>
+        <div class="aula-card off">
+          <span class="aula-num">Aula 2 · em breve</span>
+          <strong>Uma IA que conhece a sua organização</strong>
+          <span>Project com os documentos reais da sua OSC</span>
         </div>
-        <div class="card">
-          <span class="card-icon">📋</span>
-          <h3>Execute</h3>
-          <p>Prompts prontos para copiar e passos para seguir no seu Claude.</p>
+        <div class="aula-card off">
+          <span class="aula-num">Aula 3 · em breve</span>
+          <strong>Do processo repetitivo ao método próprio</strong>
+          <span>Skills, tarefas programadas e rotinas</span>
         </div>
-        <div class="card">
-          <span class="card-icon">🔗</span>
-          <h3>Acesse</h3>
-          <p>Formulários, slides e links da aula, tudo em um lugar só.</p>
+        <div class="aula-card off">
+          <span class="aula-num">Aula 4 · em breve</span>
+          <strong>Construir e publicar uma solução</strong>
+          <span>Do Claude Code à web, com governança</span>
         </div>
       </div>
-
-      <h3 style="margin-bottom:16px">Links da aula de hoje</h3>
-      <div class="link-list">
-        <a class="link-item" data-link="forms" target="_blank"><span>📝</span><span><strong>Diagnóstico da turma</strong><small>5 minutos, no começo da aula</small></span></a>
-        <a class="link-item" data-link="slides" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 1</strong><small>Disponíveis depois da aula</small></span></a>
-        <a class="link-item" data-link="pulso" target="_blank"><span>💬</span><span><strong>Pulso de fim de aula</strong><small>1 minuto, antes de sair</small></span></a>
-      </div>
-
-      <button class="btn-cta" style="margin-top:32px" onclick="goTo('roteiro')">Ver o roteiro da Aula 1 →</button>
+      <p style="margin-top:24px"><strong>Você sai com:</strong> Claude configurado para você · Project da sua organização · artefatos · uma rotina · skills · uma aplicação publicada na web.</p>
     </div>
   </div>
 
@@ -1066,242 +1088,66 @@
 </section>
 
 
-<!-- ══════════ ROTEIRO ══════════ -->
-<section id="roteiro" class="section-dark">
-  <div class="roteiro-hero">
-    <p class="eyebrow">A jornada · 4 semanas</p>
-    <h1>Da curiosidade à intenção</h1>
-    <p style="margin-top:12px">Aula 1 de 4 · usar IA sabendo o problema que você quer resolver</p>
-  </div>
-
-  <div class="roteiro-grid">
-    <div class="roteiro-item destaque">
-      <div class="roteiro-left"><div class="roteiro-dot">1</div><div class="roteiro-line"></div></div>
-      <div class="roteiro-content">
-        <div class="roteiro-tag live">Aula 1 · Hoje</div>
-        <h3>Da curiosidade à intenção</h3>
-        <ul class="roteiro-bullets">
-          <li>Diagnóstico da turma: suas dores e o seu sonho para a IA</li>
-          <li>Metacognição, o Framework 4D e o que os dados dizem sobre IA no setor</li>
-          <li>Até onde a escada vai: Chat, Cowork e Code (demonstração na Programadores do Amanhã)</li>
-          <li>IA Canvas: pensar o todo antes de automatizar</li>
-          <li>Como o Claude funciona e a anatomia de um bom pedido (mão na massa)</li>
-          <li>Retrato da turma, ao vivo</li>
-        </ul>
-      </div>
-    </div>
-    <div class="roteiro-item">
-      <div class="roteiro-left"><div class="roteiro-dot">2</div><div class="roteiro-line"></div></div>
-      <div class="roteiro-content">
-        <div class="roteiro-tag pratica">Aula 2 · Em breve</div>
-        <h3>Uma IA que conhece a sua organização</h3>
-        <ul class="roteiro-bullets"><li>Project com os documentos reais da sua OSC, instruções mínimas e o teste "quem somos nós?"</li></ul>
-      </div>
-    </div>
-    <div class="roteiro-item">
-      <div class="roteiro-left"><div class="roteiro-dot">3</div><div class="roteiro-line"></div></div>
-      <div class="roteiro-content">
-        <div class="roteiro-tag pratica">Aula 3 · Em breve</div>
-        <h3>Do processo repetitivo ao método próprio</h3>
-        <ul class="roteiro-bullets"><li>Skills prontas e a sua própria skill, tarefas programadas e rotinas</li></ul>
-      </div>
-    </div>
-    <div class="roteiro-item">
-      <div class="roteiro-left"><div class="roteiro-dot" style="background:rgba(39,175,96,0.1);border-color:rgba(39,175,96,0.3);color:var(--verde-claro)">4</div></div>
-      <div class="roteiro-content">
-        <div class="roteiro-tag pratica">Aula 4 · Em breve</div>
-        <h3>Construir e publicar uma solução, com governança</h3>
-        <ul class="roteiro-bullets"><li>Do Claude Code à web: sua aplicação publicada, e uma política mínima de uso de IA na sua OSC</li></ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-light">
-    <div class="container">
-      <h3 style="color:var(--texto-escuro);margin-bottom:8px">O que você leva no final do curso</h3>
-      <div class="cards-grid cols-3" style="margin-top:20px;margin-bottom:0">
-        <div class="card"><span class="card-icon">🧭</span><h3>Claude configurado</h3><p>Instruções sobre quem você é e como trabalha.</p></div>
-        <div class="card"><span class="card-icon">🗂️</span><h3>Project da sua organização</h3><p>Com documentos reais e memória institucional.</p></div>
-        <div class="card"><span class="card-icon">🧩</span><h3>Artefatos e skills</h3><p>Prontas e uma criada por você.</p></div>
-        <div class="card"><span class="card-icon">⏱️</span><h3>Uma rotina</h3><p>Uma tarefa que roda sozinha, com supervisão.</p></div>
-        <div class="card"><span class="card-icon">🌐</span><h3>Uma aplicação publicada</h3><p>Do seu sonho para a web.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('inicio')">← Início</button>
-    <button class="btn-nav" onclick="goTo('aula1')">Aula 1 →</button>
-  </div></div>
-</section>
-
-
 <!-- ══════════ AULA 1 ══════════ -->
 <section id="aula1" class="section-dark">
   <div class="section-dark">
     <div class="container">
-      <p class="eyebrow">Aula 1 · Abertura</p>
-      <h2>Eu não sei tudo, mas eu sei alguma coisa.</h2>
-      <p style="max-width:660px">Este é um espaço de troca de saberes: todo mundo ensina, todo mundo aprende. Use o chat da aula para compartilhar exemplos, dúvidas e descobertas.</p>
+      <p class="eyebrow">Aula 1 de 4 · 07/out/2026</p>
+      <h2>Da curiosidade à intenção</h2>
+      <p style="max-width:660px">Usar IA sabendo o problema que você quer resolver, e sair com o seu Claude personalizado.</p>
 
-      <div class="divider"></div>
-
-      <h3 style="color:var(--off-white);margin-bottom:8px">Antes de tudo: queremos te ouvir</h3>
-      <p style="margin-bottom:20px;max-width:660px">São 5 minutos. Suas respostas mudam as próximas aulas. Tem uma pergunta especial: <strong>céu sendo o limite, o que você gostaria que a sua IA fizesse por você?</strong> Sonhe alto. Ela pode virar a aplicação que você publica na Aula 4.</p>
-      <a class="btn-cta" data-link="forms" target="_blank">Responder o diagnóstico →</a>
+      <h3 style="margin:32px 0 16px">Links da aula</h3>
+      <div class="link-list" style="margin:0">
+        <a class="link-item" data-link="forms" target="_blank"><span>📝</span><span><strong>Diagnóstico da turma</strong><small>5 minutos, no começo da aula</small></span></a>
+        <a class="link-item" data-link="slides" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 1</strong><small>Disponíveis depois da aula</small></span></a>
+        <a class="link-item" data-link="pulso" target="_blank"><span>💬</span><span><strong>Pulso de fim de aula</strong><small>1 minuto, antes de sair</small></span></a>
+      </div>
     </div>
   </div>
 
+  <!-- Utilitários -->
   <div class="section-light">
     <div class="container">
-      <h3 style="color:var(--texto-escuro);margin-bottom:8px">O que importa quando a barreira técnica cai por terra?</h3>
-      <p style="max-width:660px">Até pouco tempo, construir uma ferramenta exigia saber programar. Hoje, a barreira técnica caiu. O que sobra, e passa a valer mais, é a capacidade de entender o problema certo.</p>
+      <p class="eyebrow" style="color:var(--texto-medio)">Utilitários</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Prompts prontos para usar</h3>
+      <p style="max-width:680px">Clique em <strong>Copiar</strong>, cole no Claude e troque o que estiver entre [colchetes].</p>
+      <p style="max-width:680px;font-size:14px;margin-top:8px"><strong>Onde ficam as suas instruções:</strong> no Claude, clique nas suas iniciais (canto inferior esquerdo) › Configurações › <strong>Instruções para o Claude</strong> (em inglês, <em>Instructions for Claude</em>). Ali perto, em <strong>Memória</strong>, você vê o que o Claude já guardou sobre você.</p>
 
-      <div class="cards-grid cols-3" style="margin-top:28px;margin-bottom:0">
-        <div class="card">
-          <span class="card-icon">🧠</span>
-          <h3>Metacognição</h3>
-          <p>Capacidade de pensar sobre o próprio pensamento: interpretar, questionar, sustentar julgamentos e discordar da máquina quando necessário. <em>(Reflexão de Michel Alcoforado)</em></p>
-        </div>
-        <div class="card">
-          <span class="card-icon">🎯</span>
-          <h3>Intenção</h3>
-          <p>Saber o que você quer resolver antes de abrir a ferramenta. É o que separa uso improvisado de capacidade real.</p>
-        </div>
-        <div class="card">
-          <span class="card-icon">🔍</span>
-          <h3>Discernimento</h3>
-          <p>Perceber quando a resposta parece certa, mas não está. Não cresce sozinho com o uso: precisa ser exercitado de propósito.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="prompt-wrap">
+        <div class="prompt-label">1 · Me entreviste para criar minhas instruções<button class="btn-copy" onclick="copyPrompt(this,'p-entrevista')">Copiar</button></div>
+        <div class="prompt-body" id="p-entrevista">Quero escrever minhas "Instruções para o Claude", o texto que você vai considerar em todas as nossas conversas.
 
-  <div class="section-dark">
-    <div class="container">
-      <p class="eyebrow">Aula 1 · Por que intenção</p>
-      <h2>O Framework 4D</h2>
-      <p style="max-width:660px">A própria Anthropic organiza a fluência em IA em quatro competências. Não vamos estudar o framework como matéria: ao longo do curso, vamos nomear o D que está em jogo em cada prática.</p>
+Me entreviste para montar esse texto. Faça uma pergunta por vez, no máximo 8 perguntas, cobrindo:
+1. Quem eu sou e qual é o meu cargo
+2. Onde trabalho: a organização, o que ela faz, para quem e onde
+3. O que faço no dia a dia e minhas principais responsabilidades
+4. Como gosto de receber respostas (tamanho, tom, formato)
+5. O que você nunca deve fazer comigo
 
-      <div class="cards-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:28px">
-        <div class="card"><span class="card-icon">D</span><h3>Delegação</h3><p>O que é trabalho de humano e o que é trabalho de IA.</p></div>
-        <div class="card"><span class="card-icon">D</span><h3>Descrição</h3><p>Comunicar bem o que você quer.</p></div>
-        <div class="card"><span class="card-icon">D</span><h3>Discernimento</h3><p>Avaliar criticamente o que volta.</p></div>
-        <div class="card"><span class="card-icon">D</span><h3>Diligência</h3><p>Transparência e responsabilidade pelo uso.</p></div>
-      </div>
-      <p style="font-size:14px">Quer se aprofundar? Curso gratuito <a href="https://academy.claude.com/" target="_blank" style="color:var(--verde-claro)">AI Fluency for Nonprofits</a>, da Anthropic com a GivingTuesday.</p>
-    </div>
-  </div>
-
-  <div class="section-light">
-    <div class="container">
-      <p class="eyebrow" style="color:var(--texto-medio)">O que os dados dizem</p>
-      <h3 style="color:var(--texto-escuro);margin-bottom:20px;font-size:28px">Adoção não é impacto</h3>
-      <div class="stats-grid">
-        <div class="stat"><strong>92%</strong><span>das organizações sem fins lucrativos já usam alguma IA</span></div>
-        <div class="stat"><strong>81%</strong><span>usam de forma individual e improvisada, sem processo documentado</span></div>
-        <div class="stat stat-dark"><strong>7%</strong><span>relatam melhorias importantes com o uso de IA</span></div>
-      </div>
-      <p style="margin-top:20px"><strong>No Brasil:</strong> cerca de 40% de 532 OSCs analisadas têm baixo ou nenhum nível de formalização no uso de IA.</p>
-      <p style="font-size:12px;color:var(--texto-medio);margin-top:8px">Fontes: Virtuous + Fundraising.AI, <a href="https://virtuous.org/blog/2026-nonprofit-ai-adoption-report" target="_blank">2026 Nonprofit AI Adoption Report</a> (346 organizações) · <a href="https://www.idis.org.br/en/tag/ia-3/" target="_blank">IDIS, programa IA.3</a> (amostra não representativa).</p>
-    </div>
-  </div>
-
-  <div class="section-dark">
-    <div class="container">
-      <p class="eyebrow">Uma história</p>
-      <h2>Tecnologia sem entender o problema</h2>
-      <p style="max-width:660px"><strong>PlayPump</strong>, África Subsaariana, anos 2000: um carrossel infantil que bombeava água. US$ 16,4 milhões levantados, meta de 4 mil bombas e 10 milhões de pessoas. A meta não foi atingida, por três razões:</p>
-      <div class="cards-grid cols-3" style="margin-top:24px;margin-bottom:24px">
-        <div class="card"><h3>Mecânica</h3><p>Crianças precisariam brincar mais de 24 horas por dia. Na prática, mulheres acabaram empurrando o carrossel.</p></div>
-        <div class="card"><h3>Consulta</h3><p>"Ninguém nos consultou."</p></div>
-        <div class="card"><h3>Gênero</h3><p>Acabou com o espaço de convívio das mulheres na bomba d'água.</p></div>
-      </div>
-      <div class="quote-block">Não foi falha de engenharia. Foi não entender o problema real.</div>
-    </div>
-  </div>
-
-  <div class="section-dark">
-    <div class="container">
-      <p class="eyebrow">Aula 1 · Até onde a escada vai</p>
-      <h2>Chat, Cowork e Code</h2>
-      <p style="max-width:660px">Não é uma hierarquia: são formas diferentes de trabalhar com o Claude. Chat e Cowork estão no mesmo aplicativo, com um interruptor. Code é a aba onde você constrói ferramentas, sem precisar saber programar.</p>
-
-      <div class="steps" style="margin-top:28px">
-        <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Chat</h3><p>Você conduz, mensagem a mensagem. É onde começamos hoje.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Cowork</h3><p>Você delega um objetivo e acompanha. É onde moram as tarefas programadas (Aula 3).</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Code</h3><p>Você constrói ferramentas e aplicações. Na Aula 4, você publica a sua na web.</p></div></div>
-      </div>
-      <p style="margin-top:16px">Na aula, vimos um exemplo construído na Programadores do Amanhã: dados de diversas fontes reunidos em um painel único de acompanhamento.</p>
-    </div>
-  </div>
-
-  <div class="section-light">
-    <div class="container">
-      <p class="eyebrow" style="color:var(--texto-medio)">Saindo do computador e voltando pro papel</p>
-      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">IA Canvas: pensar o todo antes de automatizar</h3>
-      <p style="max-width:680px">Um quadro de 10 blocos para pensar uma solução com IA antes de construí-la. Começa pelo problema, não pela ferramenta. Criado pela <strong>Proteus Academy</strong>, como adaptação visual dos passos iniciais do CRISP-DM, o processo padrão de projetos de dados.</p>
-      <div class="canvas-mini">
-        <span class="hl">01 Problema</span><span>02 Indicadores</span><span>03 Sem IA</span><span>04 Com IA</span><span>05 Para quem</span>
-        <span>06 Dados</span><span>07 Ferramentas</span><span>08 Ética</span><span>09 Privacidade</span><span>10 Riscos críticos</span>
-      </div>
-      <button class="btn-cta" onclick="goTo('canvas')">Preencher o meu IA Canvas →</button>
-    </div>
-  </div>
-
-  <div class="section-dark">
-    <div class="container">
-      <p class="eyebrow">Aula 1 · Mão na massa</p>
-      <h2>Como o Claude funciona, em 3 ideias</h2>
-      <div class="cards-grid cols-3" style="margin-top:24px">
-        <div class="card"><span class="card-icon">1</span><h3>Ele prevê a continuação mais provável</h3><p>Sem contexto, entrega o genérico. Às vezes inventa, com toda a confiança.</p></div>
-        <div class="card"><span class="card-icon">2</span><h3>Ele não conhece a sua organização</h3><p>Sabe o que está na internet e o que você entrega a ele. O resto ele completa.</p></div>
-        <div class="card"><span class="card-icon">3</span><h3>A memória dele é um resumo</h3><p>Ele guarda um resumo das conversas (Configurações › Memória), não o contexto preciso do seu trabalho. É isso que vamos configurar.</p></div>
-      </div>
-      <div class="quote-block">Por isso o jeito de pedir muda o resultado.</div>
-    </div>
-  </div>
-
-  <div class="section-light">
-    <div class="container">
-      <p class="eyebrow" style="color:var(--texto-medio)">Descrição, em ação</p>
-      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Anatomia de um bom pedido</h3>
-      <p><strong>Contexto</strong> + <strong>Tarefa</strong> + <strong>Restrições</strong> + <strong>Formato</strong>. E diga o que você <em>não</em> quer.</p>
-      <div class="compare">
-        <div class="compare-col weak"><small>Pedido fraco</small><p>"Escreva um e-mail para os voluntários."</p></div>
-        <div class="compare-col strong"><small>Pedido redondo</small><p>"Coordeno uma OSC de educação com 30 voluntários. Escreva um e-mail convidando para a formação de sábado, das 9h às 12h. Tom acolhedor, até 120 palavras, sem jargão. Inclua assunto e peça confirmação até quinta. Não prometa certificado."</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-dark">
-    <div class="container">
-      <h2>Seu gargalo, seu pedido</h2>
-      <p style="max-width:660px">Funciona no plano gratuito. Faça com o gargalo que você colocou no diagnóstico.</p>
-
-      <div class="steps" style="margin-top:24px">
-        <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Conte quem você é</h3><p>No Claude: clique nas suas iniciais (canto inferior esquerdo) › Configurações › <strong>Instruções para o Claude</strong> (em inglês: <em>Instructions for Claude</em>). Use o modelo abaixo.</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Peça do jeito fraco</h3><p>Escreva um pedido rápido, do jeito que você faria normalmente, sobre o seu gargalo.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Peça do jeito redondo</h3><p>Reescreva usando o modelo de pedido abaixo.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-content"><h3>Compare</h3><p>O que mudou? <strong>O que o Claude completou que você não disse?</strong></p></div></div>
+No final, escreva as instruções em primeira pessoa, com até 200 palavras, prontas para eu colar em Configurações. Não invente nada que eu não tenha dito.</div>
       </div>
 
       <div class="prompt-wrap">
-        <div class="prompt-label">Modelo · Instruções para o Claude<button class="btn-copy" onclick="copyPrompt(this,'p-instrucoes')">Copiar</button></div>
-        <div class="prompt-body" id="p-instrucoes">Sou [cargo] na [nome da organização], uma organização da sociedade civil que [o que faz, para quem, onde].
+        <div class="prompt-label">2 · Modelo de instruções para preencher<button class="btn-copy" onclick="copyPrompt(this,'p-instrucoes')">Copiar</button></div>
+        <div class="prompt-body" id="p-instrucoes">QUEM SOU: Sou [cargo] na [nome da organização].
 
-No meu dia a dia, cuido de [3 principais responsabilidades].
+ONDE TRABALHO: A [organização] é uma organização da sociedade civil que [o que faz], para [quem], em [onde].
 
-Como prefiro receber respostas:
+MEU DIA A DIA: Cuido de [3 principais responsabilidades]. Uso o Claude principalmente para [tarefas].
+
+COMO PREFIRO AS RESPOSTAS:
 - Português do Brasil, linguagem direta e sem jargão.
 - Comece pela resposta; explique depois, se eu pedir.
-- Quando não tiver certeza ou faltar informação, diga e me pergunte antes de inventar.
-- Aponte riscos e alternativas quando discordar do que eu pedi.</div>
+- Quando faltar informação, me pergunte antes de supor.
+
+O QUE NUNCA FAZER:
+- Não invente dados, números ou fontes.
+- Não [algo que te incomoda nas respostas de IA].</div>
       </div>
 
       <div class="prompt-wrap">
-        <div class="prompt-label">Modelo · Pedido redondo<button class="btn-copy" onclick="copyPrompt(this,'p-pedido')">Copiar</button></div>
-        <div class="prompt-body" id="p-pedido">CONTEXTO: Sou [cargo] na [organização]. A situação é: [o que está acontecendo, para quem, por quê importa].
+        <div class="prompt-label">3 · Pedido redondo (o contexto da vez)<button class="btn-copy" onclick="copyPrompt(this,'p-pedido')">Copiar</button></div>
+        <div class="prompt-body" id="p-pedido">CONTEXTO: [o que está acontecendo, para quem, por que importa].
 
 TAREFA: Preciso que você [ação concreta: escreva, organize, compare, resuma, planeje].
 
@@ -1309,35 +1155,11 @@ RESTRIÇÕES: [tom, tamanho, prazo, o que considerar]. NÃO [o que você não qu
 
 FORMATO: Entregue como [lista, tabela, e-mail, roteiro, um parágrafo].
 
-Antes de responder, se faltar alguma informação importante, me faça até 3 perguntas.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('roteiro')">← Roteiro</button>
-    <button class="btn-nav" onclick="goTo('canvas')">IA Canvas →</button>
-  </div></div>
-</section>
-
-
-<!-- ══════════ IA CANVAS (ferramenta) ══════════ -->
-<section id="canvas">
-  <div class="section-dark">
-    <div class="container">
-      <p class="eyebrow">Ferramenta · Tarefa da semana</p>
-      <h2>Meu IA Canvas</h2>
-      <p style="max-width:680px">Preencha com o gargalo que você trabalhou na aula. O que você escreve fica salvo só neste navegador. No final, copie tudo e leve para a Aula 2. IA Canvas © Proteus Academy.</p>
-
-      <div class="canvas-form" id="canvasForm"></div>
-
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-        <button class="btn-cta" onclick="copyCanvas(this)">Copiar meu canvas</button>
-        <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
+Se faltar alguma informação importante, me faça até 3 perguntas antes de responder.</div>
       </div>
 
-      <div class="prompt-wrap" style="margin-top:32px">
-        <div class="prompt-label">Travou? Peça ajuda ao Claude para preencher<button class="btn-copy" onclick="copyPrompt(this,'p-canvas')">Copiar</button></div>
+      <div class="prompt-wrap">
+        <div class="prompt-label">4 · Ajuda para preencher o IA Canvas<button class="btn-copy" onclick="copyPrompt(this,'p-canvas')">Copiar</button></div>
         <div class="prompt-body" id="p-canvas">Quero preencher um IA Canvas sobre um problema da minha organização. O canvas tem 10 blocos: Problema, Indicadores, Sem IA, Com IA, Para quem, Dados, Ferramentas, Ética, Privacidade e Riscos críticos.
 
 O problema é: [descreva o seu gargalo em 2 ou 3 frases].
@@ -1347,76 +1169,66 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     </div>
   </div>
 
-  <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('aula1')">← Aula 1</button>
-    <button class="btn-nav" onclick="goTo('encerramento')">Tarefa →</button>
-  </div></div>
-</section>
-
-
-<!-- ══════════ ENCERRAMENTO / TAREFA ══════════ -->
-<section id="encerramento">
+  <!-- IA Canvas -->
   <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Ferramenta</p>
+      <h3 style="font-size:28px;margin-bottom:8px">Meu IA Canvas</h3>
+      <p style="max-width:680px">Preencha com o gargalo que você trabalhou na aula. O que você escreve fica salvo só neste navegador. No final, copie tudo e leve para a Aula 2. <em>IA Canvas © Proteus Academy.</em></p>
+
+      <div class="canvas-form" id="canvasForm"></div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn-cta" onclick="copyCanvas(this)">Copiar meu canvas</button>
+        <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tarefa -->
+  <div class="section-dark" style="border-top:1px solid rgba(90,158,99,0.15)">
     <div class="container-sm">
       <p class="eyebrow">Para a próxima semana</p>
-      <h2>Sua tarefa até a Aula 2</h2>
+      <h3 style="font-size:28px;margin-bottom:20px">Tarefa até a Aula 2</h3>
 
       <div class="task-box" style="margin-bottom:24px">
         <ol class="task-list">
-          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> A partir da Aula 2, é essencial. Veja as opções abaixo.</span></li>
-          <li><span class="task-num">2</span><span><strong>Escreva suas Instruções para o Claude</strong> com o <a href="#" onclick="goTo('aula1');return false" style="color:var(--verde-claro)">modelo da Aula 1</a>.</span></li>
-          <li><span class="task-num">3</span><span><strong>Preencha um IA Canvas</strong> com o gargalo que você trabalhou hoje (<a href="#" onclick="goTo('canvas');return false" style="color:var(--verde-claro)">ferramenta aqui</a>).</span></li>
+          <li><span class="task-num">1</span><span><strong>Garanta seu plano pago.</strong> A partir da Aula 2, é essencial.</span></li>
+          <li><span class="task-num">2</span><span><strong>Finalize suas Instruções para o Claude</strong> (utilitários 1 e 2).</span></li>
+          <li><span class="task-num">3</span><span><strong>Preencha o seu IA Canvas</strong> com o gargalo que você trabalhou hoje.</span></li>
           <li><span class="task-num">4</span><span><strong>Separe 3 a 6 documentos da sua organização:</strong> apresentação institucional, relatório, projeto aprovado, metodologia. Sem dados pessoais.</span></li>
         </ol>
       </div>
 
-      <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2);margin-bottom:24px">
-        <h3 style="color:var(--off-white)">Plano pago: como garantir</h3>
+      <div class="task-box" style="background:rgba(255,255,255,0.03);border-color:rgba(90,158,99,0.2)">
+        <h3 style="color:var(--off-white)">Links úteis</h3>
         <ol class="task-list" style="margin-top:12px">
-          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">✦</span><span><strong>Só para você:</strong> Claude Pro, assinatura individual. Valores atuais em <a href="https://claude.com/pricing" target="_blank" style="color:var(--verde-claro)">claude.com/pricing</a>.</span></li>
-          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">✦</span><span><strong>Para a sua organização:</strong> Claude for Nonprofits, plano Team a US$ 8 por pessoa/mês, com mínimo de 2 pessoas. A verificação da OSC é feita pela Goodstack em poucos minutos. <a href="https://claude.com/solutions/nonprofits" target="_blank" style="color:var(--verde-claro)">Ver o programa</a> · <a href="https://validate.poweredbypercent.com/anthropic" target="_blank" style="color:var(--verde-claro)">Verificar minha OSC</a></span></li>
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/solutions/nonprofits" target="_blank" style="color:var(--verde-claro)">Claude for Nonprofits</a>: plano Team a US$ 8 por pessoa/mês, mínimo de 2 pessoas. <a href="https://validate.poweredbypercent.com/anthropic" target="_blank" style="color:var(--verde-claro)">Verificar minha OSC</a></span></li>
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://claude.com/pricing" target="_blank" style="color:var(--verde-claro)">Planos individuais (Claude Pro)</a></span></li>
+          <li><span class="task-num" style="background:var(--verde-profundo);border:1px solid rgba(90,158,99,0.4)">↗</span><span><a href="https://academy.claude.com/" target="_blank" style="color:var(--verde-claro)">AI Fluency for Nonprofits</a>: curso gratuito da Anthropic com a GivingTuesday</span></li>
         </ol>
         <p style="font-size:12px;color:rgba(245,245,240,0.5);margin-top:12px">Condições conferidas em 07/out/2026. Podem mudar: confirme na página oficial.</p>
       </div>
-
-      <div class="task-box" style="margin-bottom:24px">
-        <h3>O que não subir no Claude</h3>
-        <ol class="task-list" style="margin-top:12px">
-          <li><span class="task-num">×</span><span>Dados pessoais de quem a sua organização atende: nome, CPF, endereço, saúde</span></li>
-          <li><span class="task-num">×</span><span>Qualquer dado de crianças e adolescentes</span></li>
-          <li><span class="task-num">×</span><span>Informações financeiras e bancárias sensíveis</span></li>
-          <li><span class="task-num">×</span><span>Documentos confidenciais de parceiros e financiadores</span></li>
-        </ol>
-        <p style="margin-top:12px;font-size:14px"><strong>Na dúvida, anonimize:</strong> troque nomes por códigos antes de enviar.</p>
-      </div>
-
-      <h3 style="margin:32px 0 16px">Antes de sair: 1 minuto</h3>
-      <a class="btn-cta" data-link="pulso" target="_blank">Responder o pulso da aula →</a>
     </div>
   </div>
 
-  <div class="insight">
-    <blockquote>"A velocidade que a IA dá para construir aumenta, e não diminui, a importância de perguntar: estamos resolvendo o problema certo?"</blockquote>
-    <p>Na Aula 2, o seu gargalo e os documentos da sua organização viram o ponto de partida.</p>
-  </div>
-
   <div class="section-dark"><div class="nav-footer">
-    <button class="btn-nav" onclick="goTo('canvas')">← IA Canvas</button>
-    <button class="btn-nav" disabled>Até a Aula 2</button>
+    <button class="btn-nav" onclick="goTo('inicio')">← Início</button>
+    <button class="btn-nav" disabled>Aula 2 · em breve</button>
   </div></div>
 </section>
 
 </main>
 
 <script>
-  // ── LINKS DA AULA: preencha aqui (vazio = botão aparece como "em breve") ──
+  // ── LINKS DAS AULAS: preencha aqui (vazio = aparece como "em breve") ──
   const LINKS = {
     forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
     slides: '',
     pulso:  '',
   };
 
-  const SECTIONS = ['inicio','roteiro','aula1','canvas','encerramento'];
+  const SECTIONS = ['inicio','aula1'];
 
   function goTo(id) {
     SECTIONS.forEach(s => document.getElementById(s).classList.remove('active'));
