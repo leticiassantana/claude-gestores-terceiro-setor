@@ -978,6 +978,16 @@
     .aula-num { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--verde-claro); }
     .aula-go { margin-top:auto; padding-top:8px; color:var(--verde-acento); font-weight:600; }
     @media (max-width:480px) { .logo { overflow:hidden; text-overflow:ellipsis; min-width:0; font-size:11px; } .header-inner { gap:12px; } }
+    .send-box { margin-top:32px; background:var(--verde-profundo); border:1px solid rgba(90,158,99,0.35); border-radius:12px; padding:24px; }
+    .send-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)); gap:12px; margin-bottom:14px; }
+    .send-grid label { display:flex; flex-direction:column; gap:6px; font-size:13px; color:rgba(245,245,240,0.75); }
+    .send-grid input { background:rgba(0,0,0,0.25); border:1px solid rgba(90,158,99,0.3); border-radius:8px; color:var(--off-white); font-family:'Inter',sans-serif; font-size:14px; padding:10px; }
+    .send-grid input:focus { outline:none; border-color:var(--verde-acento); }
+    .isca { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+    .send-consent { display:flex; gap:10px; align-items:flex-start; font-size:13px; color:rgba(245,245,240,0.75); margin-bottom:16px; cursor:pointer; }
+    .send-consent input { margin-top:3px; accent-color:var(--verde-acento); }
+    .send-msg { margin-top:12px; font-size:14px; color:var(--verde-claro); min-height:1em; }
+    .btn-cta:disabled { opacity:.6; cursor:default; }
     nav button.nav-soon, .mobile-nav button.nav-soon { opacity:.35; cursor:default; }
   </style>
 </head>
@@ -1182,6 +1192,21 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
         <button class="btn-cta" onclick="copyCanvas(this)">Copiar meu canvas</button>
         <button class="btn-nav" onclick="clearCanvas()">Limpar</button>
       </div>
+
+      <div class="send-box" id="sendBox" hidden>
+        <h3 style="margin-bottom:6px">Enviar para a Letícia</h3>
+        <p style="font-size:14px;margin-bottom:16px">Seu canvas ajuda a adaptar as próximas aulas ao que a turma precisa. Envie quando terminar (dá para reenviar depois, se mudar algo).</p>
+        <div class="send-grid">
+          <label>Nome *<input id="sNome" type="text" maxlength="120" autocomplete="name" /></label>
+          <label>Organização<input id="sOrg" type="text" maxlength="200" autocomplete="organization" /></label>
+          <label>E-mail (opcional)<input id="sEmail" type="email" maxlength="200" autocomplete="email" /></label>
+          <input id="sIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
+        </div>
+        <label class="send-consent"><input id="sConsent" type="checkbox" />
+          <span>Autorizo o uso destas respostas pela facilitadora para adaptar as aulas e dar devolutiva à turma. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
+        <button class="btn-cta" id="sBtn" onclick="sendCanvas()">Enviar meu canvas</button>
+        <p id="sMsg" class="send-msg" role="status"></p>
+      </div>
     </div>
   </div>
 
@@ -1226,6 +1251,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
     slides: '',
     pulso:  '',
+    canvasEnvio: '',  // URL /exec do Apps Script (curso-8h/aula-1/03-canvas-envios.md)
   };
 
   const SECTIONS = ['inicio','aula1'];
@@ -1288,6 +1314,28 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
     navigator.clipboard.writeText(text).then(() => flash(btn, 'Copiado ✓'));
   }
 
+
+  const CANVAS_KEYS = ['problema','indicadores','semIa','comIa','paraQuem','dados','ferramentas','etica','privacidade','riscos'];
+
+  function sendCanvas() {
+    const msg = document.getElementById('sMsg'), btn = document.getElementById('sBtn');
+    const nome = document.getElementById('sNome').value.trim();
+    if (!nome) { msg.textContent = 'Preencha o seu nome.'; return; }
+    if (!document.getElementById('sConsent').checked) { msg.textContent = 'Marque a autorização para enviar.'; return; }
+    const payload = {
+      nome, organizacao: document.getElementById('sOrg').value.trim(),
+      email: document.getElementById('sEmail').value.trim(),
+      consentimento: true, site_url: document.getElementById('sIsca').value,
+    };
+    CANVAS_KEYS.forEach((k, i) => payload[k] = document.querySelector(`textarea[data-i="${i}"]`).value.trim());
+    if (CANVAS_KEYS.every(k => !payload[k])) { msg.textContent = 'Seu canvas está em branco.'; return; }
+    btn.disabled = true; msg.textContent = 'Enviando…';
+    fetch(LINKS.canvasEnvio, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      .then(() => { msg.textContent = 'Enviado ✓ Obrigada! Se mudar algo, é só enviar de novo.'; })
+      .catch(() => { msg.textContent = 'Não consegui enviar. Use "Copiar meu canvas" e mande pelo chat.'; })
+      .finally(() => { btn.disabled = false; });
+  }
+
   function clearCanvas() {
     if (!confirm('Apagar o que você escreveu no canvas?')) return;
     CANVAS.forEach((_, i) => store.set('canvas-' + i, ''));
@@ -1301,6 +1349,7 @@ Me entreviste, um bloco por vez, com no máximo 2 perguntas por bloco. Não pree
       else { a.classList.add('soon'); a.removeAttribute('target'); a.addEventListener('click', e => e.preventDefault()); }
     });
     renderCanvas();
+    if (LINKS.canvasEnvio) document.getElementById('sendBox').hidden = false;
     const hash = location.hash.slice(1);
     if (SECTIONS.includes(hash)) goTo(hash);
   });
