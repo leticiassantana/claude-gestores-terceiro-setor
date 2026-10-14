@@ -1341,6 +1341,7 @@ Se faltar alguma informação importante, me faça até 3 perguntas antes de res
       <div class="link-list" style="margin:0">
         <a class="link-item" data-link="slides2" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 2</strong><small>Para acompanhar e rever</small></span></a>
         <a class="link-item" href="#utilitarios2" onclick="return scrollToId('utilitarios2')"><span>🧰</span><span><strong>Prompts da aula</strong><small>Instruções do Project, os 3 testes, painel · role para baixo ↓</small></span></a>
+        <a class="link-item" href="#skills2" onclick="return scrollToId('skills2')"><span>🧩</span><span><strong>Skills de captação</strong><small>Analista de Editais, Arquiteto de Projetos, Guardião Narrativo · para baixar ↓</small></span></a>
         <a class="link-item" href="#tarefa2" onclick="return scrollToId('tarefa2')"><span>✅</span><span><strong>Tarefa até a Aula 3</strong><small>Cabe em 1 hora · role para baixo ↓</small></span></a>
         <a class="link-item" href="#satisfacao2" onclick="return scrollToId('satisfacao2')"><span>⭐</span><span><strong>Avalie a Aula 2</strong><small>1 minuto, antes de sair · role para baixo ↓</small></span></a>
       </div>
@@ -1399,6 +1400,56 @@ Use só dados dos documentos e indique a fonte de cada número. Se um indicador 
         </ol>
         <p style="font-size:12px;margin-top:12px">Conferido na <a href="https://support.claude.com/en/articles/9547008-publish-and-share-artifacts" target="_blank" style="color:var(--verde-claro)">ajuda oficial</a> em 14/out/2026. Pode mudar.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Skills de captação -->
+  <div class="section-dark" id="skills2">
+    <div class="container">
+      <p class="eyebrow">Skills para baixar</p>
+      <h3 style="font-size:28px;margin-bottom:8px">Do edital à proposta, com 3 skills</h3>
+      <p style="max-width:680px">As mesmas skills da demonstração. Funcionam melhor dentro do Project da sua organização, porque leem os seus documentos. São um ponto de partida: na Aula 3, você cria a sua.</p>
+
+      <div class="cards-grid cols-3" style="margin-top:24px">
+        <a class="card" href="skills/analista-de-editais.zip" download style="text-decoration:none">
+          <span class="card-icon">🔎</span><h3>1 · Analista de Editais</h3>
+          <p>Cruza o edital com o perfil da sua organização e dá um parecer: concorrer, concorrer com ressalvas ou não concorrer.</p>
+          <p style="margin-top:12px;color:var(--verde-claro);font-weight:600">Baixar .zip ↓</p>
+        </a>
+        <a class="card" href="skills/arquiteto-de-projetos.zip" download style="text-decoration:none">
+          <span class="card-icon">🧱</span><h3>2 · Arquiteto de Projetos</h3>
+          <p>Monta o rascunho da proposta no formato do edital, com metas e indicadores, e marca como [PENDENTE] o que falta.</p>
+          <p style="margin-top:12px;color:var(--verde-claro);font-weight:600">Baixar .zip ↓</p>
+        </a>
+        <a class="card" href="skills/guardiao-narrativo.zip" download style="text-decoration:none">
+          <span class="card-icon">🗣️</span><h3>3 · Guardião Narrativo</h3>
+          <p>Revisa o texto para soar como a sua organização e tira o "cheiro de IA". Traz a voz do Raízes como exemplo: adapte para a sua.</p>
+          <p style="margin-top:12px;color:var(--verde-claro);font-weight:600">Baixar .zip ↓</p>
+        </a>
+      </div>
+
+      <div class="task-box" style="margin-top:24px">
+        <h3 style="margin-bottom:8px">Como instalar</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span>Baixe o .zip. <strong>Não descompacte.</strong></span></li>
+          <li><span class="task-num">2</span><span>No Claude, confira em <strong>Configurações › Capacidades</strong> se "Execução de código e criação de arquivos" está ligada.</span></li>
+          <li><span class="task-num">3</span><span>Vá em <strong>Personalizar › Skills</strong>, clique em <strong>+</strong> › <strong>Criar skill</strong> › <strong>Fazer upload</strong> e escolha o .zip.</span></li>
+          <li><span class="task-num">4</span><span>Repita para as outras duas. Elas aparecem na sua lista e podem ser ligadas ou desligadas.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px">No plano Team, a administradora da conta precisa ter liberado as skills. A skill que você sobe fica só na sua conta. Os nomes dos menus podem mudar: confira na <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" style="color:var(--verde-claro)">ajuda oficial</a>.</p>
+      </div>
+
+      <div class="prompt-wrap" style="margin-top:24px">
+        <div class="prompt-label">5 · Usar as 3 skills em sequência (dentro do Project)<button class="btn-copy" onclick="copyPrompt(this,'p2-skills')">Copiar</button></div>
+        <div class="prompt-body" id="p2-skills">Anexei o edital [nome do edital]. Use as skills em sequência:
+
+1. Analista de Editais: analise o fit do edital com a nossa organização, com base nos documentos deste projeto.
+2. Se a recomendação for concorrer, use o Arquiteto de Projetos para montar o rascunho da proposta no formato do edital.
+3. Depois, use o Guardião Narrativo para revisar o texto com a nossa voz.
+
+Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documentos. Ao final, liste o que eu preciso revisar antes de enviar.</div>
+      </div>
+      <p style="font-size:14px;margin-top:12px"><strong>Antes de enviar a qualquer financiador:</strong> revise tudo e decida se vai declarar que usou IA na proposta.</p>
     </div>
   </div>
 
