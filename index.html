@@ -1013,7 +1013,7 @@
     <nav id="mainNav">
       <button onclick="goTo('inicio')" class="active">Início</button>
       <button onclick="goTo('aula1')">Aula 1</button>
-      <button class="nav-soon" disabled title="Em breve">Aula 2</button>
+      <button onclick="goTo('aula2')">Aula 2</button>
       <button class="nav-soon" disabled title="Em breve">Aula 3</button>
       <button class="nav-soon" disabled title="Em breve">Aula 4</button>
     </nav>
@@ -1026,7 +1026,7 @@
 <div class="mobile-nav" id="mobileNav">
   <button onclick="goTo('inicio');toggleMenu()">Início</button>
   <button onclick="goTo('aula1');toggleMenu()">Aula 1</button>
-  <button class="nav-soon" disabled>Aula 2 · em breve</button>
+  <button onclick="goTo('aula2');toggleMenu()">Aula 2</button>
   <button class="nav-soon" disabled>Aula 3 · em breve</button>
   <button class="nav-soon" disabled>Aula 4 · em breve</button>
 </div>
@@ -1060,11 +1060,12 @@
           <span>Usar IA sabendo o problema que você quer resolver</span>
           <span class="aula-go">Abrir materiais →</span>
         </button>
-        <div class="aula-card off">
-          <span class="aula-num">Aula 2 · em breve</span>
+        <button class="aula-card" onclick="goTo('aula2')">
+          <span class="aula-num">Aula 2 · disponível</span>
           <strong>Uma IA que conhece a sua organização</strong>
           <span>Project com os documentos reais da sua OSC</span>
-        </div>
+          <span class="aula-go">Abrir materiais →</span>
+        </button>
         <div class="aula-card off">
           <span class="aula-num">Aula 3 · em breve</span>
           <strong>Do processo repetitivo ao método próprio</strong>
@@ -1316,7 +1317,7 @@ Se faltar alguma informação importante, me faça até 3 perguntas antes de res
         <input id="satIsca" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
         <label class="send-consent dark"><input id="satConsent" type="checkbox" />
           <span>Autorizo o uso destas respostas pela facilitadora para melhorar as aulas. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
-        <button class="btn-cta" id="satBtn" onclick="sendSatisfacao()">Enviar avaliação</button>
+        <button class="btn-cta" id="satBtn" onclick="sendSatisfacao(1)">Enviar avaliação</button>
         <p id="satMsg" class="send-msg dark" role="status"></p>
       </div>
     </div>
@@ -1324,7 +1325,168 @@ Se faltar alguma informação importante, me faça até 3 perguntas antes de res
 
   <div class="section-dark"><div class="nav-footer">
     <button class="btn-nav" onclick="goTo('inicio')">← Início</button>
-    <button class="btn-nav" disabled>Aula 2 · em breve</button>
+    <button class="btn-nav" onclick="goTo('aula2')">Aula 2 →</button>
+  </div></div>
+</section>
+
+<!-- ══════════ AULA 2 ══════════ -->
+<section id="aula2" class="section-dark">
+  <div class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Aula 2 de 4 · 14/out/2026</p>
+      <h2>Uma IA que conhece a sua organização</h2>
+      <p style="max-width:660px">Sair da conversa avulsa para um Claude que já sabe quem a sua organização é, e saber conferir quando ele inventa.</p>
+
+      <h3 style="margin:32px 0 16px">Links da aula</h3>
+      <div class="link-list" style="margin:0">
+        <a class="link-item" data-link="slides2" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 2</strong><small>Para acompanhar e rever</small></span></a>
+        <a class="link-item" href="#utilitarios2" onclick="return scrollToId('utilitarios2')"><span>🧰</span><span><strong>Prompts da aula</strong><small>Instruções do Project, os 3 testes, painel · role para baixo ↓</small></span></a>
+        <a class="link-item" href="#tarefa2" onclick="return scrollToId('tarefa2')"><span>✅</span><span><strong>Tarefa até a Aula 3</strong><small>Cabe em 1 hora · role para baixo ↓</small></span></a>
+        <a class="link-item" href="#satisfacao2" onclick="return scrollToId('satisfacao2')"><span>⭐</span><span><strong>Avalie a Aula 2</strong><small>1 minuto, antes de sair · role para baixo ↓</small></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- O que vocês pediram -->
+  <div class="section-light">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">Devolutiva da turma</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">O que vocês pediram, e onde entra</h3>
+      <p style="max-width:680px">A partir do diagnóstico e das avaliações da Aula 1, sem identificar ninguém.</p>
+      <div class="cards-grid cols-3" style="margin-top:20px">
+        <div class="card"><span class="card-icon">📁</span><h3>Hoje · Aula 2</h3><p>Uma IA que conhece a organização: base para captação e prestação de contas. Painel a partir de documentos e como compartilhar.</p></div>
+        <div class="card"><span class="card-icon">🔁</span><h3>Aula 3</h3><p>Método próprio (skills), rotinas e tarefas programadas, conectores como e-mail, agenda e Drive. Organização de plano de ação.</p></div>
+        <div class="card"><span class="card-icon">🚀</span><h3>Aula 4</h3><p>Automação de fluxos (n8n) e publicar uma solução na web.</p></div>
+      </div>
+      <p style="max-width:680px;margin-top:20px"><strong>Agente de WhatsApp:</strong> dá para fazer, mas o curso não ensina. Exige a API oficial do WhatsApp Business (Meta), aprovação de número e de modelos de mensagem, custo por conversa, uma ferramenta de automação no meio e cuidado redobrado com a LGPD. A Aula 4 (n8n) é a base técnica para quem quiser seguir esse caminho depois.</p>
+    </div>
+  </div>
+
+  <!-- Utilitários -->
+  <div class="section-light" id="utilitarios2" style="border-top:1px solid rgba(0,0,0,0.06)">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">Utilitários</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Prompts prontos para usar</h3>
+      <p style="max-width:680px">Clique em <strong>Copiar</strong>, cole no Claude e troque o que estiver entre [colchetes].</p>
+      <p style="max-width:680px;font-size:14px;margin-top:8px"><strong>Onde ficam os Projects:</strong> no menu lateral do Claude, <strong>Projetos › Novo projeto</strong>. Dentro dele ficam as <strong>Instruções</strong> e os <strong>Arquivos</strong> (o conhecimento do projeto). No plano gratuito, até 5 projetos.</p>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">1 · Instruções do Project<button class="btn-copy" onclick="copyPrompt(this,'p2-instrucoes')">Copiar</button></div>
+        <div class="prompt-body" id="p2-instrucoes">Você apoia a equipe do [nome da organização].
+
+- Use os documentos deste projeto como fonte principal sobre a organização.
+- Quando a informação não estiver nos documentos, diga claramente que não encontrou. Não invente dados, números, nomes ou datas.
+- Ao citar um dado, diga de qual documento ele veio.
+- Escreva em português do Brasil, com a linguagem da organização: [ex.: direta, acolhedora, sem jargão].
+- Nunca inclua dados pessoais de beneficiários nas respostas.</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">2 · Os 3 testes do seu Project (um por vez)<button class="btn-copy" onclick="copyPrompt(this,'p2-testes')">Copiar</button></div>
+        <div class="prompt-body" id="p2-testes">Teste 1: Quem somos nós? Responda em 5 linhas, com base só nos documentos do projeto.
+
+Teste 2: [Uma pergunta com resposta que você consegue conferir no documento. Ex.: quantas pessoas atendemos no último ano? Diga em qual documento está.]
+
+Teste 3: [Uma pergunta cuja resposta NÃO está nos documentos. O certo é ele dizer que não encontrou.]</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">3 · Resumo institucional para financiador<button class="btn-copy" onclick="copyPrompt(this,'p2-resumo')">Copiar</button></div>
+        <div class="prompt-body" id="p2-resumo">Com base nos documentos deste projeto, escreva um resumo institucional de 1 página para apresentar a organização a um novo financiador: quem somos, o problema que enfrentamos, o que fazemos, resultados com números e fonte, e o que precisamos.
+
+Entregue como artefato. Ao final, liste em separado qualquer informação que você precisou supor ou que não encontrou nos documentos.</div>
+      </div>
+
+      <div class="prompt-wrap">
+        <div class="prompt-label">4 · Painel de indicadores a partir dos documentos<button class="btn-copy" onclick="copyPrompt(this,'p2-painel')">Copiar</button></div>
+        <div class="prompt-body" id="p2-painel">Crie um painel visual (artefato) com os principais indicadores da organização que aparecem nos documentos deste projeto: números de atendimento, resultados e evolução ao longo dos anos.
+
+Use só dados dos documentos e indique a fonte de cada número. Se um indicador não tiver dado, não preencha: escreva "sem dado". Visual limpo, cores sóbrias, fácil de ler no celular.</div>
+      </div>
+
+      <div class="task-box" style="margin-top:24px">
+        <h3 style="margin-bottom:8px">Compartilhar um painel (artefato)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span><strong>Gratuito, Pro e Max:</strong> o botão <strong>Publicar</strong> gera um link público. Qualquer pessoa com o link vê.</span></li>
+          <li><span class="task-num">2</span><span><strong>Team (inclusive o desconto para OSCs):</strong> o artefato começa privado. Dá para liberar para pessoas convidadas ou para toda a organização. "Qualquer pessoa com o link" só aparece se a administradora da conta ligar o compartilhamento externo.</span></li>
+          <li><span class="task-num">3</span><span><strong>Antes de mandar para fora, teste:</strong> abra o link numa janela anônima. E confira se não há nenhum dado que não deveria ser público.</span></li>
+          <li><span class="task-num">!</span><span>O painel é uma <strong>fotografia</strong>: se a planilha mudar, ele não muda sozinho.</span></li>
+        </ol>
+        <p style="font-size:12px;margin-top:12px">Conferido na <a href="https://support.claude.com/en/articles/9547008-publish-and-share-artifacts" target="_blank" style="color:var(--verde-claro)">ajuda oficial</a> em 14/out/2026. Pode mudar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Caso da turma -->
+  <div class="section-dark">
+    <div class="container-sm">
+      <p class="eyebrow">Um canvas da turma</p>
+      <h3 style="font-size:28px;margin-bottom:12px">Do IA Canvas ao Project, em degraus</h3>
+      <p>Um dos canvas enviados propõe <strong>gerar diagnósticos de captação personalizados</strong> a partir de um formulário, com uma regra central: <em>a IA nunca sugere caminhos fora da base da organização</em>. Isso é um Project. O caminho, se você tiver uma ideia parecida:</p>
+      <div class="task-box" style="margin-top:16px">
+        <ol class="task-list">
+          <li><span class="task-num">1</span><span><strong>Hoje:</strong> um Project com a sua base (documentos, cardápio de problemas e soluções) e a instrução "nunca fora da base". Cole as respostas de um caso e peça o resultado.</span></li>
+          <li><span class="task-num">2</span><span><strong>Aula 3:</strong> o jeito de fazer vira uma <strong>skill</strong>, o mesmo método toda vez.</span></li>
+          <li><span class="task-num">3</span><span><strong>Aula 4:</strong> formulário → resultado automático (n8n) ou uma página publicada.</span></li>
+        </ol>
+      </div>
+      <p style="font-size:14px;margin-top:12px">Ainda dá para enviar o seu canvas: <a href="#canvasForm" onclick="goTo('aula1');setTimeout(()=>scrollToId('canvasForm'),400);return false" style="color:var(--verde-claro)">ferramenta na Aula 1</a>.</p>
+    </div>
+  </div>
+
+  <!-- Tarefa -->
+  <div class="section-dark" id="tarefa2" style="border-top:1px solid rgba(90,158,99,0.15)">
+    <div class="container-sm">
+      <p class="eyebrow">Para a próxima semana · cabe em 1 hora</p>
+      <h3 style="font-size:28px;margin-bottom:20px">Tarefa até a Aula 3</h3>
+      <div class="task-box">
+        <ol class="task-list">
+          <li><span class="task-num">1</span><span><strong>Use o seu Project numa tarefa real da semana</strong> (captação, relatório, comunicação) e anote <strong>um erro</strong> dele.</span></li>
+          <li><span class="task-num">2</span><span><strong>Corrija a causa:</strong> faltava um documento? A instrução estava vaga?</span></li>
+          <li><span class="task-num">3</span><span><strong>Anote uma tarefa que você faz toda semana do mesmo jeito.</strong> Ela vira a sua skill na Aula 3.</span></li>
+          <li><span class="task-num">+</span><span><strong>Opcional:</strong> termine e envie o IA Canvas.</span></li>
+        </ol>
+      </div>
+      <p style="font-size:14px;margin-top:12px"><strong>LGPD:</strong> nada de listas de beneficiários, dados de saúde, CPF ou dados de crianças no Project. Na dúvida, anonimize.</p>
+    </div>
+  </div>
+
+  <!-- Satisfação -->
+  <div class="section-light" id="satisfacao2">
+    <div class="container-sm">
+      <p class="eyebrow" style="color:var(--texto-medio)">1 minuto, antes de sair</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Como foi a Aula 2?</h3>
+      <p style="margin-bottom:20px">Suas respostas mudam a próxima aula. Pode responder sem se identificar.</p>
+
+      <div class="sat-box" id="satBox2">
+        <div class="sat-q">
+          <span>De 1 a 5, como você avalia a aula? *</span>
+          <div class="scale" data-name="nota"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+        </div>
+        <div class="sat-q">
+          <span>De 1 a 5, quanto o que vimos é útil no seu trabalho? *</span>
+          <div class="scale" data-name="utilidade"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button></div>
+        </div>
+        <div class="sat-q">
+          <span>O ritmo da aula foi: *</span>
+          <div class="scale" data-name="ritmo"><button>Devagar</button><button>Adequado</button><button>Rápido demais</button></div>
+        </div>
+        <label class="sat-q"><span>O que você vai usar de verdade?</span><textarea id="satUsar2" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Onde você travou ou ficou com dúvida?</span><textarea id="satTravou2" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Uma sugestão para a próxima aula</span><textarea id="satSugestao2" rows="2" maxlength="2000"></textarea></label>
+        <label class="sat-q"><span>Nome (opcional)</span><input id="satNome2" type="text" maxlength="120" autocomplete="name" /></label>
+        <input id="satIsca2" type="text" tabindex="-1" autocomplete="off" class="isca" aria-hidden="true" />
+        <label class="send-consent dark"><input id="satConsent2" type="checkbox" />
+          <span>Autorizo o uso destas respostas pela facilitadora para melhorar as aulas. Elas não serão compartilhadas com terceiros (LGPD).</span></label>
+        <button class="btn-cta" id="satBtn2" onclick="sendSatisfacao(2)">Enviar avaliação</button>
+        <p id="satMsg2" class="send-msg dark" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-dark"><div class="nav-footer">
+    <button class="btn-nav" onclick="goTo('aula1')">← Aula 1</button>
+    <button class="btn-nav" disabled>Aula 3 · em breve</button>
   </div></div>
 </section>
 
@@ -1335,10 +1497,11 @@ Se faltar alguma informação importante, me faça até 3 perguntas antes de res
   const LINKS = {
     forms:  'https://docs.google.com/forms/d/1d5pfmoOSOUOzvZgFOBw5RO5sK3cLxuwrX-NFskSWRK4/viewform',
     slides: 'https://docs.google.com/presentation/d/1s8IW4TLk6KoRJw-glJJwyTOd0uZQIeJP/edit?usp=sharing',
+    slides2: '',  // link dos slides da Aula 2 (vazio = "em breve")
     respostas: 'https://script.google.com/macros/s/AKfycbyDUkudADPP1JqMSzsndGwiAuVc6kQKgCi5ip5uMTz2usgzjtn7OZPw0Yvf8g9nSS6C/exec',  // URL /exec do Apps Script: tarefas e satisfação (curso-8h/aula-1/03-tarefas-entregas.md)
   };
 
-  const SECTIONS = ['inicio','aula1'];
+  const SECTIONS = ['inicio','aula1','aula2'];
 
   function goTo(id) {
     SECTIONS.forEach(s => document.getElementById(s).classList.remove('active'));
@@ -1411,24 +1574,29 @@ Se faltar alguma informação importante, me faça até 3 perguntas antes de res
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
   }
 
+  // Escolhas das escalas, separadas por formulário de avaliação (um por aula)
   const satEscolha = {};
   function initScales() {
     document.querySelectorAll('.scale').forEach(sc => sc.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
       sc.querySelectorAll('button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
-      satEscolha[sc.dataset.name] = b.textContent;
+      const box = sc.closest('.sat-box').id;
+      (satEscolha[box] = satEscolha[box] || {})[sc.dataset.name] = b.textContent;
     })));
   }
 
-  function sendSatisfacao() {
-    const msg = document.getElementById('satMsg'), btn = document.getElementById('satBtn');
-    if (!satEscolha.nota || !satEscolha.utilidade || !satEscolha.ritmo) { msg.textContent = 'Responda as três primeiras perguntas.'; return; }
-    if (!document.getElementById('satConsent').checked) { msg.textContent = 'Marque a autorização para enviar.'; return; }
+  // Aula 1 usa os ids sem sufixo (satUsar…); as seguintes usam o número da aula (satUsar2…)
+  function sendSatisfacao(aula) {
+    const sfx = aula === 1 ? '' : String(aula), el = id => document.getElementById(id + sfx);
+    const esc = satEscolha['satBox' + sfx] || {};
+    const msg = el('satMsg'), btn = el('satBtn');
+    if (!esc.nota || !esc.utilidade || !esc.ritmo) { msg.textContent = 'Responda as três primeiras perguntas.'; return; }
+    if (!el('satConsent').checked) { msg.textContent = 'Marque a autorização para enviar.'; return; }
     if (!LINKS.respostas) { msg.textContent = 'O envio abre em instantes. Tente de novo daqui a pouco.'; return; }
-    const payload = { tipo: 'satisfacao', aula: 1, consentimento: true, site_url: document.getElementById('satIsca').value,
-      nota: satEscolha.nota, utilidade: satEscolha.utilidade, ritmo: satEscolha.ritmo,
-      usar: document.getElementById('satUsar').value.trim(), travou: document.getElementById('satTravou').value.trim(),
-      sugestao: document.getElementById('satSugestao').value.trim(), nome: document.getElementById('satNome').value.trim() };
+    const payload = { tipo: 'satisfacao', aula, consentimento: true, site_url: el('satIsca').value,
+      nota: esc.nota, utilidade: esc.utilidade, ritmo: esc.ritmo,
+      usar: el('satUsar').value.trim(), travou: el('satTravou').value.trim(),
+      sugestao: el('satSugestao').value.trim(), nome: el('satNome').value.trim() };
     btn.disabled = true; msg.textContent = 'Enviando…';
     enviar(payload)
       .then(() => { msg.textContent = 'Avaliação enviada ✓ Obrigada!'; })
