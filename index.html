@@ -1437,8 +1437,8 @@ Use só dados dos documentos e indique a fonte de cada número. Se um indicador 
         <h3 style="margin-bottom:8px">Como instalar</h3>
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num">1</span><span>Baixe o .zip. <strong>Não descompacte.</strong></span></li>
-          <li><span class="task-num">2</span><span>No Claude, confira em <strong>Configurações › Capacidades</strong> se "Execução de código e criação de arquivos" está ligada.</span></li>
-          <li><span class="task-num">3</span><span>Vá em <strong>Personalizar › Skills</strong>, clique em <strong>+</strong> › <strong>Criar skill</strong> › <strong>Fazer upload</strong> e escolha o .zip.</span></li>
+          <li><span class="task-num">2</span><span>No Claude, confira em <strong>Configurações › Recursos</strong> se "Execução de código e criação de arquivos" está ligada.</span></li>
+          <li><span class="task-num">3</span><span>Vá em <strong>Configurações › Skills</strong>, clique em <strong>+</strong> › <strong>Criar skill</strong> › <strong>Fazer upload</strong> e escolha o .zip.</span></li>
           <li><span class="task-num">4</span><span>Repita para as outras duas. Elas aparecem na sua lista e podem ser ligadas ou desligadas.</span></li>
         </ol>
         <p style="font-size:13px;margin-top:12px">No plano Team, a administradora da conta precisa ter liberado as skills. A skill que você sobe fica só na sua conta. Os nomes dos menus podem mudar: confira na <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" style="color:var(--verde-claro)">ajuda oficial</a>.</p>
@@ -1460,7 +1460,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
         <h3 style="margin-bottom:8px">🛠️ Para criar a sua: Criador de Skills, da Anthropic</h3>
         <p style="font-size:15px">A skill oficial da Anthropic que <strong>cria outras skills</strong>. Ela te entrevista sobre a tarefa, escreve a skill e ajuda a testar. Os textos internos estão em inglês, mas a conversa pode ser toda em português. Ligue antes da Aula 3: é com ela que você cria a sua skill.</p>
         <ol class="task-list" style="margin-top:12px">
-          <li><span class="task-num">1</span><span><strong>Veja se já está na sua conta:</strong> em <strong>Personalizar › Skills</strong>, procure <em>skill-creator</em> entre as skills da Anthropic e ligue. Nos planos pagos, as skills de exemplo da Anthropic já vêm disponíveis.</span></li>
+          <li><span class="task-num">1</span><span><strong>Veja se já está na sua conta:</strong> em <strong>Configurações › Skills</strong>, procure <em>skill-creator</em> entre as skills da Anthropic e ligue. Nos planos pagos, as skills de exemplo da Anthropic já vêm disponíveis.</span></li>
           <li><span class="task-num">2</span><span><strong>Se não aparecer:</strong> <a href="skills/skill-creator.zip" download style="color:var(--verde-claro)">baixe o .zip oficial</a> e instale do mesmo jeito que as skills acima.</span></li>
         </ol>
         <p style="font-size:12px;margin-top:12px">Fonte: <a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank" style="color:var(--verde-claro)">repositório oficial da Anthropic</a> (licença Apache 2.0, versão de 09/out/2026).</p>
@@ -1596,8 +1596,8 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
         <h3 style="margin-bottom:8px">0 · O que deixamos pronto antes</h3>
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num">a</span><span><strong>A planilha no Google Drive.</strong> Usamos uma planilha fictícia de associados do Raízes: 26 pessoas e coletivos inventados, nenhum CPF. <a href="materiais/associados_ficticios.csv" download style="color:var(--verde-claro)">Baixe aqui (.csv)</a> e importe no Google Planilhas (<strong>Arquivo › Importar › Fazer upload</strong>).</span></li>
-          <li><span class="task-num">b</span><span><strong>A execução de código ligada</strong>, em <strong>Configurações › Capacidades</strong> (<em>Settings › Capabilities</em>). Sem ela, skills não funcionam.</span></li>
-          <li><span class="task-num">c</span><span><strong>O Criador de Skills ligado</strong>, em <strong>Personalizar › Skills</strong> (<em>Customize › Skills</em>). Se não aparecer na sua conta, instale o .zip da <a href="#skills2" onclick="goTo('aula2');setTimeout(()=>scrollToId('skills2'),400);return false" style="color:var(--verde-claro)">Aula 2</a>.</span></li>
+          <li><span class="task-num">b</span><span><strong>A execução de código ligada</strong>, em <strong>Configurações › Recursos</strong>. Sem ela, skills não funcionam.</span></li>
+          <li><span class="task-num">c</span><span><strong>O Criador de Skills ligado</strong>, em <strong>Configurações › Skills</strong>. Se não aparecer na sua conta, instale o .zip da <a href="#skills2" onclick="goTo('aula2');setTimeout(()=>scrollToId('skills2'),400);return false" style="color:var(--verde-claro)">Aula 2</a>.</span></li>
         </ol>
       </div>
 
@@ -1656,9 +1656,9 @@ Ao final, me mostre a skill completa para eu revisar antes de salvar.</div>
       <div class="task-box" style="margin-top:16px">
         <ol class="task-list">
           <li><span class="task-num">3</span><span><strong>Lemos a skill antes de salvar.</strong> Conferimos quatro coisas: a <strong>descrição</strong> (diz quando a skill deve ser usada), as <strong>regras</strong> (nunca enviar, nunca cobrar quem pediu pausa), o <strong>formato da saída</strong> e um <strong>resumo da voz do Raízes</strong> dentro da skill ("comunidades com poder", nunca "populações vulneráveis").</span></li>
-          <li><span class="task-num">4</span><span><strong>Salvamos a skill</strong> e conferimos em Personalizar › Skills se <em>controle-de-associados</em> estava na lista, ativada.</span></li>
+          <li><span class="task-num">4</span><span><strong>Salvamos a skill</strong> e conferimos em Configurações › Skills se <em>controle-de-associados</em> estava na lista, ativada.</span></li>
         </ol>
-        <p style="font-size:13px;margin-top:12px"><strong>Se na sua tela for diferente:</strong> o Criador pode oferecer um botão para salvar ou entregar um arquivo (.zip ou .skill). No segundo caso, baixe e suba em <strong>Personalizar › Skills › + › Criar skill › Fazer upload</strong> (<em>Upload a skill</em>). Se ele não entregar nem um nem outro, peça: <em>"Me entregue a skill como arquivo .zip, com a pasta controle-de-associados e o SKILL.md dentro."</em></p>
+        <p style="font-size:13px;margin-top:12px"><strong>Se na sua tela for diferente:</strong> o Criador pode oferecer um botão para salvar ou entregar um arquivo (.zip ou .skill). No segundo caso, baixe e suba em <strong>Configurações › Skills › + › Criar skill › Fazer upload</strong> (<em>Upload a skill</em>). Se ele não entregar nem um nem outro, peça: <em>"Me entregue a skill como arquivo .zip, com a pasta controle-de-associados e o SKILL.md dentro."</em></p>
       </div>
 
       <div class="task-box" style="margin-top:20px">
@@ -1676,7 +1676,7 @@ Ao final, me mostre a skill completa para eu revisar antes de salvar.</div>
       <div class="task-box" style="margin-top:20px">
         <h3 style="margin-bottom:8px">3 · Conectamos o Drive e o Gmail</h3>
         <ol class="task-list" style="margin-top:12px">
-          <li><span class="task-num">1</span><span>Em <strong>Personalizar › Conectores</strong> (<em>Customize › Connectors</em>), conectamos o <strong>Google Drive</strong> e o <strong>Gmail</strong>: <strong>Conectar</strong> › escolher a conta Google › <strong>Permitir</strong>.</span></li>
+          <li><span class="task-num">1</span><span>Em <strong>Configurações › Conectores</strong>, conectamos o <strong>Google Drive</strong> e o <strong>Gmail</strong>: <strong>Conectar</strong> › escolher a conta Google › <strong>Permitir</strong>.</span></li>
           <li><span class="task-num">2</span><span>Na conversa, com os dois ligados, pedimos: <em>"Leia a planilha Associados do Raízes no meu Google Drive, use a skill controle-de-associados e crie RASCUNHOS no meu Gmail para cada e-mail. Não envie nada."</em></span></li>
           <li><span class="task-num">3</span><span>Abrimos <strong>Gmail › Rascunhos</strong> para conferir os e-mails de boas-vindas, lembrete e cobrança. Nada é enviado: quem envia é a pessoa.</span></li>
         </ol>
@@ -1842,7 +1842,7 @@ No final, crie um artefato de amostra (um cartão, um botão e um pequeno painel
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num">G</span><span><strong>Google (Gmail, Agenda, Drive):</strong> disponível em todos os planos.</span></li>
           <li><span class="task-num">M</span><span><strong>Microsoft 365 (Outlook, OneDrive, SharePoint):</strong> disponível em todos os planos, só com conta de trabalho (não funciona com @outlook.com ou @hotmail.com).</span></li>
-          <li><span class="task-num">→</span><span>Para conectar: <strong>Personalizar › Conectores</strong>. Dentro da conversa, ligue e desligue em <strong>+ › Conectores</strong>.</span></li>
+          <li><span class="task-num">→</span><span>Para conectar: <strong>Configurações › Conectores</strong>. Dentro da conversa, ligue e desligue em <strong>+ › Conectores</strong>.</span></li>
           <li><span class="task-num">!</span><span><strong>Plano Team:</strong> a administradora da conta precisa liberar os conectores e as skills antes.</span></li>
         </ol>
         <p style="font-size:12px;margin-top:12px">Conferido na ajuda oficial em 20/out/2026: <a href="https://support.claude.com/en/articles/12512180-use-skills-in-claude" target="_blank" style="color:var(--verde-medio,#3F5A43)">skills</a> · <a href="https://support.claude.com/en/articles/10166901-use-google-workspace-connectors" target="_blank" style="color:var(--verde-medio,#3F5A43)">Google</a> · <a href="https://support.claude.com/en/articles/12542951-set-up-the-microsoft-365-connector" target="_blank" style="color:var(--verde-medio,#3F5A43)">Microsoft 365</a> · <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork" target="_blank" style="color:var(--verde-medio,#3F5A43)">tarefas programadas</a>.</p>
