@@ -1696,6 +1696,56 @@ Deixe o que precisar ser enviado como rascunho. NUNCA envie nada. Me entregue um
 Se o arquivo não abrir ou estiver vazio, diga isso claramente em vez de inventar.</div>
       </div>
 
+      <div class="prompt-wrap" style="margin-top:24px">
+        <div class="prompt-label">Exemplo · Rotina da aula, com resumo em e-mail HTML<button class="btn-copy" onclick="copyPrompt(this,'p3-rotina-exemplo')">Copiar</button></div>
+        <div class="prompt-body" id="p3-rotina-exemplo" style="max-height:320px;overflow:auto">Toda segunda-feira, faça o controle semanal dos associados.
+
+1. Leia a planilha &quot;Aula 3 — Associados (fictício) — demo controle de associados&quot; no meu Google Drive.
+2. Use a skill &quot;controle-de-associados&quot; para classificar cada associado e preparar os contatos.
+3. Crie no meu Gmail um RASCUNHO para cada e-mail de boas-vindas, lembrete ou cobrança. NUNCA envie nada.
+4. Crie também um RASCUNHO endereçado a mim, com o assunto &quot;Controle semanal de associados — semana de [data de hoje]&quot;, com o resumo da semana em HTML, seguindo exatamente o MODELO abaixo. Troque o que está entre {{ }} pelos dados reais e repita as linhas de tabela quantas vezes forem necessárias. Se um grupo estiver vazio, escreva &quot;Ninguém nesta semana.&quot;
+5. Se a planilha não abrir ou estiver vazia, diga isso claramente no rascunho, em vez de inventar.
+6. Se o Gmail não aceitar o corpo em HTML, entregue o resumo como texto simples no rascunho e me avise na resposta.
+
+Regras: não mostre dado pessoal além de nome e e-mail. Não invente datas nem valores. Linhas estranhas vão para &quot;Precisa de olho humano&quot;, nunca para cobrança.
+
+MODELO (HTML para e-mail):
+
+&lt;table role=&quot;presentation&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;background:#F5F5F0;&quot;&gt;&lt;tr&gt;&lt;td align=&quot;center&quot; style=&quot;padding:24px 12px;&quot;&gt;
+&lt;table role=&quot;presentation&quot; width=&quot;600&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;width:100%;max-width:600px;font-family:Arial,Helvetica,sans-serif;color:#1A1A1A;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#0D1F10;border-radius:12px 12px 0 0;padding:28px 32px;&quot;&gt;
+&lt;p style=&quot;margin:0 0 8px;font-size:11px;letter-spacing:1.5px;font-weight:bold;color:#5A9E63;&quot;&gt;CONTROLE SEMANAL DE ASSOCIADOS&lt;/p&gt;
+&lt;h1 style=&quot;margin:0;font-size:24px;color:#FFFFFF;&quot;&gt;Semana de {{data por extenso}}&lt;/h1&gt;
+&lt;p style=&quot;margin:8px 0 0;font-size:14px;color:#C9D8CB;&quot;&gt;Data usada como referência: {{dd/mm/aaaa}} · Planilha: Associados&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 8px;&quot;&gt;
+&lt;table role=&quot;presentation&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;&lt;tr&gt;
+&lt;td width=&quot;33%&quot; style=&quot;padding:0 6px 0 0;&quot;&gt;&lt;div style=&quot;background:#F5F5F0;border-radius:8px;padding:14px;&quot;&gt;&lt;p style=&quot;margin:0;font-size:28px;font-weight:bold;color:#0D1F10;&quot;&gt;{{em dia}}&lt;/p&gt;&lt;p style=&quot;margin:4px 0 0;font-size:12px;color:#444444;&quot;&gt;em dia&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width=&quot;33%&quot; style=&quot;padding:0 3px;&quot;&gt;&lt;div style=&quot;background:#F5F5F0;border-radius:8px;padding:14px;&quot;&gt;&lt;p style=&quot;margin:0;font-size:28px;font-weight:bold;color:#0D1F10;&quot;&gt;{{vencem}}&lt;/p&gt;&lt;p style=&quot;margin:4px 0 0;font-size:12px;color:#444444;&quot;&gt;vencem nesta semana&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;td width=&quot;33%&quot; style=&quot;padding:0 0 0 6px;&quot;&gt;&lt;div style=&quot;background:#0D1F10;border-radius:8px;padding:14px;&quot;&gt;&lt;p style=&quot;margin:0;font-size:28px;font-weight:bold;color:#FFFFFF;&quot;&gt;{{atrasados}}&lt;/p&gt;&lt;p style=&quot;margin:4px 0 0;font-size:12px;color:#C9D8CB;&quot;&gt;atrasados&lt;/p&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;p style=&quot;margin:16px 0 0;font-size:14px;line-height:1.6;color:#444444;&quot;&gt;{{resumo em 2 frases}}&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:20px 32px 0;&quot;&gt;&lt;h2 style=&quot;margin:0 0 10px;font-size:16px;color:#0D1F10;&quot;&gt;Atrasados&lt;/h2&gt;
+&lt;table role=&quot;presentation&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-size:13px;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;padding:8px 0;border-bottom:1px solid #F0F2EE;&quot;&gt;{{nome}}&lt;/td&gt;&lt;td style=&quot;padding:8px 0;border-bottom:1px solid #F0F2EE;&quot;&gt;{{plano}} · R$ {{valor}}&lt;/td&gt;&lt;td style=&quot;padding:8px 0;border-bottom:1px solid #F0F2EE;&quot;&gt;{{venceu em}}&lt;/td&gt;&lt;td align=&quot;right&quot; style=&quot;padding:8px 0;border-bottom:1px solid #F0F2EE;font-weight:bold;&quot;&gt;{{dias}} dias&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 0;&quot;&gt;&lt;h2 style=&quot;margin:0 0 10px;font-size:16px;color:#0D1F10;&quot;&gt;Vencem nos próximos 7 dias&lt;/h2&gt;
+&lt;p style=&quot;margin:0;font-size:13px;line-height:1.6;&quot;&gt;{{nome · plano · R$ valor · vence em dd/mm}}&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 0;&quot;&gt;&lt;h2 style=&quot;margin:0 0 10px;font-size:16px;color:#0D1F10;&quot;&gt;Ainda sem boas-vindas&lt;/h2&gt;
+&lt;p style=&quot;margin:0;font-size:13px;line-height:1.6;&quot;&gt;{{nomes separados por &quot; · &quot;}}&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 0;&quot;&gt;&lt;div style=&quot;border:1px solid #5A9E63;border-radius:8px;padding:16px 18px;background:#F3F8F3;&quot;&gt;
+&lt;h2 style=&quot;margin:0 0 4px;font-size:16px;color:#0D1F10;&quot;&gt;Precisa de olho humano&lt;/h2&gt;
+&lt;p style=&quot;margin:0 0 10px;font-size:12px;color:#444444;&quot;&gt;Nenhum contato foi preparado para estas linhas.&lt;/p&gt;
+&lt;table role=&quot;presentation&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;font-size:13px;line-height:1.5;&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;padding:4px 0;vertical-align:top;width:40%;font-weight:bold;&quot;&gt;{{nome}}&lt;/td&gt;&lt;td style=&quot;padding:4px 0;&quot;&gt;{{motivo}}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 28px;border-radius:0 0 12px 12px;&quot;&gt;&lt;h2 style=&quot;margin:0 0 10px;font-size:16px;color:#0D1F10;&quot;&gt;Rascunhos preparados&lt;/h2&gt;
+&lt;p style=&quot;margin:0 0 18px;font-size:13px;line-height:1.6;&quot;&gt;{{n}} de boas-vindas · {{n}} lembretes · {{n}} cobranças. &lt;strong&gt;Nada foi enviado.&lt;/strong&gt; Revise cada um antes de enviar.&lt;/p&gt;
+&lt;table role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;background:#27AF60;border-radius:8px;&quot;&gt;&lt;a href=&quot;https://mail.google.com/mail/u/0/#drafts&quot; style=&quot;display:inline-block;padding:12px 22px;font-size:14px;font-weight:bold;color:#FFFFFF;text-decoration:none;&quot;&gt;Revisar os rascunhos&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;padding:16px 32px;font-size:11px;line-height:1.5;color:#6B6B6B;&quot;&gt;Resumo gerado com IA a partir da planilha de associados. Confira os números antes de agir: a IA prepara, uma pessoa decide.&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</div>
+      </div>
+      <p style="font-size:14px;margin-top:8px">Nome: <strong>Controle semanal de associados</strong> · toda segunda às 8h · conectores Drive e Gmail ligados. <a href="materiais/email-resumo-semanal.html" target="_blank" style="color:#3F5A43;font-weight:600">Ver como fica o e-mail ↗</a></p>
+
       <div class="task-box" style="margin-top:24px">
         <h3 style="margin-bottom:8px">Conectores: e-mail, agenda e Drive</h3>
         <ol class="task-list" style="margin-top:12px">
