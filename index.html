@@ -1579,6 +1579,70 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
           <li><span class="task-num">3</span><span><strong>Bom resultado:</strong> ninguém esquecido, ninguém cobrado errado, e o que for estranho vai para "precisa de olho humano".</span></li>
         </ol>
       </div>
+      <div style="margin-top:32px">
+        <p class="eyebrow" style="color:var(--texto-medio)">Como eu fiz na aula</p>
+        <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:24px">A demo completa, para refazer em casa</h3>
+        <p style="max-width:680px">Este é o prompt que usei ao vivo. Repare que ele é o Passo 0 escrito: contexto, tarefa, entrada, método, regras e saída. Com isso, o Criador de Skills escreve a skill sem precisar de uma entrevista longa.</p>
+        <p style="max-width:680px;margin-top:8px"><a href="materiais/associados_ficticios.csv" download style="color:#3F5A43;font-weight:600">Baixar a planilha fictícia (.csv) ↓</a> · 26 associados inventados, nenhum CPF. Para usar com o conector, importe no Google Planilhas (Arquivo › Importar).</p>
+      </div>
+
+      <div class="prompt-wrap" style="margin-top:16px">
+        <div class="prompt-label">Exemplo · Prompt completo da skill de controle de associados<button class="btn-copy" onclick="copyPrompt(this,'p3-exemplo')">Copiar</button></div>
+        <div class="prompt-body" id="p3-exemplo">Use o skill-creator para criar uma skill chamada "controle-de-associados". Converse comigo em português e escreva a skill em português.
+
+Eu já fiz o Passo 0. Não precisa me entrevistar do zero: use as respostas abaixo e só me pergunte se faltar algo essencial (no máximo 3 perguntas). Não rode avaliações automáticas agora: vamos testar em seguida.
+
+CONTEXTO
+Somos uma associação começando uma campanha de novos associados pagantes. A inscrição é feita por formulário e cai numa planilha no Google Drive. Uma única pessoa supervisiona todo o processo.
+
+A TAREFA
+Toda semana, conferir a planilha de associados e preparar o que precisa ser feito.
+
+ENTRADA
+Planilha com as colunas: ID, Data de inscrição, Nome, Tipo, E-mail, Plano (Mensal, Semestral ou Anual), Valor (R$), Último pagamento, Boas-vindas enviada (Sim/Não), Observações.
+
+MÉTODO
+1. Calcular o próximo vencimento: último pagamento + 1 mês (Mensal), + 6 meses (Semestral) ou + 12 meses (Anual).
+2. Classificar cada associado: atrasado, vence em até 7 dias, ou em dia.
+3. Listar quem ainda não recebeu boas-vindas.
+4. Preparar rascunhos de e-mail: boas-vindas (acolhedor), lembrete (antes de vencer) e cobrança (gentil, sem constranger, com o valor do plano).
+
+REGRAS: O QUE NUNCA PODE ACONTECER
+- Nunca enviar e-mail. Só rascunhar.
+- Nunca cobrar nem lembrar quem tem observação de pausa ou de pagamento combinado.
+- Linha com dado estranho (plano diferente de Mensal, Semestral ou Anual; e-mail inválido; inscrição duplicada; sem data de pagamento) não entra em cobrança: vai para "Precisa de olho humano", com o motivo.
+- Não mostrar dado pessoal além de nome e e-mail.
+- Não inventar datas nem valores. Se faltar, dizer que falta.
+- Usar a data de hoje como referência e dizer qual data usou.
+
+SAÍDA, SEMPRE NESTA ORDEM
+1. Resumo em 3 linhas: quantos em dia, quantos vencem na semana, quantos atrasados.
+2. Tabela com três grupos: Atrasados · Vencem em até 7 dias · Sem boas-vindas.
+3. "Precisa de olho humano", com o motivo de cada linha.
+4. Rascunhos de e-mail, um por pessoa.
+
+COMO SEI QUE FICOU BOM
+Ninguém esquecido, ninguém cobrado errado, e nada sai sem revisão humana.
+
+QUANDO USAR (para a descrição da skill)
+Sempre que eu pedir controle, conferência ou acompanhamento de associados, mensalidades, inscrições ou pagamentos recorrentes.
+
+Ao final, me mostre a skill completa para eu revisar antes de salvar.</div>
+      </div>
+
+      <div class="task-box" style="margin-top:16px">
+        <h3 style="margin-bottom:8px">O que a skill deveria pegar no teste difícil</h3>
+        <p style="font-size:14px">A planilha tem armadilhas de propósito. Uma boa skill <strong>não cobra</strong> estas linhas: manda para "Precisa de olho humano".</p>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span>Alguém que nunca pagou, mas avisou que pagaria por Pix.</span></li>
+          <li><span class="task-num">2</span><span>Um plano "Trimestral", que não existe.</span></li>
+          <li><span class="task-num">3</span><span>Um e-mail inválido.</span></li>
+          <li><span class="task-num">4</span><span>A mesma pessoa inscrita duas vezes.</span></li>
+          <li><span class="task-num">5</span><span>Um pedido de pausa até janeiro.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px">As datas da planilha foram pensadas para 21/out/2026. Em outro dia, os atrasos e vencimentos mudam, mas as armadilhas continuam lá.</p>
+      </div>
+
     </div>
   </div>
 
