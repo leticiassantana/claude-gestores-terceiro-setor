@@ -701,6 +701,10 @@
     .task-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
     .task-list li { display: flex; gap: 12px; font-size: 14px; color: rgba(245,245,240,0.85); align-items: flex-start; }
+    /* Caixas de tarefa sobre fundo claro: texto escuro para manter o contraste */
+    .section-light .task-box h3 { color: var(--texto-escuro); }
+    .section-light .task-list li { color: var(--texto-escuro); }
+    .section-light .task-box p { color: var(--texto-medio); }
 
     .task-num {
       width: 24px; height: 24px;
