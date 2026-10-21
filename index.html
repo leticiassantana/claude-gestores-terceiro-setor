@@ -1450,6 +1450,25 @@ Use só dados dos documentos e indique a fonte de cada número. Se um indicador 
 Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documentos. Ao final, liste o que eu preciso revisar antes de enviar.</div>
       </div>
       <p style="font-size:14px;margin-top:12px"><strong>Antes de enviar a qualquer financiador:</strong> revise tudo e decida se vai declarar que usou IA na proposta.</p>
+
+      <div class="task-box" style="margin-top:32px">
+        <h3 style="margin-bottom:8px">🛠️ Para criar a sua: Criador de Skills, da Anthropic</h3>
+        <p style="font-size:15px">A skill oficial da Anthropic que <strong>cria outras skills</strong>. Ela te entrevista sobre a tarefa, escreve a skill e ajuda a testar. Os textos internos estão em inglês, mas a conversa pode ser toda em português. É a base da Aula 3.</p>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span><strong>Veja se já está na sua conta:</strong> em <strong>Personalizar › Skills</strong>, procure <em>skill-creator</em> entre as skills da Anthropic e ligue. Nos planos pagos, as skills de exemplo da Anthropic já vêm disponíveis.</span></li>
+          <li><span class="task-num">2</span><span><strong>Se não aparecer:</strong> <a href="skills/skill-creator.zip" download style="color:var(--verde-claro)">baixe o .zip oficial</a> e instale do mesmo jeito que as skills acima.</span></li>
+        </ol>
+        <p style="font-size:12px;margin-top:12px">Fonte: <a href="https://github.com/anthropics/skills/tree/main/skills/skill-creator" target="_blank" style="color:var(--verde-claro)">repositório oficial da Anthropic</a> (licença Apache 2.0, versão de 09/out/2026).</p>
+      </div>
+
+      <div class="prompt-wrap" style="margin-top:24px">
+        <div class="prompt-label">6 · Criar a minha primeira skill<button class="btn-copy" onclick="copyPrompt(this,'p2-criar-skill')">Copiar</button></div>
+        <div class="prompt-body" id="p2-criar-skill">Use o skill-creator para me ajudar a criar uma skill. Converse comigo em português.
+
+A tarefa que eu faço toda semana do mesmo jeito é: [descreva a tarefa em 2 ou 3 frases].
+
+Antes de escrever a skill, me entreviste: o que entra, o que sai, que passos eu sigo, o que nunca pode acontecer e como eu sei que ficou bom. Use os documentos deste projeto como contexto da organização e não invente nada sobre ela.</div>
+      </div>
     </div>
   </div>
 
