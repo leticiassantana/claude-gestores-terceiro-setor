@@ -1553,6 +1553,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
       <div class="link-list" style="margin:0">
         <a class="link-item" data-link="slides3" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 3</strong><small>Para acompanhar e rever</small></span></a>
         <a class="link-item" href="#passo0" onclick="return scrollToId('passo0')"><span>🧭</span><span><strong>Passo 0 e prompts</strong><small>Criar a sua skill, testar, conectar · role para baixo ↓</small></span></a>
+        <a class="link-item" href="#passoapasso3" onclick="return scrollToId('passoapasso3')"><span>🪜</span><span><strong>Passo a passo da demo</strong><small>Da skill à rotina rodando, com o Raízes · role para baixo ↓</small></span></a>
         <a class="link-item" href="#tarefa3" onclick="return scrollToId('tarefa3')"><span>✅</span><span><strong>Tarefa até a Aula 4</strong><small>Cabe em 1 hora · role para baixo ↓</small></span></a>
         <a class="link-item" href="#satisfacao3" onclick="return scrollToId('satisfacao3')"><span>⭐</span><span><strong>Avalie a Aula 3</strong><small>1 minuto, antes de sair · role para baixo ↓</small></span></a>
       </div>
@@ -1572,7 +1573,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
       </div>
 
       <div class="task-box" style="margin-top:24px">
-        <h3 style="margin-bottom:8px">Exemplo da aula: controle de associados pagantes</h3>
+        <h3 style="margin-bottom:8px">Exemplo da aula: o programa de associados do Instituto Raízes do Pirambu</h3>
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num">1</span><span><strong>Tarefa:</strong> conferir toda semana a planilha de associados (planos mensal, semestral e anual).</span></li>
           <li><span class="task-num">2</span><span><strong>Método:</strong> calcular o vencimento pelo plano · dar boas-vindas a quem chegou · lembrar quem vence em até 7 dias · cobrar com cuidado quem atrasou. <strong>Nunca</strong> enviar sozinho, nunca cobrar quem combinou pausa ou pagamento.</span></li>
@@ -1582,7 +1583,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
       <div style="margin-top:32px">
         <p class="eyebrow" style="color:var(--texto-medio)">Como eu fiz na aula</p>
         <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:24px">A demo completa, para refazer em casa</h3>
-        <p style="max-width:680px">Este é o prompt que usei ao vivo. Repare que ele é o Passo 0 escrito: contexto, tarefa, entrada, método, regras e saída. Com isso, o Criador de Skills escreve a skill sem precisar de uma entrevista longa.</p>
+        <p style="max-width:680px">Este é o prompt que usei ao vivo, dentro do Project do Instituto Raízes do Pirambu (organização fictícia da Aula 2). Repare que ele é o Passo 0 escrito: contexto, tarefa, entrada, método, regras e saída. Com isso, o Criador de Skills escreve a skill sem precisar de uma entrevista longa.</p>
         <p style="max-width:680px;margin-top:8px"><a href="materiais/associados_ficticios.csv" download style="color:#3F5A43;font-weight:600">Baixar a planilha fictícia (.csv) ↓</a> · 26 associados inventados, nenhum CPF. Para usar com o conector, importe no Google Planilhas (Arquivo › Importar).</p>
       </div>
 
@@ -1593,7 +1594,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
 Eu já fiz o Passo 0. Não precisa me entrevistar do zero: use as respostas abaixo e só me pergunte se faltar algo essencial (no máximo 3 perguntas). Não rode avaliações automáticas agora: vamos testar em seguida.
 
 CONTEXTO
-Somos uma associação começando uma campanha de novos associados pagantes. A inscrição é feita por formulário e cai numa planilha no Google Drive. Uma única pessoa supervisiona todo o processo.
+Somos o Instituto Raízes do Pirambu: os documentos deste projeto contam quem somos e como falamos. Estamos começando o nosso programa de associados pagantes, pessoas e coletivos que apoiam o Instituto todo mês, semestre ou ano. A inscrição é feita por formulário e cai numa planilha no Google Drive. Uma única pessoa da equipe supervisiona todo o processo.
 
 A TAREFA
 Toda semana, conferir a planilha de associados e preparar o que precisa ser feito.
@@ -1605,7 +1606,7 @@ MÉTODO
 1. Calcular o próximo vencimento: último pagamento + 1 mês (Mensal), + 6 meses (Semestral) ou + 12 meses (Anual).
 2. Classificar cada associado: atrasado, vence em até 7 dias, ou em dia.
 3. Listar quem ainda não recebeu boas-vindas.
-4. Preparar rascunhos de e-mail: boas-vindas (acolhedor), lembrete (antes de vencer) e cobrança (gentil, sem constranger, com o valor do plano).
+4. Preparar rascunhos de e-mail: boas-vindas (acolhedor), lembrete (antes de vencer) e cobrança (gentil, sem constranger, com o valor do plano). Os e-mails falam com a voz do Instituto, como nos documentos deste projeto. Escreva na própria skill um resumo curto dessa voz, para ela funcionar também fora do projeto (por exemplo, numa rotina programada).
 
 REGRAS: O QUE NUNCA PODE ACONTECER
 - Nunca enviar e-mail. Só rascunhar.
@@ -1643,6 +1644,84 @@ Ao final, me mostre a skill completa para eu revisar antes de salvar.</div>
         <p style="font-size:13px;margin-top:12px">As datas da planilha foram pensadas para 21/out/2026. Em outro dia, os atrasos e vencimentos mudam, mas as armadilhas continuam lá.</p>
       </div>
 
+    </div>
+  </div>
+
+
+  <!-- Passo a passo da demo -->
+  <div class="section-dark" id="passoapasso3">
+    <div class="container">
+      <p class="eyebrow">Passo a passo</p>
+      <h3 style="font-size:28px;margin-bottom:8px">Do zero à rotina rodando</h3>
+      <p style="max-width:700px">O caminho completo da demo da aula, com o programa de associados do Instituto Raízes do Pirambu (fictício), na ordem: criar a skill, testar, conectar o Drive e o Gmail, e deixar a rotina programada. Cada passo diz o que fazer, o que você deve ver e o que fazer se não aparecer. Os nomes dos botões podem variar um pouco entre o português e o inglês: os dois estão indicados.</p>
+
+      <!-- Antes de começar -->
+      <div class="task-box" style="margin-top:24px">
+        <h3 style="margin-bottom:8px">0 · Antes de começar (2 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">a</span><span><strong>Planilha:</strong> tenha a planilha de associados no seu Google Drive. Se ainda não tem, <a href="materiais/associados_ficticios.csv" download style="color:var(--verde-claro)">baixe a fictícia (.csv)</a>, abra o Google Planilhas › <strong>Arquivo › Importar › Fazer upload</strong> e dê o nome <em>Associados — Instituto Raízes do Pirambu (fictício)</em>.</span></li>
+          <li><span class="task-num">b</span><span><strong>Execução de código:</strong> no Claude, clique nas suas iniciais (canto inferior esquerdo) › <strong>Configurações › Capacidades</strong> (<em>Settings › Capabilities</em>) e confira se <strong>Execução de código e criação de arquivos</strong> está ligada. Sem isso, skills não funcionam.</span></li>
+          <li><span class="task-num">c</span><span><strong>Criador de Skills:</strong> em <strong>Personalizar › Skills</strong> (<em>Customize › Skills</em>), procure <em>skill-creator</em> e ligue. Se não aparecer, instale o .zip da <a href="#skills2" onclick="goTo('aula2');setTimeout(()=>scrollToId('skills2'),400);return false" style="color:var(--verde-claro)">Aula 2</a>.</span></li>
+        </ol>
+      </div>
+
+      <!-- Parte 1 -->
+      <div class="task-box" style="margin-top:20px">
+        <h3 style="margin-bottom:8px">1 · Criar a skill (≈ 10 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span><strong>Abra o Project "Instituto Raízes do Pirambu"</strong> (o da Aula 2) e comece uma <strong>conversa nova dentro dele</strong>. Assim a skill nasce com a voz do Raízes. Ela fica salva na sua conta e funciona também fora do Project.</span></li>
+          <li><span class="task-num">2</span><span><strong>Copie o prompt completo</strong> da seção <a href="#passo0" onclick="return scrollToId('passo0')" style="color:var(--verde-claro)">"Como eu fiz na aula"</a>, cole e envie.<br><em>Você deve ver:</em> o Claude avisando que vai usar o skill-creator e, talvez, até 3 perguntas.</span></li>
+          <li><span class="task-num">3</span><span><strong>Responda as perguntas curto.</strong> Se ele perguntar algo que já está no prompt, diga: "está no prompt, siga com o que eu mandei".</span></li>
+          <li><span class="task-num">4</span><span><strong>Leia a skill que ele mostrar.</strong> Confira quatro coisas: a <strong>descrição</strong> (diz quando usar), as <strong>regras</strong> (nunca enviar, nunca cobrar pausa), o <strong>formato da saída</strong> e um <strong>resumo da voz do Raízes</strong> escrito dentro da skill (ex.: "comunidades com poder", nunca "populações vulneráveis"). Se faltar algo, peça para ele ajustar antes de salvar.</span></li>
+          <li><span class="task-num">5</span><span><strong>Salve a skill.</strong> Pode acontecer de duas formas:<br>· aparece um botão para <strong>salvar / adicionar às suas skills</strong>: clique;<br>· ou ele entrega um arquivo (<strong>.zip</strong> ou <strong>.skill</strong>): baixe, vá em <strong>Personalizar › Skills › + › Criar skill › Fazer upload</strong> (<em>Upload a skill</em>) e escolha o arquivo.</span></li>
+          <li><span class="task-num">6</span><span><strong>Confira se ela está ligada</strong> em Personalizar › Skills: <em>controle-de-associados</em> deve aparecer na lista, com o botão ativado.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px"><strong>Se não der certo:</strong> se ele não entregar nem botão nem arquivo, peça: <em>"Me entregue a skill como arquivo .zip, com a pasta controle-de-associados e o SKILL.md dentro."</em> Se o upload der erro, confira se o nome da pasta dentro do .zip é igual ao nome da skill.</p>
+      </div>
+
+      <!-- Parte 2 -->
+      <div class="task-box" style="margin-top:20px">
+        <h3 style="margin-bottom:8px">2 · Testar a skill (≈ 5 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span><strong>Abra outra conversa nova, no mesmo Project do Raízes.</strong> Clique no <strong>+</strong> da caixa de mensagem › <strong>Conectores</strong> e ligue o <strong>Google Drive</strong>. (Se ainda não conectou, vá para a parte 3 primeiro e volte.)</span></li>
+          <li><span class="task-num">2</span><span><strong>Caso ideal:</strong> <em>"Faça o controle semanal dos associados a partir da planilha Associados do Raízes no meu Drive."</em><br><em>Você deve ver:</em> a indicação de que a skill foi usada, e a saída na ordem combinada (resumo, tabela, olho humano, rascunhos).</span></li>
+          <li><span class="task-num">3</span><span><strong>Caso parecido:</strong> <em>"Quem dos associados anuais está em dia?"</em> Ela deve ativar sozinha de novo.</span></li>
+          <li><span class="task-num">4</span><span><strong>Caso difícil:</strong> <em>"Faça o controle semanal e me diga quais linhas você NÃO tratou automaticamente, e por quê."</em><br><em>Você deve ver:</em> as armadilhas em "Precisa de olho humano", sem cobrança: quem nunca pagou, o plano "Trimestral", o e-mail inválido, a inscrição duplicada e o pedido de pausa.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px"><strong>Se não der certo:</strong> se a skill não ativar, escreva no começo do pedido <em>"Use a skill controle-de-associados"</em>. Se ela cobrar alguém que pediu pausa ou combinou pagamento, abra a skill e reforce a regra. Se o Claude não achar a planilha, anexe o arquivo .csv direto na conversa (clipe ou arrastar) e siga.</p>
+      </div>
+
+      <!-- Parte 3 -->
+      <div class="task-box" style="margin-top:20px">
+        <h3 style="margin-bottom:8px">3 · Conectar o Drive e o Gmail (≈ 5 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span>Vá em <strong>Personalizar › Conectores</strong> (<em>Customize › Connectors</em>).</span></li>
+          <li><span class="task-num">2</span><span>Clique em <strong>Google Drive › Conectar</strong>. Uma janela do Google abre: escolha a sua conta e clique em <strong>Permitir</strong>.</span></li>
+          <li><span class="task-num">3</span><span>Repita para o <strong>Gmail</strong>.</span></li>
+          <li><span class="task-num">4</span><span><strong>Teste na conversa</strong> (com os dois conectores ligados no <strong>+ › Conectores</strong>):<br><em>"Leia a planilha Associados do Raízes no meu Google Drive, use a skill controle-de-associados e crie RASCUNHOS no meu Gmail para cada e-mail. Não envie nada."</em></span></li>
+          <li><span class="task-num">5</span><span><strong>Abra o Gmail › Rascunhos.</strong> <em>Você deve ver:</em> os e-mails de boas-vindas, lembrete e cobrança, sem nenhum enviado.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px"><strong>Se não der certo:</strong> no plano Team, se o Drive ou o Gmail não aparecem em Conectores, a administradora da conta precisa liberar. Se o Claude pedir aprovação para <strong>enviar</strong> algo, recuse: aqui é só rascunho. Microsoft 365 funciona do mesmo jeito, só com conta de trabalho.</p>
+      </div>
+
+      <!-- Parte 4 -->
+      <div class="task-box" style="margin-top:20px">
+        <h3 style="margin-bottom:8px">4 · Deixar a rotina programada (≈ 10 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span>No menu lateral do Claude, clique em <strong>Programadas</strong> (<em>Scheduled</em>). Se for editar a rotina da Aula 2, abra-a e vá direto para o passo 4.</span></li>
+          <li><span class="task-num">2</span><span>Clique em <strong>Nova tarefa</strong> (<em>New task</em>, canto superior direito) › <strong>Configurar manualmente</strong> (<em>Set up manually</em>).</span></li>
+          <li><span class="task-num">3</span><span><strong>Nome:</strong> <em>Controle semanal de associados</em>.</span></li>
+          <li><span class="task-num">4</span><span><strong>Instruções / prompt:</strong> copie o bloco <a href="#p3-rotina-exemplo" onclick="return scrollToId('p3-rotina-exemplo')" style="color:var(--verde-claro)">"Rotina da aula, com resumo em e-mail HTML"</a> e cole inteiro. A rotina não lê os documentos do Project: a voz do Raízes vem do resumo que ficou dentro da skill. Se a sua planilha tem outro nome, troque no item 1 das instruções.</span></li>
+          <li><span class="task-num">5</span><span><strong>Frequência:</strong> <em>Semanal</em> (<em>Weekly</em>) · segunda-feira · 8h.</span></li>
+          <li><span class="task-num">6</span><span><strong>Aprovação:</strong> se a tela mostrar o modo de aprovação, escolha a opção que <strong>pede aprovação antes de agir</strong>. Confira se os conectores <strong>Google Drive</strong> e <strong>Gmail</strong> estão ligados para a tarefa.</span></li>
+          <li><span class="task-num">7</span><span>Clique em <strong>Salvar</strong> (<em>Save</em>).</span></li>
+          <li><span class="task-num">8</span><span><strong>Rode agora para testar:</strong> na página Programadas, abra a tarefa › <strong>Executar agora</strong> (<em>Run now</em>). Espere terminar.</span></li>
+          <li><span class="task-num">9</span><span><strong>Abra o Gmail › Rascunhos.</strong> <em>Você deve ver:</em> os e-mails individuais e um rascunho para você, <em>"Controle semanal de associados — semana de…"</em>, no visual verde. <a href="materiais/email-resumo-semanal.html" target="_blank" style="color:var(--verde-claro)">Veja como deve ficar ↗</a></span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px"><strong>Se não der certo:</strong> se não achar "Programadas", digite <strong>/schedule</strong> numa conversa e descreva a rotina, ou escolha <strong>Criar com o Claude</strong> (<em>Create with Claude</em>) e cole as instruções. Se o resumo chegar em texto simples (sem o visual), o Gmail não aceitou o HTML: o conteúdo é o mesmo. Para ver o visual na aula, peça na conversa: <em>"Mostre o resumo desta semana como artefato, usando o modelo HTML da rotina."</em></p>
+      </div>
+
+      <p style="margin-top:20px"><strong>Lembrete:</strong> a rotina roda na nuvem, mesmo com o computador desligado. Ela só prepara: quem envia é você.</p>
     </div>
   </div>
 
@@ -1700,7 +1779,7 @@ Se o arquivo não abrir ou estiver vazio, diga isso claramente em vez de inventa
         <div class="prompt-label">Exemplo · Rotina da aula, com resumo em e-mail HTML<button class="btn-copy" onclick="copyPrompt(this,'p3-rotina-exemplo')">Copiar</button></div>
         <div class="prompt-body" id="p3-rotina-exemplo" style="max-height:320px;overflow:auto">Toda segunda-feira, faça o controle semanal dos associados.
 
-1. Leia a planilha &quot;Aula 3 — Associados (fictício) — demo controle de associados&quot; no meu Google Drive.
+1. Leia a planilha &quot;Associados — Instituto Raízes do Pirambu (fictício)&quot; no meu Google Drive.
 2. Use a skill &quot;controle-de-associados&quot; para classificar cada associado e preparar os contatos.
 3. Crie no meu Gmail um RASCUNHO para cada e-mail de boas-vindas, lembrete ou cobrança. NUNCA envie nada.
 4. Crie também um RASCUNHO endereçado a mim, com o assunto &quot;Controle semanal de associados — semana de [data de hoje]&quot;, com o resumo da semana em HTML, seguindo exatamente o MODELO abaixo. Troque o que está entre {{ }} pelos dados reais e repita as linhas de tabela quantas vezes forem necessárias. Se um grupo estiver vazio, escreva &quot;Ninguém nesta semana.&quot;
@@ -1714,7 +1793,7 @@ MODELO (HTML para e-mail):
 &lt;table role=&quot;presentation&quot; width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;background:#F5F5F0;&quot;&gt;&lt;tr&gt;&lt;td align=&quot;center&quot; style=&quot;padding:24px 12px;&quot;&gt;
 &lt;table role=&quot;presentation&quot; width=&quot;600&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;width:100%;max-width:600px;font-family:Arial,Helvetica,sans-serif;color:#1A1A1A;&quot;&gt;
 &lt;tr&gt;&lt;td style=&quot;background:#0D1F10;border-radius:12px 12px 0 0;padding:28px 32px;&quot;&gt;
-&lt;p style=&quot;margin:0 0 8px;font-size:11px;letter-spacing:1.5px;font-weight:bold;color:#5A9E63;&quot;&gt;CONTROLE SEMANAL DE ASSOCIADOS&lt;/p&gt;
+&lt;p style=&quot;margin:0 0 8px;font-size:11px;letter-spacing:1.5px;font-weight:bold;color:#5A9E63;&quot;&gt;INSTITUTO RAÍZES DO PIRAMBU · ASSOCIADOS&lt;/p&gt;
 &lt;h1 style=&quot;margin:0;font-size:24px;color:#FFFFFF;&quot;&gt;Semana de {{data por extenso}}&lt;/h1&gt;
 &lt;p style=&quot;margin:8px 0 0;font-size:14px;color:#C9D8CB;&quot;&gt;Data usada como referência: {{dd/mm/aaaa}} · Planilha: Associados&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td style=&quot;background:#FFFFFF;padding:24px 32px 8px;&quot;&gt;
