@@ -1628,7 +1628,7 @@ MÉTODO
 1. Calcular o próximo vencimento: último pagamento + 1 mês (Mensal), + 6 meses (Semestral) ou + 12 meses (Anual).
 2. Classificar cada associado: atrasado, vence em até 7 dias, ou em dia.
 3. Listar quem ainda não recebeu boas-vindas.
-4. Preparar rascunhos de e-mail: boas-vindas (acolhedor), lembrete (antes de vencer) e cobrança (gentil, sem constranger, com o valor do plano). Os e-mails falam com a voz do Instituto, como nos documentos deste projeto. Escreva na própria skill um resumo curto dessa voz, para ela funcionar também fora do projeto (por exemplo, numa rotina programada).
+4. Preparar rascunhos de e-mail: boas-vindas (acolhedor), lembrete (antes de vencer) e cobrança (gentil, sem constranger, com o valor do plano). Os e-mails falam com a voz do Instituto, como nos documentos deste projeto. Escreva na própria skill um resumo curto dessa voz, para ela não depender só dos documentos e não inventar o tom quando rodar sozinha (por exemplo, numa rotina programada).
 
 REGRAS: O QUE NUNCA PODE ACONTECER
 - Nunca enviar e-mail. Só rascunhar.
@@ -1687,11 +1687,11 @@ Ao final, me mostre a skill completa para eu revisar antes de salvar.</div>
         <h3 style="margin-bottom:8px">4 · Programamos a rotina semanal</h3>
         <ol class="task-list" style="margin-top:12px">
           <li><span class="task-num">1</span><span>No menu lateral, <strong>Programadas</strong> (<em>Scheduled</em>) › <strong>Nova tarefa</strong> (<em>New task</em>) › <strong>Configurar manualmente</strong> (<em>Set up manually</em>).</span></li>
-          <li><span class="task-num">2</span><span><strong>Nome:</strong> <em>Controle semanal de associados</em>. <strong>Frequência:</strong> semanal, segunda-feira, 8h. Conectores Google Drive e Gmail ligados.</span></li>
+          <li><span class="task-num">2</span><span><strong>Nome:</strong> <em>Controle semanal de associados</em>. <strong>Frequência:</strong> semanal, segunda-feira, 8h. <strong>Ambiente:</strong> o Project do Raízes. Conectores Google Drive e Gmail ligados.</span></li>
           <li><span class="task-num">3</span><span><strong>Instruções:</strong> colamos o bloco <a href="#p3-rotina-exemplo" onclick="return scrollToId('p3-rotina-exemplo')" style="color:var(--verde-claro)">"Rotina da aula, com resumo em e-mail HTML"</a>. Ele usa a skill, deixa os e-mails como rascunho e prepara um resumo da semana em e-mail, no visual do curso. <a href="materiais/email-resumo-semanal.html" target="_blank" style="color:var(--verde-claro)">Veja como fica ↗</a></span></li>
           <li><span class="task-num">4</span><span>Salvamos e clicamos em <strong>Executar agora</strong> (<em>Run now</em>) para testar, sem esperar a segunda-feira.</span></li>
         </ol>
-        <p style="font-size:13px;margin-top:12px"><strong>Um detalhe importante:</strong> a rotina roda fora do Project, então não lê os documentos do Raízes. A voz do Instituto vem do resumo que pedimos para a skill guardar.</p>
+        <p style="font-size:13px;margin-top:12px"><strong>Alerta: a rotina pode rodar dentro do Project.</strong> Ao criá-la, coloque a rotina no Project do Raízes (ou crie a tarefa a partir dele): assim ela lê os documentos do Instituto a cada execução. E o resumo da voz que pedimos para a skill guardar é uma segunda proteção: a rotina já nasce sabendo como o Instituto fala, o que reduz o risco de o Claude inventar tom, dados ou promessas quando roda sozinho, sem ninguém olhando.</p>
         <p style="font-size:13px;margin-top:8px"><strong>Se na sua tela for diferente:</strong> se não achar "Programadas", digite <strong>/schedule</strong> numa conversa e descreva a rotina. Se o resumo chegar em texto simples, o Gmail não aceitou o HTML: o conteúdo é o mesmo.</p>
       </div>
 
