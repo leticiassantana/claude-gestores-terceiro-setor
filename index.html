@@ -1552,6 +1552,7 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
       <h3 style="margin:32px 0 16px">Links da aula</h3>
       <div class="link-list" style="margin:0">
         <a class="link-item" data-link="slides3" target="_blank"><span>🖥️</span><span><strong>Slides da Aula 3</strong><small>Para acompanhar e rever</small></span></a>
+        <a class="link-item" href="#memoria3" onclick="return scrollToId('memoria3')"><span>🧠</span><span><strong>Memória e Projects</strong><small>Por que os assuntos se misturam e como separar · role para baixo ↓</small></span></a>
         <a class="link-item" href="#passo0" onclick="return scrollToId('passo0')"><span>🧭</span><span><strong>Passo 0 e prompts</strong><small>Criar a sua skill, testar, conectar · role para baixo ↓</small></span></a>
         <a class="link-item" href="#passoapasso3" onclick="return scrollToId('passoapasso3')"><span>🪜</span><span><strong>Relatoria da demo</strong><small>Como criamos a skill e a rotina do Raízes · role para baixo ↓</small></span></a>
         <a class="link-item" href="#tarefa3" onclick="return scrollToId('tarefa3')"><span>✅</span><span><strong>Tarefa até a Aula 4</strong><small>Cabe em 1 hora · role para baixo ↓</small></span></a>
@@ -1560,8 +1561,36 @@ Não invente dados. Marque como [PENDENTE] tudo o que não estiver nos documento
     </div>
   </div>
 
+
+  <!-- Memória e Projects -->
+  <div class="section-light" id="memoria3">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--texto-medio)">Antes de começar</p>
+      <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Memória e Projects: por que os assuntos se misturam</h3>
+      <p style="max-width:700px">Uma boa notícia primeiro: <strong>um Project não usa a memória de outro Project.</strong> Quando um assunto aparece onde não devia, ele quase sempre veio por um destes quatro caminhos.</p>
+
+      <div class="cards-grid cols-2" style="margin-top:20px">
+        <div class="card"><span class="card-icon">1️⃣</span><h3>Memória da conta</h3><p>O que você conversa fora de Projects entra também nos Projects. <strong>Para isolar um Project:</strong> na página dele, em Memória, desligue a opção de usar a memória da conta.</p></div>
+        <div class="card"><span class="card-icon">2️⃣</span><h3>Busca em conversas antigas</h3><p>O Claude pode procurar e citar conversas passadas. <strong>Para desligar:</strong> Configurações › Memória › pesquisar e referenciar conversas.</p></div>
+        <div class="card"><span class="card-icon">3️⃣</span><h3>Instruções para o Claude</h3><p>Valem em todas as conversas, de todos os Projects. <strong>Deixe ali só regras gerais</strong> (tom, formato). O contexto de cada assunto vai nas instruções do Project.</p></div>
+        <div class="card"><span class="card-icon">4️⃣</span><h3>Conversa solta</h3><p>Sem Project, tudo alimenta a memória da conta. <strong>Converse dentro do Project do assunto.</strong> Para algo pontual, use a conversa anônima, que não entra na memória.</p></div>
+      </div>
+
+      <div class="task-box" style="margin-top:24px">
+        <h3 style="margin-bottom:8px">Faça agora (5 minutos)</h3>
+        <ol class="task-list" style="margin-top:12px">
+          <li><span class="task-num">1</span><span>Abra <strong>Configurações › Memória</strong> e leia o resumo do que o Claude guardou sobre você. Apague o que estiver misturado ou errado.</span></li>
+          <li><span class="task-num">2</span><span>Decida se quer que ele busque conversas antigas. Para separação total, desligue.</span></li>
+          <li><span class="task-num">3</span><span>No Project que precisa ficar isolado, desligue o uso da memória da conta.</span></li>
+          <li><span class="task-num">4</span><span>Releia as suas Instruções para o Claude: tire o que for de um assunto só.</span></li>
+        </ol>
+        <p style="font-size:13px;margin-top:12px"><strong>Dois detalhes:</strong> dentro de um Project não existe conversa anônima; para uma conversa sem memória ali, desligue a Memória no <strong>+</strong> antes da primeira mensagem. E uma conversa com memória desligada continua no histórico e pode ser encontrada pela busca; a anônima, não. Os nomes das opções podem variar um pouco na sua tela. Fonte: <a href="https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context" target="_blank" style="color:#3F5A43">ajuda oficial</a>, conferida em 20/out/2026.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Passo 0 -->
-  <div class="section-light" id="passo0">
+  <div class="section-light" id="passo0" style="border-top:1px solid rgba(0,0,0,0.06)">
     <div class="container">
       <p class="eyebrow" style="color:var(--texto-medio)">Antes de qualquer skill</p>
       <h3 style="color:var(--texto-escuro);margin-bottom:8px;font-size:28px">Passo 0: três perguntas</h3>
