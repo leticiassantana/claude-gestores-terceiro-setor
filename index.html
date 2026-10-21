@@ -1799,8 +1799,15 @@ MODELO (HTML para e-mail):
       </div>
       <p style="font-size:14px;margin-top:8px">Nome: <strong>Controle semanal de associados</strong> · toda segunda às 8h · conectores Drive e Gmail ligados. <a href="materiais/email-resumo-semanal.html" target="_blank" style="color:#3F5A43;font-weight:600">Ver como fica o e-mail ↗</a></p>
 
-      <div class="prompt-wrap" style="margin-top:32px">
-        <div class="prompt-label">5 · Guia visual da sua organização (design system)<button class="btn-copy" onclick="copyPrompt(this,'p3-guia-visual')">Copiar</button></div>
+      <div class="task-box" style="margin-top:32px">
+        <h3 style="margin-bottom:8px">🎨 O design system da sua organização</h3>
+        <p style="font-size:15px">O Claude tem um recurso próprio para isso, em beta nos planos Pro, Max e Team: <strong>Configurações › Design systems</strong>. Você sobe o logo, um material antigo ou uma apresentação, e o Claude extrai cores, fontes e estilo para aplicar em novos designs e apresentações. Numa conversa, escolha qual usar em <strong>+ › Design system</strong>.</p>
+        <p style="font-size:13px;margin-top:8px">Fonte: <a href="https://support.claude.com/en/articles/14604397-set-up-your-design-system-in-claude-design" target="_blank" style="color:#3F5A43">ajuda oficial</a>, conferida em 20/out/2026.</p>
+        <p style="font-size:15px;margin-top:12px"><strong>Para e-mails em HTML e rotinas</strong>, que não são designs nem apresentações, vale também guardar o guia numa skill, com o prompt abaixo.</p>
+      </div>
+
+      <div class="prompt-wrap" style="margin-top:16px">
+        <div class="prompt-label">5 · Guia visual em skill (para e-mails e rotinas)<button class="btn-copy" onclick="copyPrompt(this,'p3-guia-visual')">Copiar</button></div>
         <div class="prompt-body" id="p3-guia-visual">Use o skill-creator para criar uma skill chamada "guia-visual-[nome da organização]". Converse comigo em português e escreva a skill em português.
 
 Quero que ela seja o guia visual (design system) da minha organização: toda vez que eu pedir algo visual, como painel, artefato, e-mail em HTML, página, slide ou relatório, o resultado deve seguir este guia.
@@ -1871,7 +1878,8 @@ No final, crie um artefato de amostra (um cartão, um botão e um pequeno painel
   <div class="section-dark" id="tarefa3" style="border-top:1px solid rgba(90,158,99,0.15)">
     <div class="container-sm">
       <p class="eyebrow">Para a próxima semana · cabe em 1 hora</p>
-      <h3 style="font-size:28px;margin-bottom:20px">Tarefa até a Aula 4</h3>
+      <h3 style="font-size:28px;margin-bottom:12px">Tarefa até a Aula 4</h3>
+      <p style="margin-bottom:20px"><strong>Por que tudo isso?</strong> Na Aula 4, o programa de associados do Raízes vai ao próximo nível: o <strong>n8n</strong> busca os dados direto da plataforma, sem planilha manual, e a rotina passa a morar nele, avisando por e-mail ou WhatsApp. O <strong>Claude Code</strong> constrói uma aplicação, como um painel de associados, e o <strong>GitHub</strong> e a <strong>Vercel</strong> guardam e publicam com um link. Chegar com as contas prontas deixa a aula livre para construir.</p>
       <div class="task-box">
         <ol class="task-list">
           <li><span class="task-num">1</span><span><strong>Crie a sua skill e coloque ela numa rotina que facilite o seu dia na organização.</strong> <em>Para quê:</em> é o método da sua organização rodando sozinho. Quando ela falhar, ajuste a descrição ou as regras. A <a href="#passoapasso3" onclick="return scrollToId('passoapasso3')" style="color:var(--verde-claro)">relatoria da demo</a> mostra o caminho.</span></li>
